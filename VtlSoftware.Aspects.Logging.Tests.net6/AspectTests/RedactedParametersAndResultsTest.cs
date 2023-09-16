@@ -5,6 +5,7 @@ namespace VtlSoftware.Aspects.Logging.Tests.net6.RedactedParametersAndResults
     public class RedactedParametersAndResultsTest
     {
         #region Constructors
+
         public RedactedParametersAndResultsTest()
         {
         }
@@ -12,7 +13,7 @@ namespace VtlSoftware.Aspects.Logging.Tests.net6.RedactedParametersAndResults
         #endregion
 
         #region Public Methods
-        [LogMethod]
+        [Log]
         [return: Redact]
         public string ValidateCardNumber(string userName, [Redact] string cardNumber)
         {

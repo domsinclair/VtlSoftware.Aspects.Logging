@@ -5,7 +5,6 @@ namespace VtlSoftware.Aspects.Logging.Tests.net6.LogVoidMethodWithParams
     public class LogVoidMethodWithParamsTest
     {
         #region Constructors
-
         public LogVoidMethodWithParamsTest()
         {
         }
@@ -13,7 +12,7 @@ namespace VtlSoftware.Aspects.Logging.Tests.net6.LogVoidMethodWithParams
         #endregion
 
         #region Public Methods
-        [LogMethod]
+        [Log]
         public void DoSomething(string stringToChange)
         {
         }

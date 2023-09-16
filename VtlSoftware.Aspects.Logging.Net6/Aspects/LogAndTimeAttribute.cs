@@ -1,4 +1,6 @@
-﻿using Metalama.Extensions.DependencyInjection;
+﻿
+using Metalama.Extensions.DependencyInjection;
+using Metalama.Framework.Advising;
 using Metalama.Framework.Aspects;
 using Metalama.Framework.Code;
 using Metalama.Framework.Eligibility;
@@ -9,16 +11,17 @@ using VtlSoftware.Aspects.Common.Net6;
 namespace VtlSoftware.Aspects.Logging.Net6
 {
     /// <summary>
-    /// An attribute that will add logging and timing to a Method.
+    /// Attribute for log and time.
     /// </summary>
     ///
     /// <remarks></remarks>
     ///
-    /// <seealso cref="T:OverrideMethodAspect"/>
+    /// <seealso cref="T:Attribute"/>
+    /// <seealso cref="T:IAspect{IMethod}"/>
+    /// <seealso cref="T:IAspect{IFieldOrProperty}"/>
 
-#pragma warning disable CS8618
-#pragma warning disable IDE0063
-    public class TimedLogMethodAttribute : OverrideMethodAspect
+    [AttributeUsage(AttributeTargets.Method | AttributeTargets.Property)]
+    public class LogAndTimeAttribute : Attribute, IAspect<IMethod>, IAspect<IFieldOrProperty>
     {
         #region Fields
 
@@ -32,20 +35,23 @@ namespace VtlSoftware.Aspects.Logging.Net6
 
         #region Public Methods
         /// <summary>
-        /// Builds an aspect.
+        /// Initializes the aspect. The implementation must add advice, child aspects and validators using the <paramref
+        /// name="builder"/> parameter.
         /// </summary>
         ///
         /// <remarks></remarks>
         ///
-        /// <param name="builder">The builder.</param>
+        /// <param name="builder">
+        /// An object that allows the aspect to add advice, child aspects and validators.
+        /// </param>
         ///
-        /// <seealso cref="M:Metalama.Framework.Aspects.OverrideMethodAspect.BuildAspect(IAspectBuilder{IMethod})"/>
+        /// <seealso cref="M:IAspect.BuildAspect(IAspectBuilder{IMethod})"/>
 
-        public override void BuildAspect(IAspectBuilder<IMethod> builder)
+        public void BuildAspect(IAspectBuilder<IMethod> builder)
         {
             if(!(builder.Target.Attributes.OfAttributeType(typeof(NoLogAttribute)).Any() ||
-                    builder.Target.Attributes.OfAttributeType(typeof(LogMethodAttribute)).Any()) ||
-                builder.Target.DeclaringType.Attributes.OfAttributeType(typeof(NoLogAttribute)).Any())
+                builder.Target.Attributes.OfAttributeType(typeof(LogAttribute)).Any() ||
+                builder.Target.DeclaringType.Attributes.OfAttributeType(typeof(NoLogAttribute)).Any()))
             {
                 builder.Advice.Override(builder.Target, nameof(this.OverrideMethod));
             } else
@@ -55,33 +61,83 @@ namespace VtlSoftware.Aspects.Logging.Net6
         }
 
         /// <summary>
-        /// Builds the eligibility criteria for this particular aspect.
+        /// Initializes the aspect. The implementation must add advice, child aspects and validators using the <paramref
+        /// name="builder"/> parameter.
         /// </summary>
         ///
         /// <remarks></remarks>
         ///
-        /// <param name="builder">The builder.</param>
+        /// <param name="builder">
+        /// An object that allows the aspect to add advice, child aspects and validators.
+        /// </param>
         ///
-        /// <seealso cref="M:Metalama.Framework.Aspects.MethodAspect.BuildEligibility(IEligibilityBuilder{IMethod})"/>
+        /// <seealso cref="M:IAspect.BuildAspect(IAspectBuilder{IFieldOrProperty})"/>
 
-        public override void BuildEligibility(IEligibilityBuilder<IMethod> builder)
+        public void BuildAspect(IAspectBuilder<IFieldOrProperty> builder)
         {
-            base.BuildEligibility(builder);
-            builder.MustNotBeStatic();
-            builder.MustNotHaveAspectOfType(typeof(LogMethodAttribute));
+            if(!(builder.Target.Attributes.OfAttributeType(typeof(NoLogAttribute)).Any() ||
+                builder.Target.DeclaringType.Attributes.OfAttributeType(typeof(NoLogAttribute)).Any()))
+            {
+                builder.Advice.Override(builder.Target, nameof(this.OverrideProperty));
+            } else
+            {
+                builder.SkipAspect();
+            }
         }
 
         /// <summary>
-        /// Default template of the new method implementation.
+        /// Configures the eligibility of the aspect or attribute. Implementations are not allowed to reference non-
+        /// static members. Implementations must call the implementation of the base class if it exists.
         /// </summary>
         ///
         /// <remarks></remarks>
         ///
-        /// <returns>A dynamic object that will be resolved at runtime.</returns>
+        /// <param name="builder">
+        /// An object that allows the aspect to configure characteristics like description, dependencies, or layers.
+        /// </param>
         ///
-        /// <seealso cref="M:Metalama.Framework.Aspects.OverrideMethodAspect.OverrideMethod()"/>
+        /// <seealso cref="M:IEligible.BuildEligibility(IEligibilityBuilder{IMethod})"/>
+        /// <seealso href="@eligibility"/>
 
-        public override dynamic? OverrideMethod()
+        public void BuildEligibility(IEligibilityBuilder<IMethod> builder)
+        {
+            EligibilityRuleFactory.GetAdviceEligibilityRule(AdviceKind.OverrideMethod);
+            builder.MustNotBeStatic();
+            builder.MustNotHaveAspectOfType(typeof(LogAttribute));
+            builder.MustNotHaveAspectOfType(typeof(NoLogAttribute));
+        }
+
+        /// <summary>
+        /// Configures the eligibility of the aspect or attribute. Implementations are not allowed to reference non-
+        /// static members. Implementations must call the implementation of the base class if it exists.
+        /// </summary>
+        ///
+        /// <remarks></remarks>
+        ///
+        /// <param name="builder">
+        /// An object that allows the aspect to configure characteristics like description, dependencies, or layers.
+        /// </param>
+        ///
+        /// <seealso cref="M:IEligible.BuildEligibility(IEligibilityBuilder{IFieldOrProperty})"/>
+        /// <seealso href="@eligibility"/>
+
+        public void BuildEligibility(IEligibilityBuilder<IFieldOrProperty> builder)
+        {
+            EligibilityRuleFactory.GetAdviceEligibilityRule(AdviceKind.OverrideFieldOrPropertyOrIndexer);
+            builder.MustNotBeStatic();
+            builder.MustNotHaveAspectOfType(typeof(NoLogAttribute));
+        }
+
+        /// <summary>
+        /// Override method.
+        /// </summary>
+        ///
+        /// <remarks></remarks>
+        ///
+        /// <returns>A dynamic?</returns>
+
+        [Template]
+        public dynamic? OverrideMethod()
         {
             var methodName = $"{meta.Target.Type.ToDisplayString(CodeDisplayFormat.MinimallyQualified)}.{meta.Target.Method.Name}";
             int paramCount = meta.Target.Parameters.Count;
@@ -117,7 +173,7 @@ namespace VtlSoftware.Aspects.Logging.Net6
                                     }
                                 } else
                                 {
-                                    //Metalame can't serialise an out parameter but it would help if we know it's there.
+                                    //Metalama can't serialise an out parameter but it would help if we know it's there.
                                     parameters.Add(p.Name, " = <out>");
                                 }
                             }
@@ -168,7 +224,7 @@ namespace VtlSoftware.Aspects.Logging.Net6
                 {
                     if(guard.CanLog)
                     {
-                        logger.Log(LogLevel.Error, $"An error has occured in {methodName}. These are the details: {e}");
+                        logger.Log(LogLevel.Error, $"An error has occurred in {methodName}. These are the details: {e}");
                     }
                 }
                 throw;
@@ -183,6 +239,39 @@ namespace VtlSoftware.Aspects.Logging.Net6
                         logger.Log(LogLevel.Information, $"{methodName} took {millisecs} ms to complete.");
                     }
                 }
+            }
+        }
+
+        #endregion
+
+        #region Public Properties
+        /// <summary>
+        /// Gets or sets the override property.
+        /// </summary>
+        ///
+        /// <value>The override property.</value>
+
+        [Template]
+        public dynamic? OverrideProperty
+        {
+            get
+            {
+                var propertyName = $"{meta.Target.Type.ToDisplayString(CodeDisplayFormat.MinimallyQualified)}.{meta.Target.Property.Name}";
+                var propType = meta.Target.Property.Type;
+                var propValue = meta.Target.Property.Value;
+                var result = meta.Proceed();
+                logger.Log(LogLevel.Information, $"The value of {propertyName} is: {propType} = {propValue}");
+                return result;
+            }
+            set
+            {
+                var propertyName = $"{meta.Target.Type.ToDisplayString(CodeDisplayFormat.MinimallyQualified)}.{meta.Target.Property.Name}";
+                var propType = meta.Target.Property.Type;
+                var oldPropValue = meta.Target.Property.Value;
+                meta.Proceed();
+                var newPropValue = meta.Target.Property.Value;
+                logger.Log(LogLevel.Information, $"The old value of {propertyName} was: {propType} = {oldPropValue}");
+                logger.Log(LogLevel.Information, $"The new value of {propertyName} is: {propType} = {newPropValue}");
             }
         }
 

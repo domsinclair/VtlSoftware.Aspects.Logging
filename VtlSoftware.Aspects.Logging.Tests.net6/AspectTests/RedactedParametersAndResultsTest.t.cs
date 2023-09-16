@@ -7,7 +7,7 @@ namespace VtlSoftware.Aspects.Logging.Tests.net6.RedactedParametersAndResults
         {
             this.logger = logger ?? throw new System.ArgumentNullException(nameof(logger));
         }
-        [LogMethod]
+        [Log]
         [return: Redact]
         public string ValidateCardNumber(string userName, [Redact] string cardNumber)
         {

@@ -5,6 +5,7 @@ namespace VtlSoftware.Aspects.Logging.Tests.net6.LogVoidMethod
     public class LogVoidMethodTest
     {
         #region Constructors
+
         public LogVoidMethodTest()
         {
         }
@@ -12,7 +13,7 @@ namespace VtlSoftware.Aspects.Logging.Tests.net6.LogVoidMethod
         #endregion
 
         #region Public Methods
-        [LogMethod]
+        [Log]
         public void DoSomething()
         {
         }

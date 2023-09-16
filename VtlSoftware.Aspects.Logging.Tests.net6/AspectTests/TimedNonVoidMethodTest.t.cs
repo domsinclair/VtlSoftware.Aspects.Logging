@@ -7,7 +7,7 @@ namespace VtlSoftware.Aspects.Logging.Tests.net6.TimedNonVoidMethod
         {
             this.logger = logger ?? throw new System.ArgumentNullException(nameof(logger));
         }
-        [TimedLogMethod]
+        [LogAndTime]
         public int SumIteration()
         {
             const string redacted = "<Redacted>";

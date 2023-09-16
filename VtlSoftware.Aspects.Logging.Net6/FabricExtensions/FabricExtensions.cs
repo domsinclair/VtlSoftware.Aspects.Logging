@@ -14,6 +14,7 @@ namespace VtlSoftware.Aspects.Logging.Net6
     public static class FabricExtensions
     {
         #region Public Methods
+
         /// <summary>
         /// An IProjectAmender extension method that logs all methods, by applying the [LogMethod] attribute.
         /// </summary>
@@ -31,7 +32,7 @@ namespace VtlSoftware.Aspects.Logging.Net6
             .Where(type => !type.IsStatic || type.Attributes.OfAttributeType(typeof(NoLogAttribute)).Any())
             .SelectMany(type => type.Methods)
             .Where(method => method.Name != "ToString")
-            .AddAspectIfEligible<LogMethodAttribute>();
+            .AddAspectIfEligible<LogAttribute>();
         }
 
         /// <summary>
@@ -48,7 +49,7 @@ namespace VtlSoftware.Aspects.Logging.Net6
             .SelectMany(compilation => compilation.AllTypes)
             .Where(type => !type.IsStatic)
             .SelectMany(type => type.Properties)
-             .AddAspectIfEligible<LogPropertyAttribute>();
+             .AddAspectIfEligible<LogAttribute>();
         }
 
         /// <summary>
@@ -74,7 +75,7 @@ namespace VtlSoftware.Aspects.Logging.Net6
             .Where(
                 method => method.Accessibility is Accessibility.Public or Accessibility.Private &&
                     method.Name != "ToString")
-            .AddAspectIfEligible<LogMethodAttribute>();
+            .AddAspectIfEligible<LogAttribute>();
         }
 
         /// <summary>
@@ -97,7 +98,7 @@ namespace VtlSoftware.Aspects.Logging.Net6
                     type.Attributes.OfAttributeType(typeof(NoLogAttribute)).Any())
             .SelectMany(type => type.Methods)
             .Where(method => method.Accessibility is Accessibility.Public && method.Name != "ToString")
-            .AddAspectIfEligible<LogMethodAttribute>();
+            .AddAspectIfEligible<LogAttribute>();
         }
 
         /// <summary>
@@ -118,7 +119,7 @@ namespace VtlSoftware.Aspects.Logging.Net6
             .Where(type => !type.IsStatic || type.Attributes.OfAttributeType(typeof(NoLogAttribute)).Any())
             .SelectMany(type => type.Methods)
             .Where(method => method.Name != "ToString")
-            .AddAspectIfEligible<TimedLogMethodAttribute>();
+            .AddAspectIfEligible<LogAndTimeAttribute>();
         }
 
         /// <summary>
@@ -144,7 +145,7 @@ namespace VtlSoftware.Aspects.Logging.Net6
             .Where(
                 method => method.Accessibility is Accessibility.Public or Accessibility.Private &&
                     method.Name != "ToString")
-            .AddAspectIfEligible<TimedLogMethodAttribute>();
+            .AddAspectIfEligible<LogAndTimeAttribute>();
         }
 
         /// <summary>
@@ -168,7 +169,7 @@ namespace VtlSoftware.Aspects.Logging.Net6
                    type.Attributes.OfAttributeType(typeof(NoLogAttribute)).Any())
            .SelectMany(type => type.Methods)
            .Where(method => method.Accessibility is Accessibility.Public && method.Name != "ToString")
-           .AddAspectIfEligible<TimedLogMethodAttribute>();
+           .AddAspectIfEligible<LogAndTimeAttribute>();
         }
 
         /// <summary>
@@ -187,9 +188,9 @@ namespace VtlSoftware.Aspects.Logging.Net6
             .Where(type => !type.IsStatic);
             types.SelectMany(type => type.Methods)
                 .Where(method => method.Name != "ToString")
-                .AddAspectIfEligible<LogMethodAttribute>();
+                .AddAspectIfEligible<LogAttribute>();
             types.SelectMany(type => type.Properties)
-                .AddAspectIfEligible<LogPropertyAttribute>();
+                .AddAspectIfEligible<LogAttribute>();
         }
 
         /// <summary>
@@ -207,9 +208,9 @@ namespace VtlSoftware.Aspects.Logging.Net6
             .Where(type => !type.IsStatic);
             types.SelectMany(type => type.Methods)
                 .Where(method => method.Name != "ToString")
-                .AddAspectIfEligible<TimedLogMethodAttribute>();
+                .AddAspectIfEligible<LogAndTimeAttribute>();
             types.SelectMany(type => type.Properties)
-                .AddAspectIfEligible<LogPropertyAttribute>();
+                .AddAspectIfEligible<LogAndTimeAttribute>();
         }
 
         #endregion

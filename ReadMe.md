@@ -17,18 +17,16 @@ Once that has been done then using it is as simple as adding an attribute to tho
 
 ### Provided Attributes
 
-#### [LogMethod]
+#### [Log]
 
 Adds logging to a method.  Entry and Exit is logged along with details of any paramaeters that were passed into it.
-If applicable the method's return value is also logged.
+If applicable the method's return value is also logged. In Addition this attribute can log properties.
 
-#### [TimedLogMethod]
+#### [LogAndTime]
 
 Exactly the same as the [LogMethod] attribute with the exception that the total duration that the method took to execute is also logged.
+In Addition this attribute can log properties but will not time the interaction with the property.
 
-#### [LogProperty]
-
-Adds logging to a property, specifically to the setter, recording both the old and new values.
 
 #### [Redact]
 
@@ -71,39 +69,39 @@ Current provided extensions are.
 
 #### LogAllMethods
 
-Applies the ```[LogMethod]``` attribute to all eligible methods.
+Applies the ```[Log]``` attribute to all eligible methods.
 
 #### LogAndTimeAllMethods
 
-Applies the ```[TimedLogMethod]``` attribute to all eligible methods.
+Applies the ```[LogAndTime]``` attribute to all eligible methods.
 
 #### LogAllPublicMethods
 
-Applies the ```[LogMethod]``` attribute to all public methods.
+Applies the ```[Log]``` attribute to all public methods.
 
 #### LogAndTimeAllPublicMethods
 
-Applies the ```[TimedLogMethod]``` attribute to all public methods.
+Applies the ```[LogAndTime]``` attribute to all public methods.
 
 #### LogAllPublicAndPrivateMethods
 
-Applies the ```[LogMethod]``` attribute to all public and Private Methods.
+Applies the ```[Log]``` attribute to all public and Private Methods.
 
 #### LogAndTimeAllPublicAndPrivateMethods
 
-Applies the ```[TimedLogMethod]``` attribute to all public and Private Methods.
+Applies the ```[LogAndTime]``` attribute to all public and Private Methods.
 
 #### LogEverything
 
-Applies the ```[LogMethod]``` attribute to all methods and the ```[LogProperty]``` attribute to all properties.
+Applies the ```[Log]``` attribute to all methods and the ```[Log]``` attribute to all properties.
 
 #### TimeEveryMethodAndLogEveryProperty
 
-Applies the ```[TimedLogMethod]``` attribute to all methods and the ```[LogProperty]``` attribute to all properties.
+Applies the ```[LogAndTime]``` attribute to all methods and the ```[LogAndTime]``` attribute to all properties.
 
 
 ## Help and Support
 
-A comprehensive help file can be found [here](https://vtlsoftware.co.uk/aspectdocs/webframe.html).
+A comprehensive help file can be found [here](https://vtlsoftware.co.uk/aspectdocs/Introduction.html).
 
-You may contact us at support at vtlsoftware dot co dot uk to ask questions or report any issues. 
+You may contact us at support at vtlsoftware dot co dot uk to ask questions or report any issues but you will probably find it quicker to report and issues on the github repo. 

@@ -6,11 +6,38 @@
     <Nullable>enable</Nullable>
 	<LangVersion>10.0</LangVersion>
 	<GenerateDocumentationFile>true</GenerateDocumentationFile>
+	<Title>VtlSoftware Aspects Logging (Net 6)</Title>
+	<Version>2023.2.5</Version>
+	<Authors>Dom Sinclair</Authors>
+	<Company>Vtl Software Ltd</Company>
+	<Description>A collection of aspects (created with Metalama by Postsharp)  to provide logging for projects.</Description>
+	<Copyright>© 2023</Copyright>
+	<PackageIcon>logs@128px.png</PackageIcon>
+	<PackageReadmeFile>ReadMe.md</PackageReadmeFile>
+	<RepositoryUrl>https://github.com/domsinclair/VtlSoftware.Aspects.Logging</RepositoryUrl>
+	<PackageTags>VtlSoftware, Metalama, Logging</PackageTags>
+	<PackageReleaseNotes>This release brings the library inline with the latest Metalama 2023.2.5 release.
+
+NB:  This build introduces breaking changes.</PackageReleaseNotes>
+	<PackageLicenseExpression>MIT</PackageLicenseExpression>
+	<GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+    <MetalamaLicense>111997-ZEPC8QQQXEAEQHQCB88YNBFRY2EWZ4GVR8YLX6GV74UW7BJSAMKQ7BFRY8KKZX9F38JBX79RVG6CXMJXZDAQZ4GVR8YLX6GV74UW7BJSAMKQ7BFRY8KKZX9F38JBX79RVG6CXMJXCQCRAFAT5B3H3NMGFEZJUGSDPAE83SEFL74RDAMFWF6WFBS8QT2RPTXPE7NMK8C6Y3DNQQEZB3SXGQYZATP4Q8USJG4X6P2</MetalamaLicense>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Metalama.Extensions.DependencyInjection" Version="2023.2.4" />
-    <PackageReference Include="Metalama.Framework" Version="2023.2.4" />
+    <None Include="..\..\..\Svg Image Collection\logs@128px.png">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
+    <None Include="..\ReadMe.md">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Metalama.Extensions.DependencyInjection" Version="2023.2.5" />
+    <PackageReference Include="Metalama.Framework" Version="2023.2.5" />
     <PackageReference Include="VtlSoftware.Aspects.Common.Net6" Version="1.0.0" />
   </ItemGroup>
 

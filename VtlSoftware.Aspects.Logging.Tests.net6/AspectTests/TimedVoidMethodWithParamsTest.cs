@@ -6,7 +6,6 @@ namespace VtlSoftware.Aspects.Logging.Tests.net6.TimedVoidMethodWithParams
     public class TimedVoidMethodWithParamsTest
     {
         #region Constructors
-
         public TimedVoidMethodWithParamsTest()
         {
         }
@@ -14,7 +13,7 @@ namespace VtlSoftware.Aspects.Logging.Tests.net6.TimedVoidMethodWithParams
         #endregion
 
         #region Public Methods
-        [TimedLogMethod]
+        [LogAndTime]
         public void IterateOverRange(int range)
         {
             for(int i = 0; i < range; i++)

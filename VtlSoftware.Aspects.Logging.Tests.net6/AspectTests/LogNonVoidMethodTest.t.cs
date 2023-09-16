@@ -7,7 +7,7 @@ namespace VtlSoftware.Aspects.Logging.Tests.net6.LogNonVoidMethod
         {
             this.logger = logger ?? throw new System.ArgumentNullException(nameof(logger));
         }
-        [LogMethod]
+        [Log]
         public int AddSomething()
         {
             const string redacted = "<Redacted>";

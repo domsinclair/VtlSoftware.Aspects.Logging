@@ -5,7 +5,6 @@ namespace VtlSoftware.Aspects.Logging.Tests.net6.TimedNonVoidMethod
     public class TimedNonVoidMethodTest
     {
         #region Constructors
-
         public TimedNonVoidMethodTest()
         {
         }
@@ -13,7 +12,7 @@ namespace VtlSoftware.Aspects.Logging.Tests.net6.TimedNonVoidMethod
         #endregion
 
         #region Public Methods
-        [TimedLogMethod]
+        [LogAndTime]
         public int SumIteration()
         {
             int val = 0;

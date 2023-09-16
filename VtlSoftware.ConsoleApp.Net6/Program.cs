@@ -3,7 +3,6 @@
     internal class Program
     {
         #region Private Methods
-
         static void Main(string[] args) { Console.WriteLine("Hello, World!"); }
 
         #endregion
