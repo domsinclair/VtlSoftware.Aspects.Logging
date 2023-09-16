@@ -24,7 +24,7 @@ If applicable the method's return value is also logged. In Addition this attribu
 
 #### [LogAndTime]
 
-Exactly the same as the [LogMethod] attribute with the exception that the total duration that the method took to execute is also logged.
+Exactly the same as the [Log] attribute with the exception that the total duration that the method took to execute is also logged.
 In Addition this attribute can log properties but will not time the interaction with the property.
 
 
@@ -44,7 +44,7 @@ public bool ConfirmLogin(string userName, [Redact] string password)
 
 // To redact a return then you need to apply the [Redact] attribute in the following way;
 
-[LogMethod]
+[Log]
 [return: Redact]
 public string GetMyPassword()
 {
