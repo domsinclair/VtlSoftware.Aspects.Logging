@@ -1,14 +1,14 @@
 using VtlSoftware.Aspects.Logging.Net6;
-namespace VtlSoftware.Aspects.Logging.Tests.net6.LogVoidMethod
+namespace VtlSoftware.Aspects.Logging.Tests.net6.AsyncLogVoidMethod
 {
-    public class LogVoidMethodTest
+    public class AsyncLogVoidMethodTest
     {
-        public LogVoidMethodTest(global::Microsoft.Extensions.Logging.ILogger<global::VtlSoftware.Aspects.Logging.Tests.net6.LogVoidMethod.LogVoidMethodTest> logger = default(global::Microsoft.Extensions.Logging.ILogger<global::VtlSoftware.Aspects.Logging.Tests.net6.LogVoidMethod.LogVoidMethodTest>))
+        public AsyncLogVoidMethodTest(global::Microsoft.Extensions.Logging.ILogger<global::VtlSoftware.Aspects.Logging.Tests.net6.AsyncLogVoidMethod.AsyncLogVoidMethodTest> logger = default(global::Microsoft.Extensions.Logging.ILogger<global::VtlSoftware.Aspects.Logging.Tests.net6.AsyncLogVoidMethod.AsyncLogVoidMethodTest>))
         {
             this.logger = logger ?? throw new System.ArgumentNullException(nameof(logger));
         }
         [Log]
-        public void DoSomething()
+        public async void DoSomething()
         {
             const string redacted = "<Redacted>";
             var isTracingEnabled = this.logger.IsEnabled(global::Microsoft.Extensions.Logging.LogLevel.Trace);
@@ -18,12 +18,13 @@ namespace VtlSoftware.Aspects.Logging.Tests.net6.LogVoidMethod
                 {
                     if (guard.CanLog)
                     {
-                        global::VtlSoftware.Aspects.Common.Net6.LoggerExtensions.LogString(logger, global::Microsoft.Extensions.Logging.LogLevel.Information, "Entering LogVoidMethodTest.DoSomething.");
+                        global::VtlSoftware.Aspects.Common.Net6.LoggerExtensions.LogString(logger, global::Microsoft.Extensions.Logging.LogLevel.Information, "Entering AsyncLogVoidMethodTest.DoSomething.");
                     }
                 }
             }
             try
             {
+                await this.DoSomething_Source();
                 object result = null;
                 if (isTracingEnabled)
                 {
@@ -31,7 +32,7 @@ namespace VtlSoftware.Aspects.Logging.Tests.net6.LogVoidMethod
                     {
                         if (guard_1.CanLog)
                         {
-                            global::VtlSoftware.Aspects.Common.Net6.LoggerExtensions.LogString(logger, global::Microsoft.Extensions.Logging.LogLevel.Information, "Leaving LogVoidMethodTest.DoSomething.");
+                            global::VtlSoftware.Aspects.Common.Net6.LoggerExtensions.LogString(logger, global::Microsoft.Extensions.Logging.LogLevel.Information, "Leaving AsyncLogVoidMethodTest.DoSomething.");
                         }
                     }
                 }
@@ -43,11 +44,16 @@ namespace VtlSoftware.Aspects.Logging.Tests.net6.LogVoidMethod
                 {
                     if (guard_2.CanLog)
                     {
-                        global::VtlSoftware.Aspects.Common.Net6.LoggerExtensions.Log(logger, global::Microsoft.Extensions.Logging.LogLevel.Error, $"An error has occurred in LogVoidMethodTest.DoSomething. These are the details: {e}");
+                        global::VtlSoftware.Aspects.Common.Net6.LoggerExtensions.Log(logger, global::Microsoft.Extensions.Logging.LogLevel.Error, $"An error has occurred in AsyncLogVoidMethodTest.DoSomething. These are the details: {e}");
                     }
                 }
                 throw;
             }
+            //Do something here
+        }
+        private async global::System.Threading.Tasks.ValueTask DoSomething_Source()
+        {
+            //Do something here
         }
         private global::Microsoft.Extensions.Logging.ILogger logger;
     }

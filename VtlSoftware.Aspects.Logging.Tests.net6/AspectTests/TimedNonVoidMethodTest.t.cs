@@ -50,7 +50,7 @@ namespace VtlSoftware.Aspects.Logging.Tests.net6.TimedNonVoidMethod
                 {
                     if (guard_2.CanLog)
                     {
-                        global::VtlSoftware.Aspects.Common.Net6.LoggerExtensions.Log(logger, global::Microsoft.Extensions.Logging.LogLevel.Error, $"An error has occured in TimedNonVoidMethodTest.SumIteration. These are the details: {e}");
+                        global::VtlSoftware.Aspects.Common.Net6.LoggerExtensions.Log(logger, global::Microsoft.Extensions.Logging.LogLevel.Error, $"An error has occurred in TimedNonVoidMethodTest.SumIteration. These are the details: {e}");
                     }
                 }
                 throw;

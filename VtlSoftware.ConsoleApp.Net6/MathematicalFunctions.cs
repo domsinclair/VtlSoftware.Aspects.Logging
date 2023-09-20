@@ -2,10 +2,9 @@
 
 namespace VtlSoftware.ConsoleApp.Net6
 {
-    internal class MathematicalFunctions
+    internal partial class MathematicalFunctions
     {
         #region Constructors
-
         public MathematicalFunctions()
         {
         }
@@ -13,6 +12,7 @@ namespace VtlSoftware.ConsoleApp.Net6
         #endregion
 
         #region Public Methods
+
         [LogAndTime]
         public double Add(double x, double y) { return x + y; }
 

@@ -41,7 +41,7 @@ namespace VtlSoftware.Aspects.Logging.Tests.net6.FabricTests
                 {
                     if (guard_2.CanLog)
                     {
-                        global::VtlSoftware.Aspects.Common.Net6.LoggerExtensions.Log(logger, global::Microsoft.Extensions.Logging.LogLevel.Error, $"An error has occured in LogEverythingTest.GetTodaysDate. These are the details: {e}");
+                        global::VtlSoftware.Aspects.Common.Net6.LoggerExtensions.Log(logger, global::Microsoft.Extensions.Logging.LogLevel.Error, $"An error has occurred in LogEverythingTest.GetTodaysDate. These are the details: {e}");
                     }
                 }
                 throw;
@@ -85,7 +85,7 @@ namespace VtlSoftware.Aspects.Logging.Tests.net6.FabricTests
                 {
                     if (guard_2.CanLog)
                     {
-                        global::VtlSoftware.Aspects.Common.Net6.LoggerExtensions.Log(logger, global::Microsoft.Extensions.Logging.LogLevel.Error, $"An error has occured in LogEverythingTest.TrimString. These are the details: {e}");
+                        global::VtlSoftware.Aspects.Common.Net6.LoggerExtensions.Log(logger, global::Microsoft.Extensions.Logging.LogLevel.Error, $"An error has occurred in LogEverythingTest.TrimString. These are the details: {e}");
                     }
                 }
                 throw;

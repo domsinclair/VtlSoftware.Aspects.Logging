@@ -2,10 +2,9 @@
 
 namespace VtlSoftware.ConsoleApp.Net6
 {
-    internal class General
+    internal partial class General
     {
         #region Constructors
-
         public General()
         {
         }
