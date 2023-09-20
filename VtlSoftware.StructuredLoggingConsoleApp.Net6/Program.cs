@@ -39,9 +39,10 @@ namespace VtlSoftware.StructuredLoggingConsoleApp.Net6
                 .UseSerilog()
                 .Build();
 
-            Calculator calculator = new Calculator();
-            calculator.Run(1, 4);
+            var svc = ActivatorUtilities.CreateInstance<Calculator>(host.Services);
+            svc.Add(3.4, 7.6);
 
+            Log.Logger.Information("Application Closing");
             Log.CloseAndFlush();
         }
 
