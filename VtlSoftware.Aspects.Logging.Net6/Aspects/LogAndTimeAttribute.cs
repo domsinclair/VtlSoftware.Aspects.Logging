@@ -144,9 +144,11 @@ namespace VtlSoftware.Aspects.Logging.Net6
             const string redacted = "<Redacted>";
 
             //add a check to see if we do actually want to do any logging at all
-            var isTracingEnabled = this.logger.IsEnabled(LogLevel.Trace);
+            var isLoggingEnabled = this.logger.IsEnabled(LogLevel.Trace) |
+                this.logger.IsEnabled(LogLevel.Debug) |
+                this.logger.IsEnabled(LogLevel.Information);
 
-            if(isTracingEnabled)
+            if(isLoggingEnabled)
             {
                 //add the entry message
 
@@ -188,7 +190,7 @@ namespace VtlSoftware.Aspects.Logging.Net6
             try
             {
                 var result = meta.Proceed();
-                if(isTracingEnabled)
+                if(isLoggingEnabled)
                 {
                     // Display the success message which will be different when the method is void.
                     bool isVoid = meta.Target.Method.ReturnType.Is(typeof(void));

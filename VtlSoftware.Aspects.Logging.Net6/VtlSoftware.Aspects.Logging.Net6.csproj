@@ -7,7 +7,7 @@
 	<LangVersion>10.0</LangVersion>
 	<GenerateDocumentationFile>true</GenerateDocumentationFile>
 	<Title>VtlSoftware Aspects Logging (Net 6)</Title>
-	<Version>2023.2.5</Version>
+	<Version>2023.2.5.1</Version>
 	<Authors>Dom Sinclair</Authors>
 	<Company>Vtl Software Ltd</Company>
 	<Description>A collection of aspects (created with Metalama by Postsharp)  to provide logging for projects.</Description>
@@ -16,9 +16,7 @@
 	<PackageReadmeFile>ReadMe.md</PackageReadmeFile>
 	<RepositoryUrl>https://github.com/domsinclair/VtlSoftware.Aspects.Logging</RepositoryUrl>
 	<PackageTags>VtlSoftware, Metalama, Logging</PackageTags>
-	<PackageReleaseNotes>This release brings the library inline with the latest Metalama 2023.2.5 release.
-
-NB:  This build introduces breaking changes.</PackageReleaseNotes>
+	<PackageReleaseNotes>This small point release fixes an issue which caused a conflict with some logging providers.</PackageReleaseNotes>
 	<PackageLicenseExpression>MIT</PackageLicenseExpression>
 	<GeneratePackageOnBuild>True</GeneratePackageOnBuild>
     <MetalamaLicense>111997-ZEPC8QQQXEAEQHQCB88YNBFRY2EWZ4GVR8YLX6GV74UW7BJSAMKQ7BFRY8KKZX9F38JBX79RVG6CXMJXZDAQZ4GVR8YLX6GV74UW7BJSAMKQ7BFRY8KKZX9F38JBX79RVG6CXMJXCQCRAFAT5B3H3NMGFEZJUGSDPAE83SEFL74RDAMFWF6WFBS8QT2RPTXPE7NMK8C6Y3DNQQEZB3SXGQYZATP4Q8USJG4X6P2</MetalamaLicense>

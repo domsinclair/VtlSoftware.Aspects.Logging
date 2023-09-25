@@ -12,8 +12,8 @@ namespace VtlSoftware.Aspects.Logging.Tests.net6.RedactedParametersAndResults
         public string ValidateCardNumber(string userName, [Redact] string cardNumber)
         {
             const string redacted = "<Redacted>";
-            var isTracingEnabled = this.logger.IsEnabled(global::Microsoft.Extensions.Logging.LogLevel.Trace);
-            if (isTracingEnabled)
+           var isLoggingEnabled = this.logger.IsEnabled(global::Microsoft.Extensions.Logging.LogLevel.Trace) | this.logger.IsEnabled(global::Microsoft.Extensions.Logging.LogLevel.Debug) | this.logger.IsEnabled(global::Microsoft.Extensions.Logging.LogLevel.Information);
+            if (isLoggingEnabled)
             {
                 using (var guard = global::VtlSoftware.Aspects.Common.Net6.LogRecursionGuard.Begin())
                 {
@@ -31,7 +31,7 @@ namespace VtlSoftware.Aspects.Logging.Tests.net6.RedactedParametersAndResults
                 global::System.String result;
                 cardNumber.Trim();
                 result = cardNumber;
-                if (isTracingEnabled)
+                if (isLoggingEnabled)
                 {
                     using (var guard_1 = global::VtlSoftware.Aspects.Common.Net6.LogRecursionGuard.Begin())
                     {

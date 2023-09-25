@@ -8,7 +8,6 @@ namespace VtlSoftware.StructuredLoggingConsoleApp.Net6
     internal class Program
     {
         #region Private Methods
-
         static void BuildConfig(IConfigurationBuilder builder)
         {
             builder.SetBasePath(Directory.GetCurrentDirectory())
@@ -34,13 +33,15 @@ namespace VtlSoftware.StructuredLoggingConsoleApp.Net6
                 .ConfigureServices(
                     (context, services) =>
                     {
-                        services.AddTransient<Calculator>();
+                        services.AddTransient<DataFun>();
                     })
                 .UseSerilog()
                 .Build();
 
-            var svc = ActivatorUtilities.CreateInstance<Calculator>(host.Services);
-            svc.Add(3.4, 7.6);
+            var svc = ActivatorUtilities.CreateInstance<DataFun>(host.Services);
+            Dictionary<int, String> contacts = svc.GetDictionary(); //this just creates the dictionary with data from Bogus
+            Log.Logger.Information($"There are {contacts.Count} contacts In the dictionary");
+            List<string> strings = svc.GetSelectedContacts(); //this will get contacts 5,15,25,35,and 45
 
             Log.Logger.Information("Application Closing");
             Log.CloseAndFlush();

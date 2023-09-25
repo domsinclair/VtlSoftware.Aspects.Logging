@@ -5,6 +5,7 @@ namespace VtlSoftware.StructuredLoggingConsoleApp.Net6
     public partial class Calculator : ICalculator
     {
         #region Constructors
+
         public Calculator()
         {
         }
@@ -16,7 +17,7 @@ namespace VtlSoftware.StructuredLoggingConsoleApp.Net6
         public double Add(double a, double b) { return a + b; }
 
         [Log]
-        public double Divide(double a, double b) { return a / b; }
+        public int Divide(int a, int b) { return a / b; }
 
         [Log]
         public double Multiply(double a, double b) { return a * b; }
@@ -29,7 +30,7 @@ namespace VtlSoftware.StructuredLoggingConsoleApp.Net6
             Add(a, b);
             Subtract(a, b);
             Multiply(a, b);
-            Divide(a, b);
+            //Divide(a, b);
         }
 
         [Log]

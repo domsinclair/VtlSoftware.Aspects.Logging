@@ -12,8 +12,8 @@ namespace VtlSoftware.Aspects.Logging.Tests.net6.LogAndTimeMethodsAndLogProperti
         private void DoSomething()
         {
             const string redacted = "<Redacted>";
-            var isTracingEnabled = this.logger.IsEnabled(global::Microsoft.Extensions.Logging.LogLevel.Trace);
-            if (isTracingEnabled)
+           var isLoggingEnabled = this.logger.IsEnabled(global::Microsoft.Extensions.Logging.LogLevel.Trace) | this.logger.IsEnabled(global::Microsoft.Extensions.Logging.LogLevel.Debug) | this.logger.IsEnabled(global::Microsoft.Extensions.Logging.LogLevel.Information);
+            if (isLoggingEnabled)
             {
                 using (var guard = global::VtlSoftware.Aspects.Common.Net6.LogRecursionGuard.Begin())
                 {
@@ -27,7 +27,7 @@ namespace VtlSoftware.Aspects.Logging.Tests.net6.LogAndTimeMethodsAndLogProperti
             try
             {
                 object result = null;
-                if (isTracingEnabled)
+                if (isLoggingEnabled)
                 {
                     using (var guard_1 = global::VtlSoftware.Aspects.Common.Net6.LogRecursionGuard.Begin())
                     {
@@ -66,8 +66,8 @@ namespace VtlSoftware.Aspects.Logging.Tests.net6.LogAndTimeMethodsAndLogProperti
         public void DoSomethingElse()
         {
             const string redacted = "<Redacted>";
-            var isTracingEnabled = this.logger.IsEnabled(global::Microsoft.Extensions.Logging.LogLevel.Trace);
-            if (isTracingEnabled)
+           var isLoggingEnabled = this.logger.IsEnabled(global::Microsoft.Extensions.Logging.LogLevel.Trace) | this.logger.IsEnabled(global::Microsoft.Extensions.Logging.LogLevel.Debug) | this.logger.IsEnabled(global::Microsoft.Extensions.Logging.LogLevel.Information);
+            if (isLoggingEnabled)
             {
                 using (var guard = global::VtlSoftware.Aspects.Common.Net6.LogRecursionGuard.Begin())
                 {
@@ -81,7 +81,7 @@ namespace VtlSoftware.Aspects.Logging.Tests.net6.LogAndTimeMethodsAndLogProperti
             try
             {
                 object result = null;
-                if (isTracingEnabled)
+                if (isLoggingEnabled)
                 {
                     using (var guard_1 = global::VtlSoftware.Aspects.Common.Net6.LogRecursionGuard.Begin())
                     {
@@ -120,8 +120,8 @@ namespace VtlSoftware.Aspects.Logging.Tests.net6.LogAndTimeMethodsAndLogProperti
         public DateTime GetTodaysDate()
         {
             const string redacted = "<Redacted>";
-            var isTracingEnabled = this.logger.IsEnabled(global::Microsoft.Extensions.Logging.LogLevel.Trace);
-            if (isTracingEnabled)
+           var isLoggingEnabled = this.logger.IsEnabled(global::Microsoft.Extensions.Logging.LogLevel.Trace) | this.logger.IsEnabled(global::Microsoft.Extensions.Logging.LogLevel.Debug) | this.logger.IsEnabled(global::Microsoft.Extensions.Logging.LogLevel.Information);
+            if (isLoggingEnabled)
             {
                 using (var guard = global::VtlSoftware.Aspects.Common.Net6.LogRecursionGuard.Begin())
                 {
@@ -136,7 +136,7 @@ namespace VtlSoftware.Aspects.Logging.Tests.net6.LogAndTimeMethodsAndLogProperti
             {
                 global::System.DateTime result;
                 result = DateTime.Now;
-                if (isTracingEnabled)
+                if (isLoggingEnabled)
                 {
                     using (var guard_1 = global::VtlSoftware.Aspects.Common.Net6.LogRecursionGuard.Begin())
                     {
@@ -175,8 +175,8 @@ namespace VtlSoftware.Aspects.Logging.Tests.net6.LogAndTimeMethodsAndLogProperti
         public string TrimString(string myString)
         {
             const string redacted = "<Redacted>";
-            var isTracingEnabled = this.logger.IsEnabled(global::Microsoft.Extensions.Logging.LogLevel.Trace);
-            if (isTracingEnabled)
+           var isLoggingEnabled = this.logger.IsEnabled(global::Microsoft.Extensions.Logging.LogLevel.Trace) | this.logger.IsEnabled(global::Microsoft.Extensions.Logging.LogLevel.Debug) | this.logger.IsEnabled(global::Microsoft.Extensions.Logging.LogLevel.Information);
+            if (isLoggingEnabled)
             {
                 using (var guard = global::VtlSoftware.Aspects.Common.Net6.LogRecursionGuard.Begin())
                 {
@@ -193,7 +193,7 @@ namespace VtlSoftware.Aspects.Logging.Tests.net6.LogAndTimeMethodsAndLogProperti
             {
                 global::System.String result;
                 result = myString.Trim();
-                if (isTracingEnabled)
+                if (isLoggingEnabled)
                 {
                     using (var guard_1 = global::VtlSoftware.Aspects.Common.Net6.LogRecursionGuard.Begin())
                     {
