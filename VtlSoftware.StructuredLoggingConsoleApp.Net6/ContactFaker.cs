@@ -13,8 +13,8 @@ namespace VtlSoftware.StructuredLoggingConsoleApp.Net6
             var id = 1;
             UseSeed(1958)
                 .RuleFor(c => c.Id, _ => id++)
-                .RuleFor(c => c.FirstName, f => f.Person.FirstName)
-                .RuleFor(c => c.LastName, f => f.Person.LastName);
+                .RuleFor(c => c.FirstName, f => f.Name.FirstName())
+                .RuleFor(c => c.LastName, f => f.Name.LastName());
         }
 
         #endregion
