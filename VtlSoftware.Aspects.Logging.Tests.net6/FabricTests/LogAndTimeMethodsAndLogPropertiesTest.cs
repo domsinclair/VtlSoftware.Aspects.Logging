@@ -41,11 +41,11 @@ namespace VtlSoftware.Aspects.Logging.Tests.net6.LogAndTimeMethodsAndLogProperti
         #endregion
     }
 
-    public class Configure : ProjectFabric
-    {
-        #region Public Methods
-        public override void AmendProject(IProjectAmender amender) { amender.TimeEveryMethodAndLogEveryProperty(); }
+    //public class Configure : ProjectFabric
+    //{
+    //    #region Public Methods
+    //    //public override void AmendProject(IProjectAmender amender) { amender.TimeEveryMethodAndLogEveryProperty(); }
 
-        #endregion
-    }
+    //    #endregion
+    //}
 }

@@ -37,12 +37,12 @@ namespace VtlSoftware.Aspects.Logging.Tests.net6.DoNotLogAllPublicMethodsInNoLog
         #endregion
     }
 
-    public class SecondFabric : ProjectFabric
-    {
-        #region Public Methods
+    //public class SecondFabric : ProjectFabric
+    //{
+    //    #region Public Methods
 
-        public override void AmendProject(IProjectAmender amender) { amender.LogAllPublicMethods(); }
+    //    public override void AmendProject(IProjectAmender amender) { amender.LogAllPublicMethods(); }
 
-        #endregion
-    }
+    //    #endregion
+    //}
 }
