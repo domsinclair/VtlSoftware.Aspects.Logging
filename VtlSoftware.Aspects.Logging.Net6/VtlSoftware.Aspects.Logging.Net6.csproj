@@ -34,8 +34,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Metalama.Extensions.DependencyInjection" Version="2023.2.5" />
-    <PackageReference Include="Metalama.Framework" Version="2023.2.5" />
+    <PackageReference Include="Metalama.Extensions.DependencyInjection" Version="2023.3.6-rc" />
+    <PackageReference Include="Metalama.Framework" Version="2023.3.6-rc" />
     <PackageReference Include="VtlSoftware.Aspects.Common.Net6" Version="1.0.0" />
   </ItemGroup>
 
