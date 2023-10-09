@@ -38,13 +38,12 @@ namespace VtlSoftware.Aspects.Logging.Tests.net6.LogSomeMethodsRedactingSomePara
         #endregion
     }
 
-    //public class Configure : ProjectFabric
-    //{
-    //    #region Public Methods
+    public class Configure : ProjectFabric
+    {
+        #region Public Methods
+        public override void AmendProject(IProjectAmender amender) { amender.LogEverything(); }
 
-    //    //public override void AmendProject(IProjectAmender amender) { amender.LogEverything(); }
-
-    //    #endregion
-    //}
+        #endregion
+    }
 }
 

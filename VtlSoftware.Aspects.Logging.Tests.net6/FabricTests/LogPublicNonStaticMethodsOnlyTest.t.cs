@@ -10,7 +10,7 @@ namespace VtlSoftware.Aspects.Logging.Tests.net6.LogPublicNonStaticMethodsOnly
         public int Add(int a, int b)
         {
             const string redacted = "<Redacted>";
-           var isLoggingEnabled = this.logger.IsEnabled(global::Microsoft.Extensions.Logging.LogLevel.Trace) | this.logger.IsEnabled(global::Microsoft.Extensions.Logging.LogLevel.Debug) | this.logger.IsEnabled(global::Microsoft.Extensions.Logging.LogLevel.Information);
+            var isLoggingEnabled = this.logger.IsEnabled(global::Microsoft.Extensions.Logging.LogLevel.Trace) | this.logger.IsEnabled(global::Microsoft.Extensions.Logging.LogLevel.Debug) | this.logger.IsEnabled(global::Microsoft.Extensions.Logging.LogLevel.Information);
             if (isLoggingEnabled)
             {
                 using (var guard = global::VtlSoftware.Aspects.Common.Net6.LogRecursionGuard.Begin())
@@ -55,7 +55,7 @@ namespace VtlSoftware.Aspects.Logging.Tests.net6.LogPublicNonStaticMethodsOnly
         public void DoSomething()
         {
             const string redacted = "<Redacted>";
-           var isLoggingEnabled = this.logger.IsEnabled(global::Microsoft.Extensions.Logging.LogLevel.Trace) | this.logger.IsEnabled(global::Microsoft.Extensions.Logging.LogLevel.Debug) | this.logger.IsEnabled(global::Microsoft.Extensions.Logging.LogLevel.Information);
+            var isLoggingEnabled = this.logger.IsEnabled(global::Microsoft.Extensions.Logging.LogLevel.Trace) | this.logger.IsEnabled(global::Microsoft.Extensions.Logging.LogLevel.Debug) | this.logger.IsEnabled(global::Microsoft.Extensions.Logging.LogLevel.Information);
             if (isLoggingEnabled)
             {
                 using (var guard = global::VtlSoftware.Aspects.Common.Net6.LogRecursionGuard.Begin())
@@ -99,9 +99,11 @@ namespace VtlSoftware.Aspects.Logging.Tests.net6.LogPublicNonStaticMethodsOnly
             return a - b;
         }
         private global::Microsoft.Extensions.Logging.ILogger logger;
-        public LogPublicNonStaticMethodsOnlyTest(global::Microsoft.Extensions.Logging.ILogger<global::VtlSoftware.Aspects.Logging.Tests.net6.LogPublicNonStaticMethodsOnly.LogPublicNonStaticMethodsOnlyTest> logger = default(global::Microsoft.Extensions.Logging.ILogger<global::VtlSoftware.Aspects.Logging.Tests.net6.LogPublicNonStaticMethodsOnly.LogPublicNonStaticMethodsOnlyTest>))
+        private global::VtlSoftware.Aspects.Logging.Net6.ILoggingApects loggingApects;
+        public LogPublicNonStaticMethodsOnlyTest(global::VtlSoftware.Aspects.Logging.Net6.ILoggingApects? loggingApects = default(global::VtlSoftware.Aspects.Logging.Net6.ILoggingApects?), global::Microsoft.Extensions.Logging.ILogger<global::VtlSoftware.Aspects.Logging.Tests.net6.LogPublicNonStaticMethodsOnly.LogPublicNonStaticMethodsOnlyTest> logger = default(global::Microsoft.Extensions.Logging.ILogger<global::VtlSoftware.Aspects.Logging.Tests.net6.LogPublicNonStaticMethodsOnly.LogPublicNonStaticMethodsOnlyTest>))
         {
             this.logger = logger ?? throw new System.ArgumentNullException(nameof(logger));
+            this.loggingApects = loggingApects ?? throw new System.ArgumentNullException(nameof(loggingApects));
         }
     }
     public static class DoStuff

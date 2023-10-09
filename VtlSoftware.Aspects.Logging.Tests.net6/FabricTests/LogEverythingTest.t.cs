@@ -8,7 +8,7 @@ namespace VtlSoftware.Aspects.Logging.Tests.net6.FabricTests
         public DateTime GetTodaysDate()
         {
             const string redacted = "<Redacted>";
-           var isLoggingEnabled = this.logger.IsEnabled(global::Microsoft.Extensions.Logging.LogLevel.Trace) | this.logger.IsEnabled(global::Microsoft.Extensions.Logging.LogLevel.Debug) | this.logger.IsEnabled(global::Microsoft.Extensions.Logging.LogLevel.Information);
+            var isLoggingEnabled = this.logger.IsEnabled(global::Microsoft.Extensions.Logging.LogLevel.Trace) | this.logger.IsEnabled(global::Microsoft.Extensions.Logging.LogLevel.Debug) | this.logger.IsEnabled(global::Microsoft.Extensions.Logging.LogLevel.Information);
             if (isLoggingEnabled)
             {
                 using (var guard = global::VtlSoftware.Aspects.Common.Net6.LogRecursionGuard.Begin())
@@ -50,7 +50,7 @@ namespace VtlSoftware.Aspects.Logging.Tests.net6.FabricTests
         public string TrimString(string myString)
         {
             const string redacted = "<Redacted>";
-           var isLoggingEnabled = this.logger.IsEnabled(global::Microsoft.Extensions.Logging.LogLevel.Trace) | this.logger.IsEnabled(global::Microsoft.Extensions.Logging.LogLevel.Debug) | this.logger.IsEnabled(global::Microsoft.Extensions.Logging.LogLevel.Information);
+            var isLoggingEnabled = this.logger.IsEnabled(global::Microsoft.Extensions.Logging.LogLevel.Trace) | this.logger.IsEnabled(global::Microsoft.Extensions.Logging.LogLevel.Debug) | this.logger.IsEnabled(global::Microsoft.Extensions.Logging.LogLevel.Information);
             if (isLoggingEnabled)
             {
                 using (var guard = global::VtlSoftware.Aspects.Common.Net6.LogRecursionGuard.Begin())
@@ -129,29 +129,31 @@ namespace VtlSoftware.Aspects.Logging.Tests.net6.FabricTests
                 global::VtlSoftware.Aspects.Common.Net6.LoggerExtensions.Log(logger, global::Microsoft.Extensions.Logging.LogLevel.Information, $"The new value of LogEverythingTest.myDouble is: double = {newPropValue}");
             }
         }
-        private string _mystring1 = default!;
-        public string mystring
+        private string? _mystring1;
+        public string? mystring
         {
             get
             {
                 var propValue = this._mystring1;
                 var result = this._mystring1;
-                global::VtlSoftware.Aspects.Common.Net6.LoggerExtensions.Log(logger, global::Microsoft.Extensions.Logging.LogLevel.Information, $"The value of LogEverythingTest.mystring is: string = {propValue}");
-                return (global::System.String)result;
+                global::VtlSoftware.Aspects.Common.Net6.LoggerExtensions.Log(logger, global::Microsoft.Extensions.Logging.LogLevel.Information, $"The value of LogEverythingTest.mystring is: string? = {propValue}");
+                return (global::System.String?)result;
             }
             set
             {
                 var oldPropValue = this._mystring1;
                 this._mystring1 = value;
                 var newPropValue = this._mystring1;
-                global::VtlSoftware.Aspects.Common.Net6.LoggerExtensions.Log(logger, global::Microsoft.Extensions.Logging.LogLevel.Information, $"The old value of LogEverythingTest.mystring was: string = {oldPropValue}");
-                global::VtlSoftware.Aspects.Common.Net6.LoggerExtensions.Log(logger, global::Microsoft.Extensions.Logging.LogLevel.Information, $"The new value of LogEverythingTest.mystring is: string = {newPropValue}");
+                global::VtlSoftware.Aspects.Common.Net6.LoggerExtensions.Log(logger, global::Microsoft.Extensions.Logging.LogLevel.Information, $"The old value of LogEverythingTest.mystring was: string? = {oldPropValue}");
+                global::VtlSoftware.Aspects.Common.Net6.LoggerExtensions.Log(logger, global::Microsoft.Extensions.Logging.LogLevel.Information, $"The new value of LogEverythingTest.mystring is: string? = {newPropValue}");
             }
         }
         private global::Microsoft.Extensions.Logging.ILogger logger;
-        public LogEverythingTest(global::Microsoft.Extensions.Logging.ILogger<global::VtlSoftware.Aspects.Logging.Tests.net6.FabricTests.LogEverythingTest> logger = default(global::Microsoft.Extensions.Logging.ILogger<global::VtlSoftware.Aspects.Logging.Tests.net6.FabricTests.LogEverythingTest>))
+        private global::VtlSoftware.Aspects.Logging.Net6.ILoggingApects loggingApects;
+        public LogEverythingTest(global::VtlSoftware.Aspects.Logging.Net6.ILoggingApects? loggingApects = default(global::VtlSoftware.Aspects.Logging.Net6.ILoggingApects?), global::Microsoft.Extensions.Logging.ILogger<global::VtlSoftware.Aspects.Logging.Tests.net6.FabricTests.LogEverythingTest> logger = default(global::Microsoft.Extensions.Logging.ILogger<global::VtlSoftware.Aspects.Logging.Tests.net6.FabricTests.LogEverythingTest>))
         {
             this.logger = logger ?? throw new System.ArgumentNullException(nameof(logger));
+            this.loggingApects = loggingApects ?? throw new System.ArgumentNullException(nameof(loggingApects));
         }
     }
 #pragma warning disable CS0067, CS8618, CS0162, CS0169, CS0414, CA1822, CA1823, IDE0051, IDE0052

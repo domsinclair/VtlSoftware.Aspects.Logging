@@ -12,18 +12,15 @@ namespace VtlSoftware.Aspects.Logging.Tests.net6.LogSomeButNotAllPropertiesWithL
         {
             get
             {
-                var propValue = this._myDouble;
                 var result = this._myDouble;
-                global::VtlSoftware.Aspects.Common.Net6.LoggerExtensions.Log(logger, global::Microsoft.Extensions.Logging.LogLevel.Information, $"The value of LogSomeButNotAllPropertiesWithLogAndNoLogAttributesTest.MyDouble is: double = {propValue}");
+                global::VtlSoftware.Aspects.Common.Net6.LoggerExtensions.Log(logger, global::Microsoft.Extensions.Logging.LogLevel.Debug, $"The value of LogSomeButNotAllPropertiesWithLogAndNoLogAttributesTest.MyDouble is: double = {this._myDouble}");
                 return (global::System.Double)result;
             }
             set
             {
-                var oldPropValue = this._myDouble;
+                global::VtlSoftware.Aspects.Common.Net6.LoggerExtensions.Log(logger, global::Microsoft.Extensions.Logging.LogLevel.Debug, $"The old value of LogSomeButNotAllPropertiesWithLogAndNoLogAttributesTest was: double = {this._myDouble}");
                 this._myDouble = value;
-                var newPropValue = this._myDouble;
-                global::VtlSoftware.Aspects.Common.Net6.LoggerExtensions.Log(logger, global::Microsoft.Extensions.Logging.LogLevel.Information, $"The old value of LogSomeButNotAllPropertiesWithLogAndNoLogAttributesTest.MyDouble was: double = {oldPropValue}");
-                global::VtlSoftware.Aspects.Common.Net6.LoggerExtensions.Log(logger, global::Microsoft.Extensions.Logging.LogLevel.Information, $"The new value of LogSomeButNotAllPropertiesWithLogAndNoLogAttributesTest.MyDouble is: double = {newPropValue}");
+                global::VtlSoftware.Aspects.Common.Net6.LoggerExtensions.Log(logger, global::Microsoft.Extensions.Logging.LogLevel.Debug, $"The new value of LogSomeButNotAllPropertiesWithLogAndNoLogAttributesTest is: double = {this._myDouble}");
             }
         }
         [NoLog]
@@ -34,24 +31,23 @@ namespace VtlSoftware.Aspects.Logging.Tests.net6.LogSomeButNotAllPropertiesWithL
         {
             get
             {
-                var propValue = this._myString;
                 var result = this._myString;
-                global::VtlSoftware.Aspects.Common.Net6.LoggerExtensions.Log(logger, global::Microsoft.Extensions.Logging.LogLevel.Information, $"The value of LogSomeButNotAllPropertiesWithLogAndNoLogAttributesTest.MyString is: string = {propValue}");
+                global::VtlSoftware.Aspects.Common.Net6.LoggerExtensions.Log(logger, global::Microsoft.Extensions.Logging.LogLevel.Debug, $"The value of LogSomeButNotAllPropertiesWithLogAndNoLogAttributesTest.MyString is: string = {this._myString}");
                 return (global::System.String)result;
             }
             set
             {
-                var oldPropValue = this._myString;
+                global::VtlSoftware.Aspects.Common.Net6.LoggerExtensions.Log(logger, global::Microsoft.Extensions.Logging.LogLevel.Debug, $"The old value of LogSomeButNotAllPropertiesWithLogAndNoLogAttributesTest was: string = {this._myString}");
                 this._myString = value;
-                var newPropValue = this._myString;
-                global::VtlSoftware.Aspects.Common.Net6.LoggerExtensions.Log(logger, global::Microsoft.Extensions.Logging.LogLevel.Information, $"The old value of LogSomeButNotAllPropertiesWithLogAndNoLogAttributesTest.MyString was: string = {oldPropValue}");
-                global::VtlSoftware.Aspects.Common.Net6.LoggerExtensions.Log(logger, global::Microsoft.Extensions.Logging.LogLevel.Information, $"The new value of LogSomeButNotAllPropertiesWithLogAndNoLogAttributesTest.MyString is: string = {newPropValue}");
+                global::VtlSoftware.Aspects.Common.Net6.LoggerExtensions.Log(logger, global::Microsoft.Extensions.Logging.LogLevel.Debug, $"The new value of LogSomeButNotAllPropertiesWithLogAndNoLogAttributesTest is: string = {this._myString}");
             }
         }
         private global::Microsoft.Extensions.Logging.ILogger logger;
-        public LogSomeButNotAllPropertiesWithLogAndNoLogAttributesTest(global::Microsoft.Extensions.Logging.ILogger<global::VtlSoftware.Aspects.Logging.Tests.net6.LogSomeButNotAllPropertiesWithLogAndNoLogAttributes.LogSomeButNotAllPropertiesWithLogAndNoLogAttributesTest> logger = default(global::Microsoft.Extensions.Logging.ILogger<global::VtlSoftware.Aspects.Logging.Tests.net6.LogSomeButNotAllPropertiesWithLogAndNoLogAttributes.LogSomeButNotAllPropertiesWithLogAndNoLogAttributesTest>))
+        private global::VtlSoftware.Aspects.Logging.Net6.ILoggingApect loggingApect;
+        public LogSomeButNotAllPropertiesWithLogAndNoLogAttributesTest(global::VtlSoftware.Aspects.Logging.Net6.ILoggingApect? loggingApect = default(global::VtlSoftware.Aspects.Logging.Net6.ILoggingApect?), global::Microsoft.Extensions.Logging.ILogger<global::VtlSoftware.Aspects.Logging.Tests.net6.LogSomeButNotAllPropertiesWithLogAndNoLogAttributes.LogSomeButNotAllPropertiesWithLogAndNoLogAttributesTest> logger = default(global::Microsoft.Extensions.Logging.ILogger<global::VtlSoftware.Aspects.Logging.Tests.net6.LogSomeButNotAllPropertiesWithLogAndNoLogAttributes.LogSomeButNotAllPropertiesWithLogAndNoLogAttributesTest>))
         {
             this.logger = logger ?? throw new System.ArgumentNullException(nameof(logger));
+            this.loggingApect = loggingApect ?? throw new System.ArgumentNullException(nameof(loggingApect));
         }
     }
 }

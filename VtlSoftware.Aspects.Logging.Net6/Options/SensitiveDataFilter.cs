@@ -9,34 +9,39 @@ namespace VtlSoftware.Aspects.Logging.Net6
     ///
     /// <remarks></remarks>
 
-    [CompileTime]
+    [RunTimeOrCompileTime]
     internal static class SensitiveDataFilter
     {
         #region Public Methods
-
         /// <summary>
-        /// Query if 'parameter' is sensitive.
+        /// Query if 'parameter' has sensitive parameters.
         /// </summary>
         ///
         /// <remarks></remarks>
         ///
         /// <param name="parameter">The parameter.</param>
+        /// <param name="sensitiveParameterNames">List of names of the sensitive parameters.</param>
         ///
-        /// <returns>True if sensitive, false if not.</returns>
+        /// <returns>True if sensitive parameters, false if not.</returns>
 
-        public static bool IsSensitive(IParameter parameter)
+        public static bool HasSensitiveParameters(IParameter parameter, string? sensitiveParameterNames)
         {
-            bool result = false;
+            //bool result = false;
             if(parameter.Attributes.OfAttributeType(typeof(RedactAttribute)).Any())
             {
-                result = true;
+                return true;
             }
 
-            return result;
+            if(sensitiveParameterNames != null)
+            {
+                sensitiveParameterNames = sensitiveParameterNames.ToLowerInvariant();
+                if(sensitiveParameterNames.Any(n => parameter.Name.ToLowerInvariant().Contains(n)))
+                {
+                    return true;
+                }
+            }
 
-            //var options = parameter.Compilation.Project.LoggingOptions();
-
-            //return options.SensitiveData.Contains(parameter.Name);
+            return false;
         }
 
         #endregion

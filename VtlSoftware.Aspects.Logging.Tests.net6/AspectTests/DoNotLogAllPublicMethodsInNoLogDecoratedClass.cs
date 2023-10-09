@@ -7,7 +7,6 @@ namespace VtlSoftware.Aspects.Logging.Tests.net6.DoNotLogAllPublicMethodsInNoLog
     internal class DoNotLogAllPublicMethodsInNoLogDecoratedClass
     {
         #region Private Methods
-
         private void DoSomethingElse()
         {
         }
@@ -29,7 +28,6 @@ namespace VtlSoftware.Aspects.Logging.Tests.net6.DoNotLogAllPublicMethodsInNoLog
     public static class Static1
     {
         #region Public Methods
-
         public static void DoMoreStuff()
         {
         }
@@ -37,12 +35,12 @@ namespace VtlSoftware.Aspects.Logging.Tests.net6.DoNotLogAllPublicMethodsInNoLog
         #endregion
     }
 
-    //public class SecondFabric : ProjectFabric
-    //{
-    //    #region Public Methods
+    public class SecondFabric : ProjectFabric
+    {
+        #region Public Methods
 
-    //    public override void AmendProject(IProjectAmender amender) { amender.LogAllPublicMethods(); }
+        public override void AmendProject(IProjectAmender amender) { amender.LogAllPublicMethods(); }
 
-    //    #endregion
-    //}
+        #endregion
+    }
 }

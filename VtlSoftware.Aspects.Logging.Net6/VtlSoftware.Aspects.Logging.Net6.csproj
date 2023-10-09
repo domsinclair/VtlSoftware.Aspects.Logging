@@ -18,8 +18,7 @@
 	<PackageTags>VtlSoftware, Metalama, Logging</PackageTags>
 	<PackageReleaseNotes>This small point release fixes an issue which caused a conflict with some logging providers.</PackageReleaseNotes>
 	<PackageLicenseExpression>MIT</PackageLicenseExpression>
-	<GeneratePackageOnBuild>True</GeneratePackageOnBuild>
-    <MetalamaLicense>111997-ZEPC8QQQXEAEQHQCB88YNBFRY2EWZ4GVR8YLX6GV74UW7BJSAMKQ7BFRY8KKZX9F38JBX79RVG6CXMJXZDAQZ4GVR8YLX6GV74UW7BJSAMKQ7BFRY8KKZX9F38JBX79RVG6CXMJXCQCRAFAT5B3H3NMGFEZJUGSDPAE83SEFL74RDAMFWF6WFBS8QT2RPTXPE7NMK8C6Y3DNQQEZB3SXGQYZATP4Q8USJG4X6P2</MetalamaLicense>
+	  <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
   </PropertyGroup>
 
   <ItemGroup>
@@ -31,11 +30,12 @@
       <Pack>True</Pack>
       <PackagePath>\</PackagePath>
     </None>
+	  <None Include="VtlSoftwareAspectsLogging.targets" />
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Metalama.Extensions.DependencyInjection" Version="2023.3.6-rc" />
-    <PackageReference Include="Metalama.Framework" Version="2023.3.6-rc" />
+    <PackageReference Include="Metalama.Extensions.DependencyInjection" Version="2023.3.7-rc" />
+    <PackageReference Include="Metalama.Framework" Version="2023.3.7-rc" />
     <PackageReference Include="VtlSoftware.Aspects.Common.Net6" Version="1.0.0" />
   </ItemGroup>
 

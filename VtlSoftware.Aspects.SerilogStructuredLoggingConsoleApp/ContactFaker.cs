@@ -1,7 +1,7 @@
 ﻿using Bogus;
 using VtlSoftware.Aspects.Logging.Net6;
 
-namespace VtlSoftware.StructuredLoggingConsoleApp.Net6
+namespace VtlSoftware.Aspects.SerilogStructuredLoggingConsoleApp
 {
     [NoLog]
     public class ContactFaker : Faker<Contact>

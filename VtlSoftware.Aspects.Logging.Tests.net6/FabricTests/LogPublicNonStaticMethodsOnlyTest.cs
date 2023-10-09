@@ -36,12 +36,11 @@ namespace VtlSoftware.Aspects.Logging.Tests.net6.LogPublicNonStaticMethodsOnly
         #endregion
     }
 
-    //public class Configure : ProjectFabric
-    //{
-    //    #region Public Methods
+    public class Configure : ProjectFabric
+    {
+        #region Public Methods
+        public override void AmendProject(IProjectAmender amender) { amender.LogAllPublicMethods(); }
 
-    //    //public override void AmendProject(IProjectAmender amender) { amender.LogAllPublicMethods(); }
-
-    //    #endregion
-    //}
+        #endregion
+    }
 }

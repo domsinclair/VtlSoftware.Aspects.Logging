@@ -4,7 +4,9 @@ This packakage is a collection of aspects created with [Metalama](https://www.po
 
 It should be possible to use it with whichever Logging Framework is your framework of choice with the caveat that that framework support the ILogger interface provided by Microsoft.Extensions.Logging which in reality is the vast majority of them.
 
-The package is open source and free to use.
+The package is open source and free* to use.
+
+* Subject to meeting the requirements placed by PostSharp Metalama on their Free License.
 
 
 ## Using VtlSoftware.Aspects.Logging
@@ -15,18 +17,27 @@ Once that has been done then using it is as simple as adding an attribute to tho
 
 
 
-### Provided Attributes
+### Provided Aspects
 
 #### [Log]
 
-Adds logging to a method.  Entry and Exit is logged along with details of any paramaeters that were passed into it.
-If applicable the method's return value is also logged. In Addition this attribute can log properties.
+Adds logging to a method.  Entry and Exit is logged along with details of any parameters that were passed into it.
+If applicable the method's return value is also logged. In Addition this aspect can log properties.
 
 #### [LogAndTime]
 
-Exactly the same as the [Log] attribute with the exception that the total duration that the method took to execute is also logged.
-In Addition this attribute can log properties but will not time the interaction with the property.
+Exactly the same as the [Log] aspect with the exception that the total duration that the method took to execute is also logged.
+In Addition this aspect can log properties but will not time the interaction with the property.
 
+#### [InjectBasicLogging]
+
+An aspect designed to make it easier for developers to add their own custom logging without having to use the provided aspects.
+
+#### [InjectControlledLogging]
+
+An aspect designed to make it easier for developers to add their own custom logging without having to use the provided aspects.
+
+### Provided Attributes
 
 #### [Redact]
 
@@ -102,6 +113,6 @@ Applies the ```[LogAndTime]``` attribute to all methods and the ```[LogAndTime]`
 
 ## Help and Support
 
-A comprehensive help file can be found [here](https://vtlsoftware.co.uk/aspectdocs/Introduction.html).
+A comprehensive help file can be found [here](https://vtlsoftware.co.uk/aspectdocs/Introduction.html).  It goes into considerably more detail than is possible within the confines of a readme file.
 
-You may contact us at support at vtlsoftware dot co dot uk to ask questions or report any issues but you will probably find it quicker to report and issues on the github repo. 
+Please ask questions or report any issues on the github repo as it will generally be picked up quiker that way. 
