@@ -5,28 +5,25 @@ namespace VtlSoftware.Aspects.Logging.Tests.net6.LogAllProperties
 {
     public class LogAllPropertiesTest
     {
-        public LogAllPropertiesTest(global::Microsoft.Extensions.Logging.ILogger<global::VtlSoftware.Aspects.Logging.Tests.net6.LogAllProperties.LogAllPropertiesTest> logger = default(global::Microsoft.Extensions.Logging.ILogger<global::VtlSoftware.Aspects.Logging.Tests.net6.LogAllProperties.LogAllPropertiesTest>), global::VtlSoftware.Aspects.Logging.Net6.ILoggingApects? loggingApects = default(global::VtlSoftware.Aspects.Logging.Net6.ILoggingApects?))
+        public LogAllPropertiesTest(global::Microsoft.Extensions.Logging.ILogger<global::VtlSoftware.Aspects.Logging.Tests.net6.LogAllProperties.LogAllPropertiesTest> logger = default(global::Microsoft.Extensions.Logging.ILogger<global::VtlSoftware.Aspects.Logging.Tests.net6.LogAllProperties.LogAllPropertiesTest>), global::VtlSoftware.Aspects.Logging.Net6.ILoggingApect? loggingApect = default(global::VtlSoftware.Aspects.Logging.Net6.ILoggingApect?))
         {
             this.logger = logger ?? throw new System.ArgumentNullException(nameof(logger));
-            this.loggingApects = loggingApects ?? throw new System.ArgumentNullException(nameof(loggingApects));
+            this.loggingApect = loggingApect ?? throw new System.ArgumentNullException(nameof(loggingApect));
         }
         private DateTime _myDateTime;
         public DateTime MyDateTime
         {
             get
             {
-                var propValue = this._myDateTime;
                 var result = this._myDateTime;
-                global::VtlSoftware.Aspects.Common.Net6.LoggerExtensions.Log(logger, global::Microsoft.Extensions.Logging.LogLevel.Information, $"The value of LogAllPropertiesTest.MyDateTime is: DateTime = {propValue}");
+                global::VtlSoftware.Aspects.Common.Net6.LoggerExtensions.Log(logger, global::Microsoft.Extensions.Logging.LogLevel.Debug, $"The value of LogAllPropertiesTest.MyDateTime is: DateTime = {this._myDateTime}");
                 return (global::System.DateTime)result;
             }
             set
             {
-                var oldPropValue = this._myDateTime;
+                global::VtlSoftware.Aspects.Common.Net6.LoggerExtensions.Log(logger, global::Microsoft.Extensions.Logging.LogLevel.Debug, $"The old value of LogAllPropertiesTest was: DateTime = {this._myDateTime}");
                 this._myDateTime = value;
-                var newPropValue = this._myDateTime;
-                global::VtlSoftware.Aspects.Common.Net6.LoggerExtensions.Log(logger, global::Microsoft.Extensions.Logging.LogLevel.Information, $"The old value of LogAllPropertiesTest.MyDateTime was: DateTime = {oldPropValue}");
-                global::VtlSoftware.Aspects.Common.Net6.LoggerExtensions.Log(logger, global::Microsoft.Extensions.Logging.LogLevel.Information, $"The new value of LogAllPropertiesTest.MyDateTime is: DateTime = {newPropValue}");
+                global::VtlSoftware.Aspects.Common.Net6.LoggerExtensions.Log(logger, global::Microsoft.Extensions.Logging.LogLevel.Debug, $"The new value of LogAllPropertiesTest is: DateTime = {this._myDateTime}");
             }
         }
         private decimal _myDecimal;
@@ -34,18 +31,15 @@ namespace VtlSoftware.Aspects.Logging.Tests.net6.LogAllProperties
         {
             get
             {
-                var propValue = this._myDecimal;
                 var result = this._myDecimal;
-                global::VtlSoftware.Aspects.Common.Net6.LoggerExtensions.Log(logger, global::Microsoft.Extensions.Logging.LogLevel.Information, $"The value of LogAllPropertiesTest.MyDecimal is: decimal = {propValue}");
+                global::VtlSoftware.Aspects.Common.Net6.LoggerExtensions.Log(logger, global::Microsoft.Extensions.Logging.LogLevel.Debug, $"The value of LogAllPropertiesTest.MyDecimal is: decimal = {this._myDecimal}");
                 return (global::System.Decimal)result;
             }
             set
             {
-                var oldPropValue = this._myDecimal;
+                global::VtlSoftware.Aspects.Common.Net6.LoggerExtensions.Log(logger, global::Microsoft.Extensions.Logging.LogLevel.Debug, $"The old value of LogAllPropertiesTest was: decimal = {this._myDecimal}");
                 this._myDecimal = value;
-                var newPropValue = this._myDecimal;
-                global::VtlSoftware.Aspects.Common.Net6.LoggerExtensions.Log(logger, global::Microsoft.Extensions.Logging.LogLevel.Information, $"The old value of LogAllPropertiesTest.MyDecimal was: decimal = {oldPropValue}");
-                global::VtlSoftware.Aspects.Common.Net6.LoggerExtensions.Log(logger, global::Microsoft.Extensions.Logging.LogLevel.Information, $"The new value of LogAllPropertiesTest.MyDecimal is: decimal = {newPropValue}");
+                global::VtlSoftware.Aspects.Common.Net6.LoggerExtensions.Log(logger, global::Microsoft.Extensions.Logging.LogLevel.Debug, $"The new value of LogAllPropertiesTest is: decimal = {this._myDecimal}");
             }
         }
         private double _myDouble;
@@ -53,18 +47,15 @@ namespace VtlSoftware.Aspects.Logging.Tests.net6.LogAllProperties
         {
             get
             {
-                var propValue = this._myDouble;
                 var result = this._myDouble;
-                global::VtlSoftware.Aspects.Common.Net6.LoggerExtensions.Log(logger, global::Microsoft.Extensions.Logging.LogLevel.Information, $"The value of LogAllPropertiesTest.MyDouble is: double = {propValue}");
+                global::VtlSoftware.Aspects.Common.Net6.LoggerExtensions.Log(logger, global::Microsoft.Extensions.Logging.LogLevel.Debug, $"The value of LogAllPropertiesTest.MyDouble is: double = {this._myDouble}");
                 return (global::System.Double)result;
             }
             set
             {
-                var oldPropValue = this._myDouble;
+                global::VtlSoftware.Aspects.Common.Net6.LoggerExtensions.Log(logger, global::Microsoft.Extensions.Logging.LogLevel.Debug, $"The old value of LogAllPropertiesTest was: double = {this._myDouble}");
                 this._myDouble = value;
-                var newPropValue = this._myDouble;
-                global::VtlSoftware.Aspects.Common.Net6.LoggerExtensions.Log(logger, global::Microsoft.Extensions.Logging.LogLevel.Information, $"The old value of LogAllPropertiesTest.MyDouble was: double = {oldPropValue}");
-                global::VtlSoftware.Aspects.Common.Net6.LoggerExtensions.Log(logger, global::Microsoft.Extensions.Logging.LogLevel.Information, $"The new value of LogAllPropertiesTest.MyDouble is: double = {newPropValue}");
+                global::VtlSoftware.Aspects.Common.Net6.LoggerExtensions.Log(logger, global::Microsoft.Extensions.Logging.LogLevel.Debug, $"The new value of LogAllPropertiesTest is: double = {this._myDouble}");
             }
         }
         private int _myInteger;
@@ -72,18 +63,15 @@ namespace VtlSoftware.Aspects.Logging.Tests.net6.LogAllProperties
         {
             get
             {
-                var propValue = this._myInteger;
                 var result = this._myInteger;
-                global::VtlSoftware.Aspects.Common.Net6.LoggerExtensions.Log(logger, global::Microsoft.Extensions.Logging.LogLevel.Information, $"The value of LogAllPropertiesTest.MyInteger is: int = {propValue}");
+                global::VtlSoftware.Aspects.Common.Net6.LoggerExtensions.Log(logger, global::Microsoft.Extensions.Logging.LogLevel.Debug, $"The value of LogAllPropertiesTest.MyInteger is: int = {this._myInteger}");
                 return (global::System.Int32)result;
             }
             set
             {
-                var oldPropValue = this._myInteger;
+                global::VtlSoftware.Aspects.Common.Net6.LoggerExtensions.Log(logger, global::Microsoft.Extensions.Logging.LogLevel.Debug, $"The old value of LogAllPropertiesTest was: int = {this._myInteger}");
                 this._myInteger = value;
-                var newPropValue = this._myInteger;
-                global::VtlSoftware.Aspects.Common.Net6.LoggerExtensions.Log(logger, global::Microsoft.Extensions.Logging.LogLevel.Information, $"The old value of LogAllPropertiesTest.MyInteger was: int = {oldPropValue}");
-                global::VtlSoftware.Aspects.Common.Net6.LoggerExtensions.Log(logger, global::Microsoft.Extensions.Logging.LogLevel.Information, $"The new value of LogAllPropertiesTest.MyInteger is: int = {newPropValue}");
+                global::VtlSoftware.Aspects.Common.Net6.LoggerExtensions.Log(logger, global::Microsoft.Extensions.Logging.LogLevel.Debug, $"The new value of LogAllPropertiesTest is: int = {this._myInteger}");
             }
         }
         private string _myString1 = default!;
@@ -91,22 +79,19 @@ namespace VtlSoftware.Aspects.Logging.Tests.net6.LogAllProperties
         {
             get
             {
-                var propValue = this._myString1;
                 var result = this._myString1;
-                global::VtlSoftware.Aspects.Common.Net6.LoggerExtensions.Log(logger, global::Microsoft.Extensions.Logging.LogLevel.Information, $"The value of LogAllPropertiesTest.myString is: string = {propValue}");
+                global::VtlSoftware.Aspects.Common.Net6.LoggerExtensions.Log(logger, global::Microsoft.Extensions.Logging.LogLevel.Debug, $"The value of LogAllPropertiesTest.myString is: string = {this._myString1}");
                 return (global::System.String)result;
             }
             set
             {
-                var oldPropValue = this._myString1;
+                global::VtlSoftware.Aspects.Common.Net6.LoggerExtensions.Log(logger, global::Microsoft.Extensions.Logging.LogLevel.Debug, $"The old value of LogAllPropertiesTest was: string = {this._myString1}");
                 this._myString1 = value;
-                var newPropValue = this._myString1;
-                global::VtlSoftware.Aspects.Common.Net6.LoggerExtensions.Log(logger, global::Microsoft.Extensions.Logging.LogLevel.Information, $"The old value of LogAllPropertiesTest.myString was: string = {oldPropValue}");
-                global::VtlSoftware.Aspects.Common.Net6.LoggerExtensions.Log(logger, global::Microsoft.Extensions.Logging.LogLevel.Information, $"The new value of LogAllPropertiesTest.myString is: string = {newPropValue}");
+                global::VtlSoftware.Aspects.Common.Net6.LoggerExtensions.Log(logger, global::Microsoft.Extensions.Logging.LogLevel.Debug, $"The new value of LogAllPropertiesTest is: string = {this._myString1}");
             }
         }
         private global::Microsoft.Extensions.Logging.ILogger logger;
-        private global::VtlSoftware.Aspects.Logging.Net6.ILoggingApects loggingApects;
+        private global::VtlSoftware.Aspects.Logging.Net6.ILoggingApect loggingApect;
     }
 #pragma warning disable CS0067, CS8618, CS0162, CS0169, CS0414, CA1822, CA1823, IDE0051, IDE0052
     public class Configure : ProjectFabric

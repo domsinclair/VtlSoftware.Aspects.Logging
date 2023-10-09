@@ -5,7 +5,6 @@ namespace VtlSoftware.Aspects.SerilogStructuredLoggingConsoleApp
     internal partial class DataFun
     {
         #region Fields
-
         Dictionary<int, string> contactsDictionary = new();
 
         #endregion
@@ -24,7 +23,7 @@ namespace VtlSoftware.Aspects.SerilogStructuredLoggingConsoleApp
 
         #region Public Methods
         [Log]
-        //[return:Redact]
+        [return: Redact]
         public Dictionary<int, string> GetDictionary()
         {
             CreateDictionaryOfContacts();

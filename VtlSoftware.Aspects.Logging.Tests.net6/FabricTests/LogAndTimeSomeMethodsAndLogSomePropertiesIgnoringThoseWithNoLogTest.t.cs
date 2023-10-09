@@ -5,14 +5,14 @@ namespace VtlSoftware.Aspects.Logging.Tests.net6.LogAndTimeSomeMethodsAndLogSome
 {
     public class LogAndTimeSomeMethodsAndLogSomePropertiesIgnoringThoseWithNoLogTest
     {
-        public LogAndTimeSomeMethodsAndLogSomePropertiesIgnoringThoseWithNoLogTest(global::Microsoft.Extensions.Logging.ILogger<global::VtlSoftware.Aspects.Logging.Tests.net6.LogAndTimeSomeMethodsAndLogSomePropertiesIgnoringThoseWithNoLog.LogAndTimeSomeMethodsAndLogSomePropertiesIgnoringThoseWithNoLogTest> logger = default(global::Microsoft.Extensions.Logging.ILogger<global::VtlSoftware.Aspects.Logging.Tests.net6.LogAndTimeSomeMethodsAndLogSomePropertiesIgnoringThoseWithNoLog.LogAndTimeSomeMethodsAndLogSomePropertiesIgnoringThoseWithNoLogTest>))
+        public LogAndTimeSomeMethodsAndLogSomePropertiesIgnoringThoseWithNoLogTest(global::Microsoft.Extensions.Logging.ILogger<global::VtlSoftware.Aspects.Logging.Tests.net6.LogAndTimeSomeMethodsAndLogSomePropertiesIgnoringThoseWithNoLog.LogAndTimeSomeMethodsAndLogSomePropertiesIgnoringThoseWithNoLogTest> logger = default(global::Microsoft.Extensions.Logging.ILogger<global::VtlSoftware.Aspects.Logging.Tests.net6.LogAndTimeSomeMethodsAndLogSomePropertiesIgnoringThoseWithNoLog.LogAndTimeSomeMethodsAndLogSomePropertiesIgnoringThoseWithNoLogTest>), global::VtlSoftware.Aspects.Logging.Net6.ILoggingApect? loggingApect = default(global::VtlSoftware.Aspects.Logging.Net6.ILoggingApect?))
         {
             this.logger = logger ?? throw new System.ArgumentNullException(nameof(logger));
+            this.loggingApect = loggingApect ?? throw new System.ArgumentNullException(nameof(loggingApect));
         }
         public DateTime GetTodaysDate()
         {
-            const string redacted = "<Redacted>";
-           var isLoggingEnabled = this.logger.IsEnabled(global::Microsoft.Extensions.Logging.LogLevel.Trace) | this.logger.IsEnabled(global::Microsoft.Extensions.Logging.LogLevel.Debug) | this.logger.IsEnabled(global::Microsoft.Extensions.Logging.LogLevel.Information);
+            var isLoggingEnabled = this.loggingApect.LoggingEnabled;
             if (isLoggingEnabled)
             {
                 using (var guard = global::VtlSoftware.Aspects.Common.Net6.LogRecursionGuard.Begin())
@@ -74,18 +74,15 @@ namespace VtlSoftware.Aspects.Logging.Tests.net6.LogAndTimeSomeMethodsAndLogSome
         {
             get
             {
-                var propValue = this._myDate;
                 var result = this._myDate;
-                global::VtlSoftware.Aspects.Common.Net6.LoggerExtensions.Log(logger, global::Microsoft.Extensions.Logging.LogLevel.Information, $"The value of LogAndTimeSomeMethodsAndLogSomePropertiesIgnoringThoseWithNoLogTest.MyDate is: DateTime? = {propValue}");
+                global::VtlSoftware.Aspects.Common.Net6.LoggerExtensions.Log(logger, global::Microsoft.Extensions.Logging.LogLevel.Debug, $"The value of LogAndTimeSomeMethodsAndLogSomePropertiesIgnoringThoseWithNoLogTest.MyDate is: DateTime? = {this._myDate}");
                 return (global::System.DateTime?)result;
             }
             set
             {
-                var oldPropValue = this._myDate;
+                global::VtlSoftware.Aspects.Common.Net6.LoggerExtensions.Log(logger, global::Microsoft.Extensions.Logging.LogLevel.Debug, $"The old value of LogAndTimeSomeMethodsAndLogSomePropertiesIgnoringThoseWithNoLogTest was: DateTime? = {this._myDate}");
                 this._myDate = value;
-                var newPropValue = this._myDate;
-                global::VtlSoftware.Aspects.Common.Net6.LoggerExtensions.Log(logger, global::Microsoft.Extensions.Logging.LogLevel.Information, $"The old value of LogAndTimeSomeMethodsAndLogSomePropertiesIgnoringThoseWithNoLogTest.MyDate was: DateTime? = {oldPropValue}");
-                global::VtlSoftware.Aspects.Common.Net6.LoggerExtensions.Log(logger, global::Microsoft.Extensions.Logging.LogLevel.Information, $"The new value of LogAndTimeSomeMethodsAndLogSomePropertiesIgnoringThoseWithNoLogTest.MyDate is: DateTime? = {newPropValue}");
+                global::VtlSoftware.Aspects.Common.Net6.LoggerExtensions.Log(logger, global::Microsoft.Extensions.Logging.LogLevel.Debug, $"The new value of LogAndTimeSomeMethodsAndLogSomePropertiesIgnoringThoseWithNoLogTest is: DateTime? = {this._myDate}");
             }
         }
         private double _myDouble1;
@@ -93,23 +90,21 @@ namespace VtlSoftware.Aspects.Logging.Tests.net6.LogAndTimeSomeMethodsAndLogSome
         {
             get
             {
-                var propValue = this._myDouble1;
                 var result = this._myDouble1;
-                global::VtlSoftware.Aspects.Common.Net6.LoggerExtensions.Log(logger, global::Microsoft.Extensions.Logging.LogLevel.Information, $"The value of LogAndTimeSomeMethodsAndLogSomePropertiesIgnoringThoseWithNoLogTest.myDouble is: double = {propValue}");
+                global::VtlSoftware.Aspects.Common.Net6.LoggerExtensions.Log(logger, global::Microsoft.Extensions.Logging.LogLevel.Debug, $"The value of LogAndTimeSomeMethodsAndLogSomePropertiesIgnoringThoseWithNoLogTest.myDouble is: double = {this._myDouble1}");
                 return (global::System.Double)result;
             }
             set
             {
-                var oldPropValue = this._myDouble1;
+                global::VtlSoftware.Aspects.Common.Net6.LoggerExtensions.Log(logger, global::Microsoft.Extensions.Logging.LogLevel.Debug, $"The old value of LogAndTimeSomeMethodsAndLogSomePropertiesIgnoringThoseWithNoLogTest was: double = {this._myDouble1}");
                 this._myDouble1 = value;
-                var newPropValue = this._myDouble1;
-                global::VtlSoftware.Aspects.Common.Net6.LoggerExtensions.Log(logger, global::Microsoft.Extensions.Logging.LogLevel.Information, $"The old value of LogAndTimeSomeMethodsAndLogSomePropertiesIgnoringThoseWithNoLogTest.myDouble was: double = {oldPropValue}");
-                global::VtlSoftware.Aspects.Common.Net6.LoggerExtensions.Log(logger, global::Microsoft.Extensions.Logging.LogLevel.Information, $"The new value of LogAndTimeSomeMethodsAndLogSomePropertiesIgnoringThoseWithNoLogTest.myDouble is: double = {newPropValue}");
+                global::VtlSoftware.Aspects.Common.Net6.LoggerExtensions.Log(logger, global::Microsoft.Extensions.Logging.LogLevel.Debug, $"The new value of LogAndTimeSomeMethodsAndLogSomePropertiesIgnoringThoseWithNoLogTest is: double = {this._myDouble1}");
             }
         }
         [NoLog]
         public string mystring { get; set; }
         private global::Microsoft.Extensions.Logging.ILogger logger;
+        private global::VtlSoftware.Aspects.Logging.Net6.ILoggingApect loggingApect;
     }
 #pragma warning disable CS0067, CS8618, CS0162, CS0169, CS0414, CA1822, CA1823, IDE0051, IDE0052
     public class Configure : ProjectFabric

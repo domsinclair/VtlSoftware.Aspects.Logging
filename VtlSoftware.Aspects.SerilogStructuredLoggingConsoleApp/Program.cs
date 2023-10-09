@@ -54,7 +54,11 @@ namespace VtlSoftware.Aspects.SerilogStructuredLoggingConsoleApp
             var laspects = ActivatorUtilities.CreateInstance<LoggingAspect>(host.Services);
             var svc = ActivatorUtilities.CreateInstance<DataFun>(host.Services);
             Dictionary<int, String> contacts = svc.GetDictionary(); //this just creates the dictionary with data from Bogus
-            Log.Logger.Information($"There are {contacts.Count} contacts In the dictionary");
+
+            // Note the fact that we are using plain serilog syntax in the message below and if we want 
+            // structured logging we need to use string.format rather than an interpolated string.
+            Log.Logger.Information("There are {0} contacts In the dictionary", contacts.Count());
+
             List<string> strings = svc.GetSelectedContacts(); //this will get contacts 5,15,25,35,and 45
 
             // Finally at the point that the application is about to exit we add an appropriate log message

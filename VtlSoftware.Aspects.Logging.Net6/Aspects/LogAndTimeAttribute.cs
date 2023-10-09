@@ -214,7 +214,7 @@ namespace VtlSoftware.Aspects.Logging.Net6
                                     meta.Target.Method.ReturnParameter,
                                     sensitiveParameterNames))
                                 {
-                                    logger.Log(
+                                    logger.LogString(
                                         LogLevel.Information,
                                         $"Leaving {methodName} : The result has been redacted to protect sensitive data.");
                                 } else

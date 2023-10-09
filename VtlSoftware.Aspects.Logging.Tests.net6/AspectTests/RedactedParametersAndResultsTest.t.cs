@@ -1,4 +1,3 @@
-// Error CS1620 on `"Leaving RedactedParametersAndResultsTest.ValidateCardNumber with the following result which has been Redacted."`: `Argument 3 must be passed with the 'ref' keyword`
 using VtlSoftware.Aspects.Logging.Net6;
 namespace VtlSoftware.Aspects.Logging.Tests.net6.RedactedParametersAndResults
 {
@@ -38,7 +37,7 @@ namespace VtlSoftware.Aspects.Logging.Tests.net6.RedactedParametersAndResults
                     {
                         if (guard_1.CanLog)
                         {
-                            global::VtlSoftware.Aspects.Common.Net6.LoggerExtensions.Log(logger, global::Microsoft.Extensions.Logging.LogLevel.Information, "Leaving RedactedParametersAndResultsTest.ValidateCardNumber with the following result which has been Redacted.");
+                            global::VtlSoftware.Aspects.Common.Net6.LoggerExtensions.LogString(logger, global::Microsoft.Extensions.Logging.LogLevel.Information, "Leaving RedactedParametersAndResultsTest.ValidateCardNumber : The result has been redacted to protect sensitive data.");
                         }
                     }
                 }
