@@ -1,5 +1,6 @@
 ﻿
 using Metalama.Extensions.DependencyInjection;
+using Metalama.Framework.Advising;
 using Metalama.Framework.Aspects;
 using Metalama.Framework.Code;
 using Metalama.Framework.Eligibility;
@@ -21,7 +22,6 @@ namespace VtlSoftware.Aspects.Logging.Net6
     public class InjectControlledLoggingAttribute : Attribute, IAspect<INamedType>
     {
         #region Fields
-
         /// <summary>
         /// (Immutable) The logger.
         /// </summary>
@@ -53,6 +53,7 @@ namespace VtlSoftware.Aspects.Logging.Net6
 
         public void BuildEligibility(IEligibilityBuilder<INamedType> builder)
         {
+            EligibilityRuleFactory.GetAdviceEligibilityRule(AdviceKind.ImplementInterface);
             builder.MustNotBeStatic();
             builder.MustNotHaveAspectOfType(typeof(InjectBasicLoggingAttribute));
         }

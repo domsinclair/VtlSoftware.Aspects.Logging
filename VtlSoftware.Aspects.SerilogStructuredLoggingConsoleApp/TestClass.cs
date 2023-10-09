@@ -2,8 +2,8 @@
 
 namespace VtlSoftware.Aspects.SerilogStructuredLoggingConsoleApp
 {
-    [InjectControlledLogging]
-    public  partial class TestClass
+    [InjectBasicLogging]
+    public partial class TestClass
     {
     }
 }
