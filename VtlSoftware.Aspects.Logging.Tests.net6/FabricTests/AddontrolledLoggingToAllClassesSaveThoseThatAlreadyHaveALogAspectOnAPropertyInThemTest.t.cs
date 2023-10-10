@@ -53,8 +53,8 @@ namespace VtlSoftware.Aspects.Logging.Tests.net6.AddontrolledLoggingToAllClasses
         private global::VtlSoftware.Aspects.Logging.Net6.ILoggingApect loggingApect;
         public LogClass(global::VtlSoftware.Aspects.Logging.Net6.ILoggingApect? loggingApect = default(global::VtlSoftware.Aspects.Logging.Net6.ILoggingApect?), global::Microsoft.Extensions.Logging.ILogger<global::VtlSoftware.Aspects.Logging.Tests.net6.AddontrolledLoggingToAllClassesSaveThoseThatAlreadyHaveALogAspectOnAPropertyInThem.LogClass> logger = default(global::Microsoft.Extensions.Logging.ILogger<global::VtlSoftware.Aspects.Logging.Tests.net6.AddontrolledLoggingToAllClassesSaveThoseThatAlreadyHaveALogAspectOnAPropertyInThem.LogClass>))
         {
-            this.logger = logger ?? throw new System.ArgumentNullException(nameof(logger));
             this.loggingApect = loggingApect ?? throw new System.ArgumentNullException(nameof(loggingApect));
+            this.logger = logger ?? throw new System.ArgumentNullException(nameof(logger));
         }
     }
     public class LogAnTimeClassClass
@@ -84,8 +84,8 @@ namespace VtlSoftware.Aspects.Logging.Tests.net6.AddontrolledLoggingToAllClasses
         private global::VtlSoftware.Aspects.Logging.Net6.ILoggingApect loggingApect;
         public LogAnTimeClassClass(global::VtlSoftware.Aspects.Logging.Net6.ILoggingApect? loggingApect = default(global::VtlSoftware.Aspects.Logging.Net6.ILoggingApect?), global::Microsoft.Extensions.Logging.ILogger<global::VtlSoftware.Aspects.Logging.Tests.net6.AddontrolledLoggingToAllClassesSaveThoseThatAlreadyHaveALogAspectOnAPropertyInThem.LogAnTimeClassClass> logger = default(global::Microsoft.Extensions.Logging.ILogger<global::VtlSoftware.Aspects.Logging.Tests.net6.AddontrolledLoggingToAllClassesSaveThoseThatAlreadyHaveALogAspectOnAPropertyInThem.LogAnTimeClassClass>))
         {
-            this.logger = logger ?? throw new System.ArgumentNullException(nameof(logger));
             this.loggingApect = loggingApect ?? throw new System.ArgumentNullException(nameof(loggingApect));
+            this.logger = logger ?? throw new System.ArgumentNullException(nameof(logger));
         }
     }
 #pragma warning disable CS0067, CS8618, CS0162, CS0169, CS0414, CA1822, CA1823, IDE0051, IDE0052

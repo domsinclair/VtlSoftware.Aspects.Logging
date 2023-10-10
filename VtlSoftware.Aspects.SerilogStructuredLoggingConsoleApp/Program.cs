@@ -10,6 +10,7 @@ namespace VtlSoftware.Aspects.SerilogStructuredLoggingConsoleApp
     internal class Program
     {
         #region Private Methods
+
         static void BuildConfig(IConfigurationBuilder builder)
         {
             builder.SetBasePath(Directory.GetCurrentDirectory())
@@ -46,7 +47,7 @@ namespace VtlSoftware.Aspects.SerilogStructuredLoggingConsoleApp
                         services.AddSingleton<IConfiguration>(configuration);
                         services.AddScoped<ILoggingApect, LoggingAspect>();
                         services.AddTransient<DataFun>();
-                        services.AddTransient<TestClass>();
+                        //services.AddTransient<TestClass>();
                     })
                 .UseSerilog()
                 .Build();
@@ -61,8 +62,8 @@ namespace VtlSoftware.Aspects.SerilogStructuredLoggingConsoleApp
 
             List<string> strings = svc.GetSelectedContacts(); //this will get contacts 5,15,25,35,and 45
 
-            var tc = ActivatorUtilities.CreateInstance<TestClass>(host.Services);
-            tc.SayHello();
+            //var tc = ActivatorUtilities.CreateInstance<TestClass>(host.Services);
+           // tc.SayHello();
 
             // Finally at the point that the application is about to exit we add an appropriate log message
             // and then shutdown the logger.

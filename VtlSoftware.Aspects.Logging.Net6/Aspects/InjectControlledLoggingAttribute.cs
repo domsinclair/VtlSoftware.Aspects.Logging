@@ -7,6 +7,13 @@ using Metalama.Framework.CodeFixes;
 using Metalama.Framework.Diagnostics;
 using Metalama.Framework.Eligibility;
 using Microsoft.Extensions.Logging;
+using VtlSoftware.Aspects.Logging.Net6;
+
+[assembly: AspectOrder(
+    typeof(LogAttribute),
+    typeof(LogAndTimeAttribute),
+    typeof(InjectBasicLoggingAttribute),
+    typeof(InjectControlledLoggingAttribute))]
 
 #pragma warning disable CS0649, CS8604, CS8618, IDE0051
 namespace VtlSoftware.Aspects.Logging.Net6

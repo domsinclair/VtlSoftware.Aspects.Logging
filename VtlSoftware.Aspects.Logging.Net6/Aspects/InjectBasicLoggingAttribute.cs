@@ -8,6 +8,13 @@ using Metalama.Framework.CodeFixes;
 using Metalama.Framework.Diagnostics;
 using Metalama.Framework.Eligibility;
 using Microsoft.Extensions.Logging;
+using VtlSoftware.Aspects.Logging.Net6;
+
+[assembly: AspectOrder(
+    typeof(LogAttribute),
+    typeof(LogAndTimeAttribute),
+    typeof(InjectBasicLoggingAttribute),
+    typeof(InjectControlledLoggingAttribute))]
 
 #pragma warning disable CS0649,CS8602,  CS8604, CS8618, IDE0051
 namespace VtlSoftware.Aspects.Logging.Net6
@@ -25,6 +32,13 @@ namespace VtlSoftware.Aspects.Logging.Net6
     public class InjectBasicLoggingAttribute : Attribute, IAspect<INamedType>
     {
         #region Fields
+        /// <summary>
+        /// The vtl 101 error.
+        /// </summary>
+        private static DiagnosticDefinition<INamedType> vtl100Error = new(
+            "VTL100",
+            Severity.Error,
+            "This is a static class and as such cannot have Dependency Injection added to it. Remove the [InjectBasicLogging] Aspect");
 
         /// <summary>
         /// The vtl 101 error.
@@ -58,6 +72,17 @@ namespace VtlSoftware.Aspects.Logging.Net6
 
         public void BuildAspect(IAspectBuilder<INamedType> builder)
         {
+            if(builder.Target.IsStatic)
+            {
+                builder.Diagnostics.Report(vtl100Error.WithArguments(builder.Target));
+                builder.Diagnostics.Suggest(
+                    CodeFixFactory.RemoveAttributes(
+                        builder.Target,
+                        typeof(InjectBasicLoggingAttribute),
+                        "Remove Aspect | InjectBasicLogging"));
+                builder.SkipAspect();
+            }
+
             if(builder.Target.Attributes.OfAttributeType(typeof(InjectBasicLoggingAttribute)).Any())
             {
                 if(builder.Target.Methods.Any(m => m.Enhancements().HasAspect<LogAttribute>()) ||

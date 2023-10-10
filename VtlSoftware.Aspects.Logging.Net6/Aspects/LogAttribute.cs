@@ -15,7 +15,11 @@ namespace VtlSoftware.Aspects.Logging.Net6
     /// Attribute for log.
     /// </summary>
     ///
-    /// <remarks></remarks>
+    /// <remarks>
+    /// An Aspect that will add basic logging to Methods and properties in a class.  It injects the
+    /// Microsoft.Extensions.Logging IKogger interface and the VtlSoftware  ILoggingAspect interface into the class and
+    /// as such it cannot be used in a static class.
+    /// </remarks>
     ///
     /// <seealso cref="T:Attribute"/>
     /// <seealso cref="T:IAspect{IMethod}"/>
@@ -27,7 +31,6 @@ namespace VtlSoftware.Aspects.Logging.Net6
     public class LogAttribute : Attribute, IAspect<IMethod>, IAspect<IFieldOrProperty>
     {
         #region Fields
-
         /// <summary>
         /// (Immutable) The logger.
         /// </summary>
