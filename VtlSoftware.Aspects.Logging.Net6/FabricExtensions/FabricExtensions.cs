@@ -16,6 +16,41 @@ namespace VtlSoftware.Aspects.Logging.Net6
         #region Public Methods
 
         /// <summary>
+        /// An IProjectAmender extension method that adds a basic logging to all classes.
+        /// </summary>
+        ///
+        /// <remarks></remarks>
+        ///
+        /// <param name="amender">The amender to act on.</param>
+
+        public static void AddBasicLoggingToAllClasses(this IProjectAmender amender)
+        {
+            amender.Outbound
+                .SelectMany(compilation => compilation.AllTypes)
+                .Where(
+                    type => !type.IsStatic ||
+                        type.Attributes.OfAttributeType(typeof(InjectControlledLoggingAttribute)).Any())
+                .AddAspectIfEligible<InjectBasicLoggingAttribute>();
+        }
+
+        /// <summary>
+        /// An IProjectAmender extension method that adds a controlled logging to all classes.
+        /// </summary>
+        ///
+        /// <remarks></remarks>
+        ///
+        /// <param name="amender">The amender to act on.</param>
+
+        public static void AddControlledLoggingToAllClasses(this IProjectAmender amender)
+        {
+            amender.Outbound
+                .SelectMany(compilation => compilation.AllTypes)
+                .Where(
+                    type => !type.IsStatic || type.Attributes.OfAttributeType(typeof(InjectBasicLoggingAttribute)).Any())
+                .AddAspectIfEligible<InjectControlledLoggingAttribute>();
+        }
+
+        /// <summary>
         /// An IProjectAmender extension method that logs all methods, by applying the [LogMethod] attribute.
         /// </summary>
         ///

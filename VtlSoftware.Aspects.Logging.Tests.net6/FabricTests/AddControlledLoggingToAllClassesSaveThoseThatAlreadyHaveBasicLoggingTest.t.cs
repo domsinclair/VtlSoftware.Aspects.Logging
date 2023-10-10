@@ -1,0 +1,1 @@
+ // Error LAMA0037 on `InjectBasicLogging`: `The aspect 'InjectBasicLogging' cannot be applied to the type 'Test3' because 'Test3' must not have an aspect of type InjectControlledLoggingAttribute.`

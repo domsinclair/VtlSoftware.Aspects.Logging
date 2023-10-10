@@ -2,8 +2,15 @@
 
 namespace VtlSoftware.Aspects.SerilogStructuredLoggingConsoleApp
 {
-    [InjectBasicLogging]
     public partial class TestClass
     {
+        #region Public Methods
+        [Log]
+        public void SayHello()
+        {
+            //logger.LogString(LogLevel.Information, $"Hello from the Test Class");
+        }
+
+        #endregion
     }
 }
