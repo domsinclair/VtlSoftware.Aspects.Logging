@@ -27,9 +27,9 @@ namespace VtlSoftware.Aspects.Logging.Net6
         {
             amender.Outbound
                 .SelectMany(compilation => compilation.AllTypes)
-                .Where(
-                    type => !type.IsStatic ||
-                        type.Attributes.OfAttributeType(typeof(InjectControlledLoggingAttribute)).Any())
+               .Where(
+                   type => !type.IsStatic &&
+                       !type.Attributes.OfAttributeType(typeof(InjectControlledLoggingAttribute)).Any())
                 .AddAspectIfEligible<InjectBasicLoggingAttribute>();
         }
 
@@ -46,7 +46,8 @@ namespace VtlSoftware.Aspects.Logging.Net6
             amender.Outbound
                 .SelectMany(compilation => compilation.AllTypes)
                 .Where(
-                    type => !type.IsStatic || type.Attributes.OfAttributeType(typeof(InjectBasicLoggingAttribute)).Any())
+                    type => !type.IsStatic &&
+                        !type.Attributes.OfAttributeType(typeof(InjectBasicLoggingAttribute)).Any())
                 .AddAspectIfEligible<InjectControlledLoggingAttribute>();
         }
 
