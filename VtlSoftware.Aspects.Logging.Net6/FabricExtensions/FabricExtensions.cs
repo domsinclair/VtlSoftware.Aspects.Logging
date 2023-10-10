@@ -14,12 +14,15 @@ namespace VtlSoftware.Aspects.Logging.Net6
     public static class FabricExtensions
     {
         #region Public Methods
-
         /// <summary>
-        /// An IProjectAmender extension method that adds a basic logging to all classes.
+        /// An IProjectAmender extension method that adds the functionality to add basic logging to all classes.
         /// </summary>
         ///
-        /// <remarks></remarks>
+        /// <remarks>
+        /// This fabric extension adds (via Dependency Injection) the Microsoft.Extensions.Logging ILogger interface to
+        /// all of those classes in a project that are not static or have neither the [InjectControlledLogging] Aspect
+        /// On the class or either of [Log] or [LogAndTime] Aspects on methods or properties in the class.
+        /// </remarks>
         ///
         /// <param name="amender">The amender to act on.</param>
 
@@ -34,10 +37,15 @@ namespace VtlSoftware.Aspects.Logging.Net6
         }
 
         /// <summary>
-        /// An IProjectAmender extension method that adds a controlled logging to all classes.
+        /// An IProjectAmender extension method that adds the functionality to add basic logging to all classes.
         /// </summary>
         ///
-        /// <remarks></remarks>
+        /// <remarks>
+        /// This fabric extension adds (via Dependency Injection) the Microsoft.Extensions.Logging ILogger interface 
+        /// and the VtlSoftware ILoggingAspect interface to all of those classes in a project that are not static or 
+        /// have neither the [InjectControlledLogging] Aspect On the class or either of [Log] or [LogAndTime] Aspects on
+        /// methods or properties in the class.
+        /// </remarks>
         ///
         /// <param name="amender">The amender to act on.</param>
 

@@ -25,6 +25,7 @@ namespace VtlSoftware.Aspects.Logging.Net6
     public class InjectBasicLoggingAttribute : Attribute, IAspect<INamedType>
     {
         #region Fields
+
         /// <summary>
         /// The vtl 101 error.
         /// </summary>
@@ -61,6 +62,18 @@ namespace VtlSoftware.Aspects.Logging.Net6
             {
                 if(builder.Target.Methods.Any(m => m.Enhancements().HasAspect<LogAttribute>()) ||
                     builder.Target.Methods.Any(m => m.Enhancements().HasAspect<LogAndTimeAttribute>()))
+                {
+                    builder.Diagnostics.Report(vtl101Error.WithArguments(builder.Target));
+                    builder.Diagnostics.Suggest(
+                        CodeFixFactory.RemoveAttributes(
+                            builder.Target,
+                            typeof(InjectBasicLoggingAttribute),
+                            "Remove Aspect | InjectBasicLogging"));
+                    builder.SkipAspect();
+                }
+
+                if(builder.Target.Properties.Any(p => p.Enhancements().HasAspect<LogAttribute>()) ||
+                    builder.Target.Properties.Any(p => p.Enhancements().HasAspect<LogAndTimeAttribute>()))
                 {
                     builder.Diagnostics.Report(vtl101Error.WithArguments(builder.Target));
                     builder.Diagnostics.Suggest(

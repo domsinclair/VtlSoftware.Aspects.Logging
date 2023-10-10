@@ -1,0 +1,1 @@
+ // Error LAMA0037 on `InjectControlledLogging`: `The aspect 'InjectControlledLogging' cannot be applied to the type 'DoNotInjectControlledLoggingIntoAClassThatIsStaticTest' because 'DoNotInjectControlledLoggingIntoAClassThatIsStaticTest' must not be static.`
