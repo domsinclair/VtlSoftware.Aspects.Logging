@@ -9,11 +9,7 @@ using Metalama.Framework.Eligibility;
 using Microsoft.Extensions.Logging;
 using VtlSoftware.Aspects.Logging.Net6;
 
-[assembly: AspectOrder(
-    typeof(LogAttribute),
-    typeof(LogAndTimeAttribute),
-    typeof(InjectBasicLoggingAttribute),
-    typeof(InjectControlledLoggingAttribute))]
+[assembly: AspectOrder(typeof(InjectBasicLoggingAttribute), typeof(InjectControlledLoggingAttribute))]
 
 #pragma warning disable CS0649, CS8604, CS8618, IDE0051
 namespace VtlSoftware.Aspects.Logging.Net6
@@ -69,32 +65,32 @@ namespace VtlSoftware.Aspects.Logging.Net6
 
         public void BuildAspect(IAspectBuilder<INamedType> builder)
         {
-            if(builder.Target.Attributes.OfAttributeType(typeof(InjectControlledLoggingAttribute)).Any())
+            //if(builder.Target.Attributes.OfAttributeType(typeof(InjectControlledLoggingAttribute)).Any())
+            //{
+            if(builder.Target.Methods.Any(m => m.Enhancements().HasAspect<LogAttribute>()) ||
+                builder.Target.Methods.Any(m => m.Enhancements().HasAspect<LogAndTimeAttribute>()))
             {
-                if(builder.Target.Methods.Any(m => m.Enhancements().HasAspect<LogAttribute>()) ||
-                    builder.Target.Methods.Any(m => m.Enhancements().HasAspect<LogAndTimeAttribute>()))
-                {
-                    builder.Diagnostics.Report(vtl102Error.WithArguments(builder.Target));
-                    builder.Diagnostics.Suggest(
-                        CodeFixFactory.RemoveAttributes(
-                            builder.Target,
-                            typeof(InjectControlledLoggingAttribute),
-                            "Remove Aspect | InjectControlledLogging"));
-                    builder.SkipAspect();
-                }
-
-                if(builder.Target.Properties.Any(p => p.Enhancements().HasAspect<LogAttribute>()) ||
-                    builder.Target.Properties.Any(p => p.Enhancements().HasAspect<LogAndTimeAttribute>()))
-                {
-                    builder.Diagnostics.Report(vtl102Error.WithArguments(builder.Target));
-                    builder.Diagnostics.Suggest(
-                        CodeFixFactory.RemoveAttributes(
-                            builder.Target,
-                            typeof(InjectBasicLoggingAttribute),
-                            "Remove Aspect | InjectBasicLogging"));
-                    builder.SkipAspect();
-                }
+                builder.Diagnostics.Report(vtl102Error.WithArguments(builder.Target));
+                builder.Diagnostics.Suggest(
+                    CodeFixFactory.RemoveAttributes(
+                        builder.Target,
+                        typeof(InjectControlledLoggingAttribute),
+                        "Remove Aspect | InjectControlledLogging"));
+                builder.SkipAspect();
             }
+
+            if(builder.Target.Properties.Any(p => p.Enhancements().HasAspect<LogAttribute>()) ||
+                builder.Target.Properties.Any(p => p.Enhancements().HasAspect<LogAndTimeAttribute>()))
+            {
+                builder.Diagnostics.Report(vtl102Error.WithArguments(builder.Target));
+                builder.Diagnostics.Suggest(
+                    CodeFixFactory.RemoveAttributes(
+                        builder.Target,
+                        typeof(InjectBasicLoggingAttribute),
+                        "Remove Aspect | InjectBasicLogging"));
+                builder.SkipAspect();
+            }
+            //}
         }
 
         /// <summary>

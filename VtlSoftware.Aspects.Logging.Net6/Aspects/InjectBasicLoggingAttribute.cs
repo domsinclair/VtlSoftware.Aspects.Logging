@@ -10,11 +10,7 @@ using Metalama.Framework.Eligibility;
 using Microsoft.Extensions.Logging;
 using VtlSoftware.Aspects.Logging.Net6;
 
-[assembly: AspectOrder(
-    typeof(LogAttribute),
-    typeof(LogAndTimeAttribute),
-    typeof(InjectBasicLoggingAttribute),
-    typeof(InjectControlledLoggingAttribute))]
+[assembly: AspectOrder(typeof(InjectBasicLoggingAttribute), typeof(InjectControlledLoggingAttribute))]
 
 #pragma warning disable CS0649,CS8602,  CS8604, CS8618, IDE0051
 namespace VtlSoftware.Aspects.Logging.Net6
@@ -32,13 +28,6 @@ namespace VtlSoftware.Aspects.Logging.Net6
     public class InjectBasicLoggingAttribute : Attribute, IAspect<INamedType>
     {
         #region Fields
-        /// <summary>
-        /// The vtl 101 error.
-        /// </summary>
-        private static DiagnosticDefinition<INamedType> vtl100Error = new(
-            "VTL100",
-            Severity.Error,
-            "This is a static class and as such cannot have Dependency Injection added to it. Remove the [InjectBasicLogging] Aspect");
 
         /// <summary>
         /// The vtl 101 error.
@@ -72,9 +61,12 @@ namespace VtlSoftware.Aspects.Logging.Net6
 
         public void BuildAspect(IAspectBuilder<INamedType> builder)
         {
-            if(builder.Target.IsStatic)
+            //if(builder.Target.Attributes.OfAttributeType(typeof(InjectBasicLoggingAttribute)).Any())
+            //{
+            if(builder.Target.Methods.Any(m => m.Enhancements().HasAspect<LogAttribute>()) ||
+                builder.Target.Methods.Any(m => m.Enhancements().HasAspect<LogAndTimeAttribute>()))
             {
-                builder.Diagnostics.Report(vtl100Error.WithArguments(builder.Target));
+                builder.Diagnostics.Report(vtl101Error.WithArguments(builder.Target));
                 builder.Diagnostics.Suggest(
                     CodeFixFactory.RemoveAttributes(
                         builder.Target,
@@ -83,32 +75,18 @@ namespace VtlSoftware.Aspects.Logging.Net6
                 builder.SkipAspect();
             }
 
-            if(builder.Target.Attributes.OfAttributeType(typeof(InjectBasicLoggingAttribute)).Any())
+            if(builder.Target.Properties.Any(p => p.Enhancements().HasAspect<LogAttribute>()) ||
+                builder.Target.Properties.Any(p => p.Enhancements().HasAspect<LogAndTimeAttribute>()))
             {
-                if(builder.Target.Methods.Any(m => m.Enhancements().HasAspect<LogAttribute>()) ||
-                    builder.Target.Methods.Any(m => m.Enhancements().HasAspect<LogAndTimeAttribute>()))
-                {
-                    builder.Diagnostics.Report(vtl101Error.WithArguments(builder.Target));
-                    builder.Diagnostics.Suggest(
-                        CodeFixFactory.RemoveAttributes(
-                            builder.Target,
-                            typeof(InjectBasicLoggingAttribute),
-                            "Remove Aspect | InjectBasicLogging"));
-                    builder.SkipAspect();
-                }
-
-                if(builder.Target.Properties.Any(p => p.Enhancements().HasAspect<LogAttribute>()) ||
-                    builder.Target.Properties.Any(p => p.Enhancements().HasAspect<LogAndTimeAttribute>()))
-                {
-                    builder.Diagnostics.Report(vtl101Error.WithArguments(builder.Target));
-                    builder.Diagnostics.Suggest(
-                        CodeFixFactory.RemoveAttributes(
-                            builder.Target,
-                            typeof(InjectBasicLoggingAttribute),
-                            "Remove Aspect | InjectBasicLogging"));
-                    builder.SkipAspect();
-                }
+                builder.Diagnostics.Report(vtl101Error.WithArguments(builder.Target));
+                builder.Diagnostics.Suggest(
+                    CodeFixFactory.RemoveAttributes(
+                        builder.Target,
+                        typeof(InjectBasicLoggingAttribute),
+                        "Remove Aspect | InjectBasicLogging"));
+                builder.SkipAspect();
             }
+            //}
         }
 
         /// <summary>

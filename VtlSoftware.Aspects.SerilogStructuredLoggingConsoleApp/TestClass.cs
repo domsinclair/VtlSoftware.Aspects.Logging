@@ -1,10 +1,15 @@
-﻿namespace VtlSoftware.Aspects.SerilogStructuredLoggingConsoleApp
+﻿using VtlSoftware.Aspects.Logging.Net6;
+
+namespace VtlSoftware.Aspects.SerilogStructuredLoggingConsoleApp
 {
-    //[InjectBasicLogging]
-    public static class TestClass
+    // The code fix 'Remove Aspect | InjectBasicLogging' could no longer be found. The logic that suggests the code fix may be non-deterministic.
+
+    public  class TestClass
     {
         #region Public Methods
-        public static void SayHello()
+
+        [Log]
+        public  void SayHello()
         {
             //logger.LogString(LogLevel.Information, $"Hello from the Test Class");
         }
