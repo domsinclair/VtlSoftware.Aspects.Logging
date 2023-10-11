@@ -10,7 +10,11 @@ using Metalama.Framework.Eligibility;
 using Microsoft.Extensions.Logging;
 using VtlSoftware.Aspects.Logging.Net6;
 
-[assembly: AspectOrder(typeof(InjectBasicLoggingAttribute), typeof(InjectControlledLoggingAttribute))]
+[assembly: AspectOrder(
+    typeof(InjectControlledLoggingAttribute),
+    typeof(InjectBasicLoggingAttribute),
+    typeof(LogAndTimeAttribute),
+    typeof(LogAttribute))]
 
 #pragma warning disable CS0649,CS8602,  CS8604, CS8618, IDE0051
 namespace VtlSoftware.Aspects.Logging.Net6
@@ -34,7 +38,7 @@ namespace VtlSoftware.Aspects.Logging.Net6
         /// </summary>
         private static DiagnosticDefinition<INamedType> vtl101Error = new(
             "VTL101",
-            Severity.Error,
+            Severity.Warning,
             "This class has already had aspects applied to it (possibly via a fabric) that have introduced the ILogger interface via Dependency Ijection. You will be able to add your own custom log messages. Remove the [InjectBasicLogging] Aspect");
 
         /// <summary>
@@ -86,6 +90,7 @@ namespace VtlSoftware.Aspects.Logging.Net6
                         "Remove Aspect | InjectBasicLogging"));
                 builder.SkipAspect();
             }
+
             //}
         }
 

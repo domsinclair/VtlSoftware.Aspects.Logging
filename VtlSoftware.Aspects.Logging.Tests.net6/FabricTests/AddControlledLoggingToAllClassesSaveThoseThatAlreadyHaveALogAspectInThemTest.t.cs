@@ -1,3 +1,5 @@
+// Warning VTL102 on `LogClass`: `This class has already had aspects applied to it (possibly via a fabric) that have introduced the ILogger and ILoggingAspect interfaces via Dependency Ijection. You will be able to add your own custom log messages. Remove the [InjectControlledLogging] Aspect`
+// Warning VTL102 on `LogAnTimeClassClass`: `This class has already had aspects applied to it (possibly via a fabric) that have introduced the ILogger and ILoggingAspect interfaces via Dependency Ijection. You will be able to add your own custom log messages. Remove the [InjectControlledLogging] Aspect`
 using Metalama.Framework.Fabrics;
 using VtlSoftware.Aspects.Logging.Net6;
 namespace VtlSoftware.Aspects.Logging.Tests.net6.AddControlledLoggingToAllClassesSaveThoseThatAlreadyHaveALogAspectInThem
