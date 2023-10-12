@@ -32,7 +32,6 @@ namespace VtlSoftware.Aspects.Logging.Net6
     public class InjectBasicLoggingAttribute : Attribute, IAspect<INamedType>
     {
         #region Fields
-
         /// <summary>
         /// The vtl 101 error.
         /// </summary>
@@ -113,6 +112,7 @@ namespace VtlSoftware.Aspects.Logging.Net6
             EligibilityRuleFactory.GetAdviceEligibilityRule(AdviceKind.ImplementInterface);
             builder.MustNotBeStatic();
             builder.MustNotHaveAspectOfType(typeof(InjectControlledLoggingAttribute));
+            builder.MustNotHaveAspectOfType(typeof(NoLogAttribute));
         }
 
         #endregion

@@ -2,7 +2,7 @@
 
 This packakage is a collection of aspects created with [Metalama](https://www.postsharp.net/metalama) that will allow you to easily add logging to a project or collection of projects in a solution.
 
-It should be possible to use it with whichever Logging Framework is your framework of choice with the caveat that that framework support the ILogger interface provided by Microsoft.Extensions.Logging which in reality is the vast majority of them.
+It should be possible to use it with whichever Logging Framework is your framework of choice with the caveat that that framework support the ILogger interface provided by Microsoft.Extensions.Logging which, in reality, is the vast majority of them.
 
 The package is open source and free* to use.
 
@@ -13,8 +13,11 @@ The package is open source and free* to use.
 
 After adding the package to your project you will need to configure a logging framework. Examples of how this can be done can be found in the package's help file which is available online.  There are also numerous examples of how this can be done to be found online.
 
-Once that has been done then using it is as simple as adding an attribute to those properties or methods that you want to be logged.
+Once that has been done then using it is as simple as adding an aspect (which is essentially adding an attribute) to those properties or methods that you want to be logged.
 
+The library has been designed to provide both templated logging (log entry, exit and exceptions) and custom logging with your own log messages.  
+
+By taking this approach it is hoped that most peoples' needs will be covered.
 
 
 ### Provided Aspects
@@ -73,42 +76,50 @@ When applied to a Class, Method or Property no logging of that entity will occur
 
 ### Fabric Extensions
 
-A number of extion methods to provide Fabrics that will automate the process of adding logging attributes to your code base are also provided.  You can find more details on how to use those in the help file.
+A number of extion methods to provide Fabrics that will automate the process of adding logging aspects to your code base are also provided.  You can find more details on how to use those in the help file.
 
 
 Current provided extensions are.
 
+#### AddBasicLoggingToAllClasses
+
+Applies the ```[InjectBasicLogging]``` aspect to all eligible classes
+
+#### AddControlledLoggingToAllClasses
+
+Applies the ```[InjectControlledLogging]``` aspect to all eligible classes
+
 #### LogAllMethods
 
-Applies the ```[Log]``` attribute to all eligible methods.
+Applies the ```[Log]``` aspect to all eligible methods.
 
 #### LogAndTimeAllMethods
 
-Applies the ```[LogAndTime]``` attribute to all eligible methods.
+Applies the ```[LogAndTime]``` aspect to all eligible methods.
 
 #### LogAllPublicMethods
 
-Applies the ```[Log]``` attribute to all public methods.
+Applies the ```[Log]``` aspect to all public methods.
 
 #### LogAndTimeAllPublicMethods
 
-Applies the ```[LogAndTime]``` attribute to all public methods.
+Applies the ```[LogAndTime]``` aspect to all public methods.
 
 #### LogAllPublicAndPrivateMethods
 
-Applies the ```[Log]``` attribute to all public and Private Methods.
+Applies the ```[Log]``` aspect to all public and Private Methods.
 
 #### LogAndTimeAllPublicAndPrivateMethods
 
-Applies the ```[LogAndTime]``` attribute to all public and Private Methods.
+Applies the ```[LogAndTime]``` aspect to all public and Private Methods.
 
 #### LogEverything
 
-Applies the ```[Log]``` attribute to all methods and the ```[Log]``` attribute to all properties.
+Applies the ```[Log]``` aspect to all methods and the ```[Log]``` aspect to all properties.
 
 #### TimeEveryMethodAndLogEveryProperty
 
-Applies the ```[LogAndTime]``` attribute to all methods and the ```[LogAndTime]``` attribute to all properties.
+Applies the ```[LogAndTime]``` aspect to all methods and the ```[LogAndTime]``` aspect to all properties.
 
 
 ## Help and Support

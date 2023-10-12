@@ -5,11 +5,14 @@ namespace VtlSoftware.Aspects.Logging.Net6
     /// Interface for logging apect.
     /// </summary>
     ///
-    /// <remarks></remarks>
+    /// <remarks>
+    /// An interface to provide a simple means to control logging.
+    /// </remarks>
 
     public interface ILoggingApect
     {
         #region Public Properties
+
         /// <summary>
         /// Gets or sets a value indicating whether the logging is enabled.
         /// </summary>

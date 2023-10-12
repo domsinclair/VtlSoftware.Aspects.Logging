@@ -6,6 +6,7 @@
     ///
     /// <remarks>
     /// If applied in front of Parameters or the retun value of a method the actual value will be logged as "Redacted".
+    /// Be sure to note the appropriate way to use it with regard to return parameters.
     /// </remarks>
     ///
     /// <seealso cref="T:Attribute"/>

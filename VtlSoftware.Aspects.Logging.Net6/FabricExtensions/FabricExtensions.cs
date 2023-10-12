@@ -32,7 +32,8 @@ namespace VtlSoftware.Aspects.Logging.Net6
                 .SelectMany(compilation => compilation.AllTypes)
                .Where(
                    type => !type.IsStatic &&
-                       !type.Attributes.OfAttributeType(typeof(InjectControlledLoggingAttribute)).Any())
+                       !type.Attributes.OfAttributeType(typeof(InjectControlledLoggingAttribute)).Any() &&
+                       !type.Attributes.OfAttributeType(typeof(NoLogAttribute)).Any())
                 .AddAspectIfEligible<InjectBasicLoggingAttribute>();
         }
 
@@ -55,7 +56,8 @@ namespace VtlSoftware.Aspects.Logging.Net6
                 .SelectMany(compilation => compilation.AllTypes)
                 .Where(
                     type => !type.IsStatic &&
-                        !type.Attributes.OfAttributeType(typeof(InjectBasicLoggingAttribute)).Any())
+                        !type.Attributes.OfAttributeType(typeof(InjectBasicLoggingAttribute)).Any() &&
+                        !type.Attributes.OfAttributeType(typeof(NoLogAttribute)).Any())
                 .AddAspectIfEligible<InjectControlledLoggingAttribute>();
         }
 
