@@ -2,11 +2,17 @@
 
 namespace VtlSoftware.Aspects.SerilogStructuredLoggingConsoleApp
 {
+    [NoLog]
     public  class Simple
     {
         #region Private Methods
-        [Log]
         private  string ConvertToUpper(string value) { return value.ToUpper(); }
+
+        #endregion
+
+        #region Public Properties
+
+        public string? MyString { get; set; }
 
         #endregion
     }

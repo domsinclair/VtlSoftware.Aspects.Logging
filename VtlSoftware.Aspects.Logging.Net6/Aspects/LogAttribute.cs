@@ -4,6 +4,8 @@ using Metalama.Extensions.DependencyInjection;
 using Metalama.Framework.Advising;
 using Metalama.Framework.Aspects;
 using Metalama.Framework.Code;
+using Metalama.Framework.CodeFixes;
+using Metalama.Framework.Diagnostics;
 using Metalama.Framework.Eligibility;
 using Microsoft.Extensions.Logging;
 using VtlSoftware.Aspects.Common.Net6;
@@ -15,22 +17,37 @@ namespace VtlSoftware.Aspects.Logging.Net6
     /// Attribute for log.
     /// </summary>
     ///
-    /// <remarks>
-    /// An Aspect that will add basic logging to Methods and properties in a class.  It injects the
-    /// Microsoft.Extensions.Logging ILogger interface and the VtlSoftware ILoggingAspect interface into the class and
-    /// as such it cannot be used in a static class.
-    /// </remarks>
+    /// <remarks></remarks>
     ///
     /// <seealso cref="T:Attribute"/>
     /// <seealso cref="T:IAspect{IMethod}"/>
     /// <seealso cref="T:IAspect{IFieldOrProperty}"/>
     ///
-    /// ### <remarks>.</remarks>
+    /// ### <remarks>
+    /// An Aspect that will add basic logging to Methods and properties in a class.  It injects the
+    /// Microsoft.Extensions.Logging ILogger interface and the VtlSoftware ILoggingAspect interface into the class and
+    /// as such it cannot be used in a static class.
+    /// </remarks>
 
     [AttributeUsage(AttributeTargets.Method | AttributeTargets.Property)]
     public class LogAttribute : Attribute, IAspect<IMethod>, IAspect<IFieldOrProperty>
     {
         #region Fields
+        /// <summary>
+        /// The vtl 105 error.
+        /// </summary>
+        private static DiagnosticDefinition<IMethod> vtl105Error = new(
+            "VTL105",
+            Severity.Error,
+            "This class has already been marked as not requiring logging. Remove the [Log] Aspect");
+
+        /// <summary>
+        /// The vtl 106 error.
+        /// </summary>
+        private static DiagnosticDefinition<IFieldOrProperty> vtl106Error = new(
+            "VTL106",
+            Severity.Error,
+            "This class has already been marked as not requiring logging. Remove the [Log] Aspect");
 
         /// <summary>
         /// (Immutable) The logger.
@@ -59,12 +76,21 @@ namespace VtlSoftware.Aspects.Logging.Net6
         /// </param>
         ///
         /// <seealso cref="M:IAspect.BuildAspect(IAspectBuilder{IMethod})"/>
+        ///
+        /// ### <remarks>.</remarks>
 
         public void BuildAspect(IAspectBuilder<IMethod> builder)
         {
+            if(builder.Target.DeclaringType.Attributes.OfAttributeType(typeof(NoLogAttribute)).Any())
+            {
+                builder.Diagnostics.Report(vtl105Error.WithArguments(builder.Target));
+                builder.Diagnostics.Suggest(
+                    CodeFixFactory.RemoveAttributes(builder.Target, typeof(LogAttribute), "Remove Aspect | Log"));
+                builder.SkipAspect();
+            }
+
             if(!(builder.Target.Attributes.OfAttributeType(typeof(NoLogAttribute)).Any() ||
-                builder.Target.Attributes.OfAttributeType(typeof(LogAndTimeAttribute)).Any() ||
-                builder.Target.DeclaringType.Attributes.OfAttributeType(typeof(NoLogAttribute)).Any()))
+                builder.Target.Attributes.OfAttributeType(typeof(LogAndTimeAttribute)).Any()))
             {
                 builder.Advice.Override(builder.Target, nameof(this.OverrideMethod));
             } else
@@ -85,11 +111,20 @@ namespace VtlSoftware.Aspects.Logging.Net6
         /// </param>
         ///
         /// <seealso cref="M:IAspect.BuildAspect(IAspectBuilder{IFieldOrProperty})"/>
+        ///
+        /// ### <remarks>.</remarks>
 
         public void BuildAspect(IAspectBuilder<IFieldOrProperty> builder)
         {
-            if(!(builder.Target.Attributes.OfAttributeType(typeof(NoLogAttribute)).Any() ||
-                builder.Target.DeclaringType.Attributes.OfAttributeType(typeof(NoLogAttribute)).Any()))
+            if(builder.Target.DeclaringType.Attributes.OfAttributeType(typeof(NoLogAttribute)).Any())
+            {
+                builder.Diagnostics.Report(vtl106Error.WithArguments(builder.Target));
+                builder.Diagnostics.Suggest(
+                    CodeFixFactory.RemoveAttributes(builder.Target, typeof(LogAttribute), "Remove Aspect | Log"));
+                builder.SkipAspect();
+            }
+
+            if(!(builder.Target.Attributes.OfAttributeType(typeof(NoLogAttribute)).Any()))
             {
                 builder.Advice.Override(builder.Target, nameof(this.OverrideProperty));
             } else
@@ -109,8 +144,10 @@ namespace VtlSoftware.Aspects.Logging.Net6
         /// An object that allows the aspect to configure characteristics like description, dependencies, or layers.
         /// </param>
         ///
-        /// <seealso cref="M:IEligible.BuildEligibility(IEligibilityBuilder{IMethod})"/>
         /// <seealso href="@eligibility"/>
+        /// <seealso cref="M:IEligible.BuildEligibility(IEligibilityBuilder{IMethod})"/>
+        ///
+        /// ### <remarks>.</remarks>
 
         public void BuildEligibility(IEligibilityBuilder<IMethod> builder)
         {
@@ -131,8 +168,10 @@ namespace VtlSoftware.Aspects.Logging.Net6
         /// An object that allows the aspect to configure characteristics like description, dependencies, or layers.
         /// </param>
         ///
-        /// <seealso cref="M:IEligible.BuildEligibility(IEligibilityBuilder{IFieldOrProperty})"/>
         /// <seealso href="@eligibility"/>
+        /// <seealso cref="M:IEligible.BuildEligibility(IEligibilityBuilder{IFieldOrProperty})"/>
+        ///
+        /// ### <remarks>.</remarks>
 
         public void BuildEligibility(IEligibilityBuilder<IFieldOrProperty> builder)
         {
@@ -148,6 +187,8 @@ namespace VtlSoftware.Aspects.Logging.Net6
         /// <remarks></remarks>
         ///
         /// <returns>A dynamic?</returns>
+        ///
+        /// ### <remarks>.</remarks>
 
         [Template]
         public dynamic? OverrideMethod()

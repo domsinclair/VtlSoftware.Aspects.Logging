@@ -1,4 +1,5 @@
 ﻿
+
 using Metalama.Extensions.DependencyInjection;
 using Metalama.Framework.Advising;
 using Metalama.Framework.Aspects;
@@ -27,11 +28,14 @@ namespace VtlSoftware.Aspects.Logging.Net6
     ///
     /// <seealso cref="T:Attribute"/>
     /// <seealso cref="T:IAspect{INamedType}"/>
+    ///
+    /// ### <remarks>.</remarks>
 
     [AttributeUsage(AttributeTargets.Class, AllowMultiple = false)]
     public class InjectBasicLoggingAttribute : Attribute, IAspect<INamedType>
     {
         #region Fields
+
         /// <summary>
         /// The vtl 101 error.
         /// </summary>
@@ -39,6 +43,14 @@ namespace VtlSoftware.Aspects.Logging.Net6
             "VTL101",
             Severity.Warning,
             "This class has already had aspects applied to it (possibly via a fabric) that have introduced the ILogger interface via Dependency Ijection. You will be able to add your own custom log messages. Remove the [InjectBasicLogging] Aspect");
+
+        /// <summary>
+        /// The vtl 103 error.
+        /// </summary>
+        private static DiagnosticDefinition<INamedType> vtl103Error = new(
+            "VTL103",
+            Severity.Error,
+            "This class has already been marked as not requiring logging. Remove the [InjectBasicLogging] Aspect");
 
         /// <summary>
         /// (Immutable) The logger.
@@ -61,11 +73,24 @@ namespace VtlSoftware.Aspects.Logging.Net6
         /// </param>
         ///
         /// <seealso cref="M:IAspect.BuildAspect(IAspectBuilder{INamedType})"/>
+        ///
+        /// ### <remarks>.</remarks>
 
         public void BuildAspect(IAspectBuilder<INamedType> builder)
         {
             //if(builder.Target.Attributes.OfAttributeType(typeof(InjectBasicLoggingAttribute)).Any())
             //{
+            if(builder.Target.Attributes.OfAttributeType(typeof(NoLogAttribute)).Any())
+            {
+                builder.Diagnostics.Report(vtl103Error.WithArguments(builder.Target));
+                builder.Diagnostics.Suggest(
+                    CodeFixFactory.RemoveAttributes(
+                        builder.Target,
+                        typeof(InjectBasicLoggingAttribute),
+                        "Remove Aspect | InjectBasicLogging"));
+                builder.SkipAspect();
+            }
+
             if(builder.Target.Methods.Any(m => m.Enhancements().HasAspect<LogAttribute>()) ||
                 builder.Target.Methods.Any(m => m.Enhancements().HasAspect<LogAndTimeAttribute>()))
             {
@@ -104,8 +129,10 @@ namespace VtlSoftware.Aspects.Logging.Net6
         /// An object that allows the aspect to configure characteristics like description, dependencies, or layers.
         /// </param>
         ///
-        /// <seealso cref="M:IEligible.BuildEligibility(IEligibilityBuilder{INamedType})"/>
         /// <seealso href="@eligibility"/>
+        /// <seealso cref="M:IEligible.BuildEligibility(IEligibilityBuilder{INamedType})"/>
+        ///
+        /// ### <remarks>.</remarks>
 
         public void BuildEligibility(IEligibilityBuilder<INamedType> builder)
         {
