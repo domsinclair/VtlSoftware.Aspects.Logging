@@ -6,8 +6,8 @@ namespace VtlSoftware.Aspects.Logging.Tests.net6.LogAllMethodsInClassSaveForThos
     public class LogAllMethodsInClassSaveForThoseWithLogAndTimeAspectThatMustPrevailTest
     {
         #region Private Methods
-
         private int Add(int a, int b) { return a + b; }
+
         private void DoSomething()
         {
         }
@@ -27,7 +27,6 @@ namespace VtlSoftware.Aspects.Logging.Tests.net6.LogAllMethodsInClassSaveForThos
     public class Configure : ProjectFabric
     {
         #region Public Methods
-
         public override void AmendProject(IProjectAmender amender) { amender.LogAllMethods(); }
 
         #endregion

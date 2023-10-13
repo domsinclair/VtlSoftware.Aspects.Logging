@@ -1,18 +1,15 @@
-﻿using VtlSoftware.Aspects.Logging.Net6;
-
-namespace VtlSoftware.Aspects.SerilogStructuredLoggingConsoleApp
+﻿namespace VtlSoftware.Aspects.SerilogStructuredLoggingConsoleApp
 {
-    [NoLog]
-    public  class Simple
+    public class Simple
     {
         #region Private Methods
-        private  string ConvertToUpper(string value) { return value.ToUpper(); }
+
+        private static  string ConvertToUpper(string value) { return value.ToUpper(); }
 
         #endregion
 
         #region Public Properties
-
-        public string? MyString { get; set; }
+        public static string? MyString { get; set; }
 
         #endregion
     }
