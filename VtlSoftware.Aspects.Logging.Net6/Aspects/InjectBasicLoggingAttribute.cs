@@ -14,8 +14,8 @@ using VtlSoftware.Aspects.Logging.Net6;
 [assembly: AspectOrder(
     typeof(InjectControlledLoggingAttribute),
     typeof(InjectBasicLoggingAttribute),
-    typeof(LogAndTimeAttribute),
-    typeof(LogAttribute))]
+    typeof(LogAttribute),
+    typeof(LogAndTimeAttribute))]
 
 #pragma warning disable CS0649,CS8602,  CS8604, CS8618, IDE0051
 namespace VtlSoftware.Aspects.Logging.Net6
@@ -35,7 +35,6 @@ namespace VtlSoftware.Aspects.Logging.Net6
     public class InjectBasicLoggingAttribute : Attribute, IAspect<INamedType>
     {
         #region Fields
-
         /// <summary>
         /// The vtl 101 error.
         /// </summary>
