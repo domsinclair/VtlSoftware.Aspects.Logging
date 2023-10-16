@@ -1,6 +1,5 @@
 ﻿using Metalama.Framework.Aspects;
 using Metalama.Framework.Code;
-using System.Diagnostics;
 
 namespace VtlSoftware.Aspects.Logging.Net6
 {
@@ -28,8 +27,6 @@ namespace VtlSoftware.Aspects.Logging.Net6
 
         public static bool HasSensitiveParameters(IParameter parameter, string? sensitiveParameterNames)
         {
-            Debugger.Break();
-            //bool result = false;
             if(parameter.Attributes.OfAttributeType(typeof(RedactAttribute)).Any())
             {
                 return true;

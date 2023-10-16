@@ -7,7 +7,7 @@
 	<LangVersion>10.0</LangVersion>
 	<GenerateDocumentationFile>true</GenerateDocumentationFile>
 	<Title>VtlSoftware Aspects Logging (Net 6)</Title>
-	<Version>2023.2.5.1</Version>
+	<Version>2023.3.7-rcPreview</Version>
 	<Authors>Dom Sinclair</Authors>
 	<Company>Vtl Software Ltd</Company>
 	<Description>A collection of aspects (created with Metalama by Postsharp)  to provide logging for projects.</Description>

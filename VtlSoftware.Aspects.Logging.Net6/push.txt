@@ -1,0 +1,1 @@
+nuget.exe push D:\Source\Repos\Metalama\VtlSoftware.Aspects.Logging\VtlSoftware.Aspects.Logging.Net6\bin\Release\VtlSoftware.Aspects.Logging.Net6.2023.3.7-rcPreview.nupkg VtlNugetServer -Source http://localhost/VtlNugetServer/nuget

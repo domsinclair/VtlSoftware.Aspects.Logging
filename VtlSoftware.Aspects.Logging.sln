@@ -19,19 +19,26 @@ EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
+		LamaDebug|Any CPU = LamaDebug|Any CPU
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{7482908C-355C-40BC-80CB-24FDFB5BE4B4}.Debug|Any CPU.ActiveCfg = LamaDebug|Any CPU
 		{7482908C-355C-40BC-80CB-24FDFB5BE4B4}.Debug|Any CPU.Build.0 = LamaDebug|Any CPU
+		{7482908C-355C-40BC-80CB-24FDFB5BE4B4}.LamaDebug|Any CPU.ActiveCfg = LamaDebug|Any CPU
+		{7482908C-355C-40BC-80CB-24FDFB5BE4B4}.LamaDebug|Any CPU.Build.0 = LamaDebug|Any CPU
 		{7482908C-355C-40BC-80CB-24FDFB5BE4B4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7482908C-355C-40BC-80CB-24FDFB5BE4B4}.Release|Any CPU.Build.0 = Release|Any CPU
 		{E0EB7D0B-1E00-4BF8-B22A-B1B12648055E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{E0EB7D0B-1E00-4BF8-B22A-B1B12648055E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E0EB7D0B-1E00-4BF8-B22A-B1B12648055E}.LamaDebug|Any CPU.ActiveCfg = LamaDebug|Any CPU
+		{E0EB7D0B-1E00-4BF8-B22A-B1B12648055E}.LamaDebug|Any CPU.Build.0 = LamaDebug|Any CPU
 		{E0EB7D0B-1E00-4BF8-B22A-B1B12648055E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E0EB7D0B-1E00-4BF8-B22A-B1B12648055E}.Release|Any CPU.Build.0 = Release|Any CPU
 		{7451D140-59F0-4CBE-B59E-3060D340B29B}.Debug|Any CPU.ActiveCfg = LamaDebug|Any CPU
 		{7451D140-59F0-4CBE-B59E-3060D340B29B}.Debug|Any CPU.Build.0 = LamaDebug|Any CPU
+		{7451D140-59F0-4CBE-B59E-3060D340B29B}.LamaDebug|Any CPU.ActiveCfg = LamaDebug|Any CPU
+		{7451D140-59F0-4CBE-B59E-3060D340B29B}.LamaDebug|Any CPU.Build.0 = LamaDebug|Any CPU
 		{7451D140-59F0-4CBE-B59E-3060D340B29B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7451D140-59F0-4CBE-B59E-3060D340B29B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection

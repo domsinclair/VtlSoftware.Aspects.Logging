@@ -6,6 +6,7 @@
 	  <LangVersion>10.0</LangVersion>
 	  <Nullable>enable</Nullable>
 	  <MetalamaEnabled>false</MetalamaEnabled>
+	  <Configurations>Debug;Release;LamaDebug</Configurations>
   </PropertyGroup>
 
   <ItemGroup>
