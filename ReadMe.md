@@ -24,8 +24,8 @@ By taking this approach it is hoped that most peoples' needs will be covered.
 
 #### [Log]
 
-Adds logging to a method.  Entry and Exit is logged along with details of any parameters that were passed into it.
-If applicable the method's return value is also logged. In Addition this aspect can log properties.
+Adds logging to a method.  Entry and exit is logged along with details of any parameters that were passed into it.
+If applicable the method's return value is also logged. In addition this aspect can log properties.
 
 #### [LogAndTime]
 

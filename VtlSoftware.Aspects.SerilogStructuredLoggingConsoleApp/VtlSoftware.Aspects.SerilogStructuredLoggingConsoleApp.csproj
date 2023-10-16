@@ -6,7 +6,7 @@
 		<ImplicitUsings>enable</ImplicitUsings>
 		<Nullable>enable</Nullable>
 		<LangVersion>10.0</LangVersion>
-		<SensitiveParameterNames></SensitiveParameterNames>
+		<SensitiveParameterNames>"userName,Password"</SensitiveParameterNames>
 	</PropertyGroup>
 	
 	<ItemGroup>

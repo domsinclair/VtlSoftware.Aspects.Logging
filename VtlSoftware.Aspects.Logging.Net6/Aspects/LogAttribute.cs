@@ -1,6 +1,4 @@
-﻿
-
-using Metalama.Extensions.DependencyInjection;
+﻿using Metalama.Extensions.DependencyInjection;
 using Metalama.Framework.Advising;
 using Metalama.Framework.Aspects;
 using Metalama.Framework.Code;
@@ -8,6 +6,7 @@ using Metalama.Framework.CodeFixes;
 using Metalama.Framework.Diagnostics;
 using Metalama.Framework.Eligibility;
 using Microsoft.Extensions.Logging;
+using System.Diagnostics;
 using VtlSoftware.Aspects.Common.Net6;
 
 #pragma warning disable CS0649, CS8618, IDE0063
@@ -193,6 +192,10 @@ namespace VtlSoftware.Aspects.Logging.Net6
         [Template]
         public dynamic? OverrideMethod()
         {
+            Debugger.Break();
+            //var options = parameter.Compilation.Project.LoggingOptions();
+
+            //return options.SensitiveData.Contains(parameter.Name);
             var methodName = $"{meta.Target.Type.ToDisplayString(CodeDisplayFormat.MinimallyQualified)}.{meta.Target.Method.Name}";
             int paramCount = meta.Target.Parameters.Count;
             meta.Target.Project.TryGetProperty("SensitiveParameterNames", out var sensitiveParameterNames);

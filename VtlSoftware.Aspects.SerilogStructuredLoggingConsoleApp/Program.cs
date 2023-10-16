@@ -47,7 +47,9 @@ namespace VtlSoftware.Aspects.SerilogStructuredLoggingConsoleApp
                         services.AddSingleton<IConfiguration>(configuration);
                         services.AddScoped<ILoggingApect, LoggingAspect>();
                         services.AddTransient<DataFun>();
-                        //services.AddTransient<TestClass>();
+                        services.AddTransient<BasicCustomLogging>();
+                        services.AddTransient<ControlledCustomLogging>();
+                        services.AddTransient<SensitivedataLogging>();
                     })
                 .UseSerilog()
                 .Build();
@@ -62,8 +64,14 @@ namespace VtlSoftware.Aspects.SerilogStructuredLoggingConsoleApp
 
             List<string> strings = svc.GetSelectedContacts(); //this will get contacts 5,15,25,35,and 45
 
-            //var tc = ActivatorUtilities.CreateInstance<TestClass>(host.Services);
-           // tc.SayHello();
+            var bcl = ActivatorUtilities.CreateInstance<BasicCustomLogging>(host.Services);
+            bcl.CalculateVat();
+
+            var ccl = ActivatorUtilities.CreateInstance<ControlledCustomLogging>(host.Services);
+            ccl.CalculateVat();
+
+            var sdl = ActivatorUtilities.CreateInstance<SensitivedataLogging>(host.Services);
+            sdl.DoSometingWithPassword("frank", "dertws12");
 
             // Finally at the point that the application is about to exit we add an appropriate log message
             // and then shutdown the logger.

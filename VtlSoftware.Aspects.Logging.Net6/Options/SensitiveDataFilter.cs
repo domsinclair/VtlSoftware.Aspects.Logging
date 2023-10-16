@@ -1,5 +1,6 @@
 ﻿using Metalama.Framework.Aspects;
 using Metalama.Framework.Code;
+using System.Diagnostics;
 
 namespace VtlSoftware.Aspects.Logging.Net6
 {
@@ -13,6 +14,7 @@ namespace VtlSoftware.Aspects.Logging.Net6
     internal static class SensitiveDataFilter
     {
         #region Public Methods
+
         /// <summary>
         /// Query if 'parameter' has sensitive parameters.
         /// </summary>
@@ -26,6 +28,7 @@ namespace VtlSoftware.Aspects.Logging.Net6
 
         public static bool HasSensitiveParameters(IParameter parameter, string? sensitiveParameterNames)
         {
+            Debugger.Break();
             //bool result = false;
             if(parameter.Attributes.OfAttributeType(typeof(RedactAttribute)).Any())
             {
