@@ -33,7 +33,6 @@ namespace VtlSoftware.Aspects.Logging.Net6
     public class LogAndTimeAttribute : Attribute, IAspect<IMethod>, IAspect<IFieldOrProperty>
     {
         #region Fields
-
         /// <summary>
         /// The vtl 107 error.
         /// </summary>
@@ -222,6 +221,7 @@ namespace VtlSoftware.Aspects.Logging.Net6
                             {
                                 if(p.RefKind != RefKind.Out)
                                 {
+#pragma warning disable CS8604 // Possible null reference argument.
                                     if(SensitiveDataFilter.HasSensitiveParameters(p, sensitiveParameterNames))
                                     {
                                         parameters.Add($"Type = {p.Type}: Parameter Name ={p.Name}", "Redacted");
@@ -229,6 +229,7 @@ namespace VtlSoftware.Aspects.Logging.Net6
                                     {
                                         parameters.Add($"Type = {p.Type}: Parameter Name = {p.Name}", p.Value);
                                     }
+#pragma warning restore CS8604 // Possible null reference argument.
                                 } else
                                 {
                                     //Metalama can't serialise an out parameter but it would help if we know it's there.
@@ -260,6 +261,7 @@ namespace VtlSoftware.Aspects.Logging.Net6
                                 logger.LogString(LogLevel.Information, $"Leaving {methodName}.");
                             } else
                             {
+#pragma warning disable CS8604 // Possible null reference argument.
                                 if(SensitiveDataFilter.HasSensitiveParameters(
                                     meta.Target.Method.ReturnParameter,
                                     sensitiveParameterNames))
@@ -273,6 +275,7 @@ namespace VtlSoftware.Aspects.Logging.Net6
                                         LogLevel.Information,
                                         $"Leaving {methodName} with the following result: {result}");
                                 }
+#pragma warning restore CS8604 // Possible null reference argument.
                             }
                         }
                     }

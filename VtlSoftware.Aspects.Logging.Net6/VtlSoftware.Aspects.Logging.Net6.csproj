@@ -7,7 +7,7 @@
 	<LangVersion>10.0</LangVersion>
 	<GenerateDocumentationFile>true</GenerateDocumentationFile>
 	<Title>VtlSoftware Aspects Logging (Net 6)</Title>
-	<Version>2023.3.7-rcPreview</Version>
+	<Version>2023.3.8</Version>
 	<Authors>Dom Sinclair</Authors>
 	<Company>Vtl Software Ltd</Company>
 	<Description>A collection of aspects (created with Metalama by Postsharp)  to provide logging for projects.</Description>
@@ -29,6 +29,7 @@ For a more detailed explanation of all the changes that have been made please se
 	  <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
 	  <PackageId>$(AssemblyName)</PackageId>
 	  <Product>VtlSoftware.Aspects.Logging</Product>
+	  <RepositoryType>git</RepositoryType>
   </PropertyGroup>
 
   <ItemGroup>
@@ -40,13 +41,23 @@ For a more detailed explanation of all the changes that have been made please se
       <Pack>True</Pack>
       <PackagePath>\</PackagePath>
     </None>
-	  <None Include="VtlSoftwareAspectsLogging.targets" />
+	  <None Include="VtlSoftware.Aspects.Logging.Net6.targets">
+		  <Pack>True</Pack>
+		  <PackagePath>build</PackagePath>
+	  </None>
+			
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Metalama.Extensions.DependencyInjection" Version="2023.3.7-rc" />
-    <PackageReference Include="Metalama.Framework" Version="2023.3.7-rc" />
+    <PackageReference Include="Metalama.Extensions.DependencyInjection" Version="2023.3.8" />
+    <PackageReference Include="Metalama.Framework" Version="2023.3.8" />
     <PackageReference Include="VtlSoftware.Aspects.Common.Net6" Version="1.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="VtlSoftware.Aspects.Logging.Net6.targets">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
 
 </Project>

@@ -1,5 +1,6 @@
 ﻿using Metalama.Framework.Aspects;
 using Metalama.Framework.Code;
+using System.Diagnostics;
 
 namespace VtlSoftware.Aspects.Logging.Net6
 {
@@ -12,8 +13,12 @@ namespace VtlSoftware.Aspects.Logging.Net6
     [RunTimeOrCompileTime]
     internal static class SensitiveDataFilter
     {
-        #region Public Methods
+        #region Constants
+        const string fallback = "password,pwd,secret";
 
+        #endregion
+
+        #region Public Methods
         /// <summary>
         /// Query if 'parameter' has sensitive parameters.
         /// </summary>
@@ -25,17 +30,25 @@ namespace VtlSoftware.Aspects.Logging.Net6
         ///
         /// <returns>True if sensitive parameters, false if not.</returns>
 
-        public static bool HasSensitiveParameters(IParameter parameter, string? sensitiveParameterNames)
+        public static bool HasSensitiveParameters(IParameter parameter, string sensitiveParameterNames)
         {
             if(parameter.Attributes.OfAttributeType(typeof(RedactAttribute)).Any())
             {
                 return true;
             }
-
-            if(sensitiveParameterNames != null)
+            Debugger.Break();
+            if(!string.IsNullOrEmpty(sensitiveParameterNames))
             {
                 sensitiveParameterNames = sensitiveParameterNames.ToLowerInvariant();
-                if(sensitiveParameterNames.Any(n => parameter.Name.ToLowerInvariant().Contains(n)))
+                List<string> paramNames = sensitiveParameterNames.Split(',').ToList();
+                if(paramNames.Any(n => parameter.Name.ToLowerInvariant().Contains(n)))
+                {
+                    return true;
+                }
+            } else
+            {
+                List<string> paramNames = fallback.Split(',').ToList();
+                if(paramNames.Any(n => parameter.Name.ToLowerInvariant().Contains(n)))
                 {
                     return true;
                 }

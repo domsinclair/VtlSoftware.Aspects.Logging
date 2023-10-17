@@ -124,6 +124,6 @@ Applies the ```[LogAndTime]``` aspect to all methods and the ```[LogAndTime]``` 
 
 ## Help and Support
 
-A comprehensive help file can be found [here](https://vtlsoftware.co.uk/aspectdocs/Introduction.html).  It goes into considerably more detail than is possible within the confines of a readme file.
+A comprehensive help file can be found [here](https://vtlsoftware.co.uk/aspectdocs/Introduction.html).  It goes into considerably more detail than is possible within the confines of a readme file. It also offers some advice on using Metalama to create your own aspects.
 
 Please ask questions or report any issues on the github repo as it will generally be picked up quiker that way. 
