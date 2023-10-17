@@ -1,10 +1,10 @@
 ﻿using Metalama.Framework.Fabrics;
 using VtlSoftware.Aspects.Logging.Net6;
 
-namespace VtlSoftware.Aspects.Logging.Tests.net6.DoNotLogAllPublicMethodsInNoLogDecoratedClass
+namespace VtlSoftware.Aspects.Logging.Tests.net6.DoNotLogAndTimeAllPublicMethodsInNoLogDecoratedClass
 {
     [NoLog]
-    internal class DoNotLogAllPublicMethodsInNoLogDecoratedClass
+    public class DoNotLogAndTimeAllPublicMethodsInNoLogDecoratedClassTest
     {
         #region Private Methods
 
@@ -29,7 +29,6 @@ namespace VtlSoftware.Aspects.Logging.Tests.net6.DoNotLogAllPublicMethodsInNoLog
     public static class Static1
     {
         #region Public Methods
-
         public static void DoMoreStuff()
         {
         }
@@ -41,7 +40,7 @@ namespace VtlSoftware.Aspects.Logging.Tests.net6.DoNotLogAllPublicMethodsInNoLog
     {
         #region Public Methods
 
-        public override void AmendProject(IProjectAmender amender) { amender.LogAllPublicMethods(); }
+        public override void AmendProject(IProjectAmender amender) { amender.LogAndTimeAllPublicMethods(); }
 
         #endregion
     }

@@ -14,6 +14,52 @@ namespace VtlSoftware.Aspects.Logging.Net6
     public static class FabricExtensions
     {
         #region Public Methods
+        /// <summary>
+        /// An IProjectAmender extension method that adds the functionality to add basic logging to all classes.
+        /// </summary>
+        ///
+        /// <remarks>
+        /// This fabric extension adds (via Dependency Injection) the Microsoft.Extensions.Logging ILogger interface to
+        /// all of those classes in a project that are not static or have neither the [InjectControlledLogging] Aspect
+        /// On the class or either of [Log] or [LogAndTime] Aspects on methods or properties in the class.
+        /// </remarks>
+        ///
+        /// <param name="amender">The amender to act on.</param>
+
+        public static void AddBasicLoggingToAllClasses(this IProjectAmender amender)
+        {
+            amender.Outbound
+                .SelectMany(compilation => compilation.AllTypes)
+               .Where(
+                   type => !type.IsStatic &&
+                       !type.Attributes.OfAttributeType(typeof(InjectControlledLoggingAttribute)).Any() &&
+                       !type.Attributes.OfAttributeType(typeof(NoLogAttribute)).Any())
+                .AddAspectIfEligible<InjectBasicLoggingAttribute>();
+        }
+
+        /// <summary>
+        /// An IProjectAmender extension method that adds the functionality to add basic logging to all classes.
+        /// </summary>
+        ///
+        /// <remarks>
+        /// This fabric extension adds (via Dependency Injection) the Microsoft.Extensions.Logging ILogger interface 
+        /// and the VtlSoftware ILoggingAspect interface to all of those classes in a project that are not static or 
+        /// have neither the [InjectControlledLogging] Aspect On the class or either of [Log] or [LogAndTime] Aspects on
+        /// methods or properties in the class.
+        /// </remarks>
+        ///
+        /// <param name="amender">The amender to act on.</param>
+
+        public static void AddControlledLoggingToAllClasses(this IProjectAmender amender)
+        {
+            amender.Outbound
+                .SelectMany(compilation => compilation.AllTypes)
+                .Where(
+                    type => !type.IsStatic &&
+                        !type.Attributes.OfAttributeType(typeof(InjectBasicLoggingAttribute)).Any() &&
+                        !type.Attributes.OfAttributeType(typeof(NoLogAttribute)).Any())
+                .AddAspectIfEligible<InjectControlledLoggingAttribute>();
+        }
 
         /// <summary>
         /// An IProjectAmender extension method that logs all methods, by applying the [LogMethod] attribute.

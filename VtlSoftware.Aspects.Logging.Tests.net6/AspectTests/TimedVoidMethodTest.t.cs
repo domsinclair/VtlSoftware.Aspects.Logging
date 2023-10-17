@@ -4,15 +4,15 @@ namespace VtlSoftware.Aspects.Logging.Tests.net6.TimedVoidMethod
 {
     public class TimedVoidMethodTest
     {
-        public TimedVoidMethodTest(global::Microsoft.Extensions.Logging.ILogger<global::VtlSoftware.Aspects.Logging.Tests.net6.TimedVoidMethod.TimedVoidMethodTest> logger = default(global::Microsoft.Extensions.Logging.ILogger<global::VtlSoftware.Aspects.Logging.Tests.net6.TimedVoidMethod.TimedVoidMethodTest>))
+        public TimedVoidMethodTest(global::Microsoft.Extensions.Logging.ILogger<global::VtlSoftware.Aspects.Logging.Tests.net6.TimedVoidMethod.TimedVoidMethodTest> logger = default(global::Microsoft.Extensions.Logging.ILogger<global::VtlSoftware.Aspects.Logging.Tests.net6.TimedVoidMethod.TimedVoidMethodTest>), global::VtlSoftware.Aspects.Logging.Net6.ILoggingApect? loggingApect = default(global::VtlSoftware.Aspects.Logging.Net6.ILoggingApect?))
         {
             this.logger = logger ?? throw new System.ArgumentNullException(nameof(logger));
+            this.loggingApect = loggingApect ?? throw new System.ArgumentNullException(nameof(loggingApect));
         }
         [LogAndTime]
         public void Iterate()
         {
-            const string redacted = "<Redacted>";
-           var isLoggingEnabled = this.logger.IsEnabled(global::Microsoft.Extensions.Logging.LogLevel.Trace) | this.logger.IsEnabled(global::Microsoft.Extensions.Logging.LogLevel.Debug) | this.logger.IsEnabled(global::Microsoft.Extensions.Logging.LogLevel.Information);
+            var isLoggingEnabled = this.loggingApect.LoggingEnabled;
             if (isLoggingEnabled)
             {
                 using (var guard = global::VtlSoftware.Aspects.Common.Net6.LogRecursionGuard.Begin())
@@ -68,5 +68,6 @@ namespace VtlSoftware.Aspects.Logging.Tests.net6.TimedVoidMethod
             }
         }
         private global::Microsoft.Extensions.Logging.ILogger logger;
+        private global::VtlSoftware.Aspects.Logging.Net6.ILoggingApect loggingApect;
     }
 }

@@ -7,7 +7,7 @@
 	<LangVersion>10.0</LangVersion>
 	<GenerateDocumentationFile>true</GenerateDocumentationFile>
 	<Title>VtlSoftware Aspects Logging (Net 6)</Title>
-	<Version>2023.2.5.1</Version>
+	<Version>2023.3.8</Version>
 	<Authors>Dom Sinclair</Authors>
 	<Company>Vtl Software Ltd</Company>
 	<Description>A collection of aspects (created with Metalama by Postsharp)  to provide logging for projects.</Description>
@@ -16,10 +16,20 @@
 	<PackageReadmeFile>ReadMe.md</PackageReadmeFile>
 	<RepositoryUrl>https://github.com/domsinclair/VtlSoftware.Aspects.Logging</RepositoryUrl>
 	<PackageTags>VtlSoftware, Metalama, Logging</PackageTags>
-	<PackageReleaseNotes>This small point release fixes an issue which caused a conflict with some logging providers.</PackageReleaseNotes>
+	<PackageReleaseNotes>This release brings the package inline with the latest Metalama official release. It also sees a slight change in name to standardise the naming across future VtlSoftware aspect libraries.
+
+It also marks a number of changes and additional features that should make it more useful in realworld use.
+
+It is now possible to use either the pre-defined log templates that the library provides or alternatively create your own custome messages but utilise the aspects provided to do all the dependency injection work for you.
+
+The source repository now has a better working example demonstrating the use of the library with Serilog.
+
+For a more detailed explanation of all the changes that have been made please see the main help file. </PackageReleaseNotes>
 	<PackageLicenseExpression>MIT</PackageLicenseExpression>
-	<GeneratePackageOnBuild>True</GeneratePackageOnBuild>
-    <MetalamaLicense>111997-ZEPC8QQQXEAEQHQCB88YNBFRY2EWZ4GVR8YLX6GV74UW7BJSAMKQ7BFRY8KKZX9F38JBX79RVG6CXMJXZDAQZ4GVR8YLX6GV74UW7BJSAMKQ7BFRY8KKZX9F38JBX79RVG6CXMJXCQCRAFAT5B3H3NMGFEZJUGSDPAE83SEFL74RDAMFWF6WFBS8QT2RPTXPE7NMK8C6Y3DNQQEZB3SXGQYZATP4Q8USJG4X6P2</MetalamaLicense>
+	  <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+	  <PackageId>$(AssemblyName)</PackageId>
+	  <Product>VtlSoftware.Aspects.Logging</Product>
+	  <RepositoryType>git</RepositoryType>
   </PropertyGroup>
 
   <ItemGroup>
@@ -31,12 +41,23 @@
       <Pack>True</Pack>
       <PackagePath>\</PackagePath>
     </None>
+	  <None Include="VtlSoftware.Aspects.Logging.Net6.targets">
+		  <Pack>True</Pack>
+		  <PackagePath>build</PackagePath>
+	  </None>
+			
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Metalama.Extensions.DependencyInjection" Version="2023.2.5" />
-    <PackageReference Include="Metalama.Framework" Version="2023.2.5" />
+    <PackageReference Include="Metalama.Extensions.DependencyInjection" Version="2023.3.8" />
+    <PackageReference Include="Metalama.Framework" Version="2023.3.8" />
     <PackageReference Include="VtlSoftware.Aspects.Common.Net6" Version="1.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="VtlSoftware.Aspects.Logging.Net6.targets">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
 
 </Project>

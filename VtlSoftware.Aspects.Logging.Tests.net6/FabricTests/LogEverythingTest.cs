@@ -18,7 +18,7 @@ namespace VtlSoftware.Aspects.Logging.Tests.net6.FabricTests
 
         public double myDouble { get; set; }
 
-        public string mystring { get; set; }
+        public string? mystring { get; set; }
 
         #endregion
     }
@@ -26,6 +26,7 @@ namespace VtlSoftware.Aspects.Logging.Tests.net6.FabricTests
     public class Configure : ProjectFabric
     {
         #region Public Methods
+
         public override void AmendProject(IProjectAmender amender) { amender.LogEverything(); }
 
         #endregion

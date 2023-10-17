@@ -9,18 +9,15 @@ namespace VtlSoftware.Aspects.Logging.Tests.net6.LogPropertyWithLogAndTimeAttrib
         {
             get
             {
-                var propValue = this._myDouble;
                 var result = this._myDouble;
-                global::VtlSoftware.Aspects.Common.Net6.LoggerExtensions.Log(logger, global::Microsoft.Extensions.Logging.LogLevel.Information, $"The value of LogPropertyWithLogAndTimeAttributeTest.MyDouble is: double = {propValue}");
+                global::VtlSoftware.Aspects.Common.Net6.LoggerExtensions.Log(logger, global::Microsoft.Extensions.Logging.LogLevel.Debug, $"The value of LogPropertyWithLogAndTimeAttributeTest.MyDouble is: double = {this._myDouble}");
                 return (global::System.Double)result;
             }
             set
             {
-                var oldPropValue = this._myDouble;
+                global::VtlSoftware.Aspects.Common.Net6.LoggerExtensions.Log(logger, global::Microsoft.Extensions.Logging.LogLevel.Debug, $"The old value of LogPropertyWithLogAndTimeAttributeTest was: double = {this._myDouble}");
                 this._myDouble = value;
-                var newPropValue = this._myDouble;
-                global::VtlSoftware.Aspects.Common.Net6.LoggerExtensions.Log(logger, global::Microsoft.Extensions.Logging.LogLevel.Information, $"The old value of LogPropertyWithLogAndTimeAttributeTest.MyDouble was: double = {oldPropValue}");
-                global::VtlSoftware.Aspects.Common.Net6.LoggerExtensions.Log(logger, global::Microsoft.Extensions.Logging.LogLevel.Information, $"The new value of LogPropertyWithLogAndTimeAttributeTest.MyDouble is: double = {newPropValue}");
+                global::VtlSoftware.Aspects.Common.Net6.LoggerExtensions.Log(logger, global::Microsoft.Extensions.Logging.LogLevel.Debug, $"The new value of LogPropertyWithLogAndTimeAttributeTest is: double = {this._myDouble}");
             }
         }
         private string _myString = default!;
@@ -29,24 +26,23 @@ namespace VtlSoftware.Aspects.Logging.Tests.net6.LogPropertyWithLogAndTimeAttrib
         {
             get
             {
-                var propValue = this._myString;
                 var result = this._myString;
-                global::VtlSoftware.Aspects.Common.Net6.LoggerExtensions.Log(logger, global::Microsoft.Extensions.Logging.LogLevel.Information, $"The value of LogPropertyWithLogAndTimeAttributeTest.MyString is: string = {propValue}");
+                global::VtlSoftware.Aspects.Common.Net6.LoggerExtensions.Log(logger, global::Microsoft.Extensions.Logging.LogLevel.Debug, $"The value of LogPropertyWithLogAndTimeAttributeTest.MyString is: string = {this._myString}");
                 return (global::System.String)result;
             }
             set
             {
-                var oldPropValue = this._myString;
+                global::VtlSoftware.Aspects.Common.Net6.LoggerExtensions.Log(logger, global::Microsoft.Extensions.Logging.LogLevel.Debug, $"The old value of LogPropertyWithLogAndTimeAttributeTest was: string = {this._myString}");
                 this._myString = value;
-                var newPropValue = this._myString;
-                global::VtlSoftware.Aspects.Common.Net6.LoggerExtensions.Log(logger, global::Microsoft.Extensions.Logging.LogLevel.Information, $"The old value of LogPropertyWithLogAndTimeAttributeTest.MyString was: string = {oldPropValue}");
-                global::VtlSoftware.Aspects.Common.Net6.LoggerExtensions.Log(logger, global::Microsoft.Extensions.Logging.LogLevel.Information, $"The new value of LogPropertyWithLogAndTimeAttributeTest.MyString is: string = {newPropValue}");
+                global::VtlSoftware.Aspects.Common.Net6.LoggerExtensions.Log(logger, global::Microsoft.Extensions.Logging.LogLevel.Debug, $"The new value of LogPropertyWithLogAndTimeAttributeTest is: string = {this._myString}");
             }
         }
         private global::Microsoft.Extensions.Logging.ILogger logger;
-        public LogPropertyWithLogAndTimeAttributeTest(global::Microsoft.Extensions.Logging.ILogger<global::VtlSoftware.Aspects.Logging.Tests.net6.LogPropertyWithLogAndTimeAttribute.LogPropertyWithLogAndTimeAttributeTest> logger = default(global::Microsoft.Extensions.Logging.ILogger<global::VtlSoftware.Aspects.Logging.Tests.net6.LogPropertyWithLogAndTimeAttribute.LogPropertyWithLogAndTimeAttributeTest>))
+        private global::VtlSoftware.Aspects.Logging.Net6.ILoggingApect loggingApect;
+        public LogPropertyWithLogAndTimeAttributeTest(global::VtlSoftware.Aspects.Logging.Net6.ILoggingApect? loggingApect = default(global::VtlSoftware.Aspects.Logging.Net6.ILoggingApect?), global::Microsoft.Extensions.Logging.ILogger<global::VtlSoftware.Aspects.Logging.Tests.net6.LogPropertyWithLogAndTimeAttribute.LogPropertyWithLogAndTimeAttributeTest> logger = default(global::Microsoft.Extensions.Logging.ILogger<global::VtlSoftware.Aspects.Logging.Tests.net6.LogPropertyWithLogAndTimeAttribute.LogPropertyWithLogAndTimeAttributeTest>))
         {
             this.logger = logger ?? throw new System.ArgumentNullException(nameof(logger));
+            this.loggingApect = loggingApect ?? throw new System.ArgumentNullException(nameof(loggingApect));
         }
     }
 }

@@ -1,0 +1,1 @@
+ // Error LAMA0037 on `InjectBasicLogging`: `The aspect 'InjectBasicLogging' cannot be applied to the type 'DoNotInjectBasicLoggingIntoAClassThatIsStaticTest' because 'DoNotInjectBasicLoggingIntoAClassThatIsStaticTest' must not be static.`

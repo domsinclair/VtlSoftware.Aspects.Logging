@@ -1,12 +1,14 @@
-﻿
-using Metalama.Extensions.DependencyInjection;
+﻿using Metalama.Extensions.DependencyInjection;
 using Metalama.Framework.Advising;
 using Metalama.Framework.Aspects;
 using Metalama.Framework.Code;
+using Metalama.Framework.CodeFixes;
+using Metalama.Framework.Diagnostics;
 using Metalama.Framework.Eligibility;
 using Microsoft.Extensions.Logging;
 using VtlSoftware.Aspects.Common.Net6;
 
+#pragma warning disable CS0649, CS8618, IDE0063
 namespace VtlSoftware.Aspects.Logging.Net6
 {
     /// <summary>
@@ -18,6 +20,12 @@ namespace VtlSoftware.Aspects.Logging.Net6
     /// <seealso cref="T:Attribute"/>
     /// <seealso cref="T:IAspect{IMethod}"/>
     /// <seealso cref="T:IAspect{IFieldOrProperty}"/>
+    ///
+    /// ### <remarks>
+    /// An Aspect that will add basic logging to Methods and properties in a class.  It injects the
+    /// Microsoft.Extensions.Logging ILogger interface and the VtlSoftware ILoggingAspect interface into the class and
+    /// as such it cannot be used in a static class.
+    /// </remarks>
 
     [AttributeUsage(AttributeTargets.Method | AttributeTargets.Property)]
     public class LogAttribute : Attribute, IAspect<IMethod>, IAspect<IFieldOrProperty>
@@ -25,10 +33,32 @@ namespace VtlSoftware.Aspects.Logging.Net6
         #region Fields
 
         /// <summary>
+        /// The vtl 105 error.
+        /// </summary>
+        private static DiagnosticDefinition<IMethod> vtl105Error = new(
+            "VTL105",
+            Severity.Error,
+            "This class has already been marked as not requiring logging. Remove the [Log] Aspect");
+
+        /// <summary>
+        /// The vtl 106 error.
+        /// </summary>
+        private static DiagnosticDefinition<IFieldOrProperty> vtl106Error = new(
+            "VTL106",
+            Severity.Error,
+            "This class has already been marked as not requiring logging. Remove the [Log] Aspect");
+
+        /// <summary>
         /// (Immutable) The logger.
         /// </summary>
         [IntroduceDependency]
         private readonly ILogger logger;
+
+        /// <summary>
+        /// (Immutable) The logging apect.
+        /// </summary>
+        [IntroduceDependency]
+        private readonly ILoggingApect loggingApect;
 
         #endregion
 
@@ -45,12 +75,21 @@ namespace VtlSoftware.Aspects.Logging.Net6
         /// </param>
         ///
         /// <seealso cref="M:IAspect.BuildAspect(IAspectBuilder{IMethod})"/>
+        ///
+        /// ### <remarks>.</remarks>
 
         public void BuildAspect(IAspectBuilder<IMethod> builder)
         {
+            if(builder.Target.DeclaringType.Attributes.OfAttributeType(typeof(NoLogAttribute)).Any())
+            {
+                builder.Diagnostics.Report(vtl105Error.WithArguments(builder.Target));
+                builder.Diagnostics.Suggest(
+                    CodeFixFactory.RemoveAttributes(builder.Target, typeof(LogAttribute), "Remove Aspect | Log"));
+                builder.SkipAspect();
+            }
+
             if(!(builder.Target.Attributes.OfAttributeType(typeof(NoLogAttribute)).Any() ||
-                builder.Target.Attributes.OfAttributeType(typeof(LogAndTimeAttribute)).Any() ||
-                builder.Target.DeclaringType.Attributes.OfAttributeType(typeof(NoLogAttribute)).Any()))
+                builder.Target.Attributes.OfAttributeType(typeof(LogAndTimeAttribute)).Any()))
             {
                 builder.Advice.Override(builder.Target, nameof(this.OverrideMethod));
             } else
@@ -71,11 +110,20 @@ namespace VtlSoftware.Aspects.Logging.Net6
         /// </param>
         ///
         /// <seealso cref="M:IAspect.BuildAspect(IAspectBuilder{IFieldOrProperty})"/>
+        ///
+        /// ### <remarks>.</remarks>
 
         public void BuildAspect(IAspectBuilder<IFieldOrProperty> builder)
         {
-            if(!(builder.Target.Attributes.OfAttributeType(typeof(NoLogAttribute)).Any() ||
-                builder.Target.DeclaringType.Attributes.OfAttributeType(typeof(NoLogAttribute)).Any()))
+            if(builder.Target.DeclaringType.Attributes.OfAttributeType(typeof(NoLogAttribute)).Any())
+            {
+                builder.Diagnostics.Report(vtl106Error.WithArguments(builder.Target));
+                builder.Diagnostics.Suggest(
+                    CodeFixFactory.RemoveAttributes(builder.Target, typeof(LogAttribute), "Remove Aspect | Log"));
+                builder.SkipAspect();
+            }
+
+            if(!(builder.Target.Attributes.OfAttributeType(typeof(NoLogAttribute)).Any()))
             {
                 builder.Advice.Override(builder.Target, nameof(this.OverrideProperty));
             } else
@@ -95,14 +143,15 @@ namespace VtlSoftware.Aspects.Logging.Net6
         /// An object that allows the aspect to configure characteristics like description, dependencies, or layers.
         /// </param>
         ///
-        /// <seealso cref="M:IEligible.BuildEligibility(IEligibilityBuilder{IMethod})"/>
         /// <seealso href="@eligibility"/>
+        /// <seealso cref="M:IEligible.BuildEligibility(IEligibilityBuilder{IMethod})"/>
+        ///
+        /// ### <remarks>.</remarks>
 
         public void BuildEligibility(IEligibilityBuilder<IMethod> builder)
         {
             EligibilityRuleFactory.GetAdviceEligibilityRule(AdviceKind.OverrideMethod);
             builder.MustNotBeStatic();
-            builder.MustNotHaveAspectOfType(typeof(LogAndTimeAttribute));
             builder.MustNotHaveAspectOfType(typeof(NoLogAttribute));
         }
 
@@ -117,8 +166,10 @@ namespace VtlSoftware.Aspects.Logging.Net6
         /// An object that allows the aspect to configure characteristics like description, dependencies, or layers.
         /// </param>
         ///
-        /// <seealso cref="M:IEligible.BuildEligibility(IEligibilityBuilder{IFieldOrProperty})"/>
         /// <seealso href="@eligibility"/>
+        /// <seealso cref="M:IEligible.BuildEligibility(IEligibilityBuilder{IFieldOrProperty})"/>
+        ///
+        /// ### <remarks>.</remarks>
 
         public void BuildEligibility(IEligibilityBuilder<IFieldOrProperty> builder)
         {
@@ -134,18 +185,20 @@ namespace VtlSoftware.Aspects.Logging.Net6
         /// <remarks></remarks>
         ///
         /// <returns>A dynamic?</returns>
+        ///
+        /// ### <remarks>.</remarks>
 
         [Template]
         public dynamic? OverrideMethod()
         {
             var methodName = $"{meta.Target.Type.ToDisplayString(CodeDisplayFormat.MinimallyQualified)}.{meta.Target.Method.Name}";
             int paramCount = meta.Target.Parameters.Count;
-            const string redacted = "<Redacted>";
+            meta.Target.Project.TryGetProperty("SensitiveParameterNames", out var sensitiveParameterNames);
 
-            //add a check to see if we do actually want to do any logging at all
-            var isLoggingEnabled = this.logger.IsEnabled(LogLevel.Trace) |
-                this.logger.IsEnabled(LogLevel.Debug) |
-                this.logger.IsEnabled(LogLevel.Information);
+            // Add a check to see if we want to do any logging at all.
+            // This value is obtained from an external configuration file (ie appsettings.json)
+            
+            var isLoggingEnabled = this.loggingApect.LoggingEnabled;
 
             if(isLoggingEnabled)
             {
@@ -161,17 +214,20 @@ namespace VtlSoftware.Aspects.Logging.Net6
                         } else
                         {
                             Dictionary<string, object> parameters = new();
+
                             foreach(var p in meta.Target.Parameters)
                             {
                                 if(p.RefKind != RefKind.Out)
                                 {
-                                    if(SensitiveDataFilter.IsSensitive(p))
+#pragma warning disable CS8604 // Possible null reference argument.
+                                    if(SensitiveDataFilter.HasSensitiveParameters(p, sensitiveParameterNames))
                                     {
-                                        parameters.Add($"Type = {p.Type}: Parameter Name ={p.Name}", redacted);
+                                        parameters.Add($"Type = {p.Type}: Parameter Name ={p.Name}", "Redacted");
                                     } else
                                     {
                                         parameters.Add($"Type = {p.Type}: Parameter Name = {p.Name}", p.Value);
                                     }
+#pragma warning restore CS8604 // Possible null reference argument.
                                 } else
                                 {
                                     //Metalama can't serialise an out parameter but it would help if we know it's there.
@@ -202,17 +258,21 @@ namespace VtlSoftware.Aspects.Logging.Net6
                                 logger.LogString(LogLevel.Information, $"Leaving {methodName}.");
                             } else
                             {
-                                if(SensitiveDataFilter.IsSensitive(meta.Target.Method.ReturnParameter))
+#pragma warning disable CS8604 // Possible null reference argument.
+                                if(SensitiveDataFilter.HasSensitiveParameters(
+                                    meta.Target.Method.ReturnParameter,
+                                    sensitiveParameterNames))
                                 {
-                                    logger.Log(
+                                    logger.LogString(
                                         LogLevel.Information,
-                                        $"Leaving {methodName} with the following result which has been {redacted}");
+                                        $"Leaving {methodName} : The result has been redacted to protect sensitive data.");
                                 } else
                                 {
                                     logger.Log(
                                         LogLevel.Information,
                                         $"Leaving {methodName} with the following result: {result}");
                                 }
+#pragma warning restore CS8604 // Possible null reference argument.
                             }
                         }
                     }
@@ -242,25 +302,27 @@ namespace VtlSoftware.Aspects.Logging.Net6
 
         [Template]
         public dynamic? OverrideProperty
+
         {
             get
             {
-                var propertyName = $"{meta.Target.Type.ToDisplayString(CodeDisplayFormat.MinimallyQualified)}.{meta.Target.Property.Name}";
-                var propType = meta.Target.Property.Type;
-                var propValue = meta.Target.Property.Value;
                 var result = meta.Proceed();
-                logger.Log(LogLevel.Information, $"The value of {propertyName} is: {propType} = {propValue}");
+                logger.Log(
+                    LogLevel.Debug,
+                    $"The value of {meta.Target.Type.ToDisplayString(CodeDisplayFormat.MinimallyQualified)}.{meta.Target.Property.Name} is: {meta.Target.Property.Type} = {meta.Target.Property.Value}");
                 return result;
             }
             set
             {
-                var propertyName = $"{meta.Target.Type.ToDisplayString(CodeDisplayFormat.MinimallyQualified)}.{meta.Target.Property.Name}";
-                var propType = meta.Target.Property.Type;
-                var oldPropValue = meta.Target.Property.Value;
+                logger.Log(
+                    LogLevel.Debug,
+                    $"The old value of {meta.Target.Type.ToDisplayString(CodeDisplayFormat.MinimallyQualified)} was: {meta.Target.Property.Type} = {meta.Target.Property.Value}");
+
                 meta.Proceed();
-                var newPropValue = meta.Target.Property.Value;
-                logger.Log(LogLevel.Information, $"The old value of {propertyName} was: {propType} = {oldPropValue}");
-                logger.Log(LogLevel.Information, $"The new value of {propertyName} is: {propType} = {newPropValue}");
+
+                logger.Log(
+                    LogLevel.Debug,
+                    $"The new value of {meta.Target.Type.ToDisplayString(CodeDisplayFormat.MinimallyQualified)} is: {meta.Target.Property.Type} = {meta.Target.Property.Value}");
             }
         }
 

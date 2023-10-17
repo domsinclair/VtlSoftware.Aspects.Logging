@@ -31,7 +31,6 @@ namespace VtlSoftware.Aspects.Logging.Tests.net6.LogAllProperties
     public class Configure : ProjectFabric
     {
         #region Public Methods
-
         public override void AmendProject(IProjectAmender amender) { amender.LogAllProperties(); }
 
         #endregion
