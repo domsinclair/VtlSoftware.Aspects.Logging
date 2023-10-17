@@ -49,8 +49,8 @@ For a more detailed explanation of all the changes that have been made please se
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Metalama.Extensions.DependencyInjection" Version="2023.3.8" />
-    <PackageReference Include="Metalama.Framework" Version="2023.3.8" />
+    <PackageReference Include="Metalama.Extensions.DependencyInjection" Version="2023.4.3-preview" />
+    <PackageReference Include="Metalama.Framework" Version="2023.4.3-preview" />
     <PackageReference Include="VtlSoftware.Aspects.Common.Net6" Version="1.0.0" />
   </ItemGroup>
 
