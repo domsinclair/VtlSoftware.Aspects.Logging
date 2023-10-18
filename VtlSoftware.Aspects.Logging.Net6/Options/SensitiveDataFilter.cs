@@ -1,6 +1,5 @@
 ﻿using Metalama.Framework.Aspects;
 using Metalama.Framework.Code;
-using System.Diagnostics;
 
 namespace VtlSoftware.Aspects.Logging.Net6
 {
@@ -14,6 +13,7 @@ namespace VtlSoftware.Aspects.Logging.Net6
     internal static class SensitiveDataFilter
     {
         #region Constants
+
         const string fallback = "password,pwd,secret";
 
         #endregion
@@ -36,25 +36,16 @@ namespace VtlSoftware.Aspects.Logging.Net6
             {
                 return true;
             }
-            Debugger.Break();
+
             if(!string.IsNullOrEmpty(sensitiveParameterNames))
             {
-                sensitiveParameterNames = sensitiveParameterNames.ToLowerInvariant();
-                List<string> paramNames = sensitiveParameterNames.Split(',').ToList();
-                if(paramNames.Any(n => parameter.Name.ToLowerInvariant().Contains(n)))
-                {
-                    return true;
-                }
+                return sensitiveParameterNames.Split(',').Contains(
+                    parameter.Name,
+                    StringComparer.InvariantCultureIgnoreCase);
             } else
             {
-                List<string> paramNames = fallback.Split(',').ToList();
-                if(paramNames.Any(n => parameter.Name.ToLowerInvariant().Contains(n)))
-                {
-                    return true;
-                }
+                return fallback.Split(',').Contains(parameter.Name, StringComparer.InvariantCultureIgnoreCase);
             }
-
-            return false;
         }
 
         #endregion

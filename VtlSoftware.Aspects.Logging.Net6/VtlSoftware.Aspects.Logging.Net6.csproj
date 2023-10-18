@@ -7,7 +7,7 @@
 	<LangVersion>10.0</LangVersion>
 	<GenerateDocumentationFile>true</GenerateDocumentationFile>
 	<Title>VtlSoftware Aspects Logging (Net 6)</Title>
-	<Version>2023.3.8</Version>
+	<Version>2023.3.8.1</Version>
 	<Authors>Dom Sinclair</Authors>
 	<Company>Vtl Software Ltd</Company>
 	<Description>A collection of aspects (created with Metalama by Postsharp)  to provide logging for projects.</Description>
@@ -16,15 +16,7 @@
 	<PackageReadmeFile>ReadMe.md</PackageReadmeFile>
 	<RepositoryUrl>https://github.com/domsinclair/VtlSoftware.Aspects.Logging</RepositoryUrl>
 	<PackageTags>VtlSoftware, Metalama, Logging</PackageTags>
-	<PackageReleaseNotes>This release brings the package inline with the latest Metalama official release. It also sees a slight change in name to standardise the naming across future VtlSoftware aspect libraries.
-
-It also marks a number of changes and additional features that should make it more useful in realworld use.
-
-It is now possible to use either the pre-defined log templates that the library provides or alternatively create your own custome messages but utilise the aspects provided to do all the dependency injection work for you.
-
-The source repository now has a better working example demonstrating the use of the library with Serilog.
-
-For a more detailed explanation of all the changes that have been made please see the main help file. </PackageReleaseNotes>
+	<PackageReleaseNotes>Release Matches Metalama 2023.3.8  This release improves sensitive data filter to make sorting more efficient. </PackageReleaseNotes>
 	<PackageLicenseExpression>MIT</PackageLicenseExpression>
 	  <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
 	  <PackageId>$(AssemblyName)</PackageId>
