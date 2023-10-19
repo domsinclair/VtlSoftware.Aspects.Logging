@@ -1,9 +1,9 @@
-using VtlSoftware.Aspects.Logging.Net6;
+using VtlSoftware.Aspects.Logging;
 namespace VtlSoftware.Aspects.Logging.Tests.net6.TimedNonVoidMethod
 {
     public class TimedNonVoidMethodTest
     {
-        public TimedNonVoidMethodTest(global::Microsoft.Extensions.Logging.ILogger<global::VtlSoftware.Aspects.Logging.Tests.net6.TimedNonVoidMethod.TimedNonVoidMethodTest> logger = default(global::Microsoft.Extensions.Logging.ILogger<global::VtlSoftware.Aspects.Logging.Tests.net6.TimedNonVoidMethod.TimedNonVoidMethodTest>), global::VtlSoftware.Aspects.Logging.Net6.ILoggingApect? loggingApect = default(global::VtlSoftware.Aspects.Logging.Net6.ILoggingApect?))
+        public TimedNonVoidMethodTest(global::Microsoft.Extensions.Logging.ILogger<global::VtlSoftware.Aspects.Logging.Tests.net6.TimedNonVoidMethod.TimedNonVoidMethodTest> logger = default(global::Microsoft.Extensions.Logging.ILogger<global::VtlSoftware.Aspects.Logging.Tests.net6.TimedNonVoidMethod.TimedNonVoidMethodTest>), global::VtlSoftware.Aspects.Logging.ILoggingApect? loggingApect = default(global::VtlSoftware.Aspects.Logging.ILoggingApect?))
         {
             this.logger = logger ?? throw new System.ArgumentNullException(nameof(logger));
             this.loggingApect = loggingApect ?? throw new System.ArgumentNullException(nameof(loggingApect));
@@ -14,11 +14,11 @@ namespace VtlSoftware.Aspects.Logging.Tests.net6.TimedNonVoidMethod
             var isLoggingEnabled = this.loggingApect.LoggingEnabled;
             if (isLoggingEnabled)
             {
-                using (var guard = global::VtlSoftware.Aspects.Common.Net6.LogRecursionGuard.Begin())
+                using (var guard = global::VtlSoftware.Aspects.Common.LogRecursionGuard.Begin())
                 {
                     if (guard.CanLog)
                     {
-                        global::VtlSoftware.Aspects.Common.Net6.LoggerExtensions.LogString(logger, global::Microsoft.Extensions.Logging.LogLevel.Information, "Entering TimedNonVoidMethodTest.SumIteration.");
+                        global::VtlSoftware.Aspects.Common.LoggerExtensions.LogString(logger, global::Microsoft.Extensions.Logging.LogLevel.Information, "Entering TimedNonVoidMethodTest.SumIteration.");
                     }
                 }
             }
@@ -34,11 +34,11 @@ namespace VtlSoftware.Aspects.Logging.Tests.net6.TimedNonVoidMethod
                 result = val;
                 if (isLoggingEnabled)
                 {
-                    using (var guard_1 = global::VtlSoftware.Aspects.Common.Net6.LogRecursionGuard.Begin())
+                    using (var guard_1 = global::VtlSoftware.Aspects.Common.LogRecursionGuard.Begin())
                     {
                         if (guard_1.CanLog)
                         {
-                            global::VtlSoftware.Aspects.Common.Net6.LoggerExtensions.Log(logger, global::Microsoft.Extensions.Logging.LogLevel.Information, $"Leaving TimedNonVoidMethodTest.SumIteration with the following result: {result}");
+                            global::VtlSoftware.Aspects.Common.LoggerExtensions.Log(logger, global::Microsoft.Extensions.Logging.LogLevel.Information, $"Leaving TimedNonVoidMethodTest.SumIteration with the following result: {result}");
                         }
                     }
                 }
@@ -46,11 +46,11 @@ namespace VtlSoftware.Aspects.Logging.Tests.net6.TimedNonVoidMethod
             }
             catch (global::System.Exception e) when (this.logger.IsEnabled(global::Microsoft.Extensions.Logging.LogLevel.Warning))
             {
-                using (var guard_2 = global::VtlSoftware.Aspects.Common.Net6.LogRecursionGuard.Begin())
+                using (var guard_2 = global::VtlSoftware.Aspects.Common.LogRecursionGuard.Begin())
                 {
                     if (guard_2.CanLog)
                     {
-                        global::VtlSoftware.Aspects.Common.Net6.LoggerExtensions.Log(logger, global::Microsoft.Extensions.Logging.LogLevel.Error, $"An error has occurred in TimedNonVoidMethodTest.SumIteration. These are the details: {e}");
+                        global::VtlSoftware.Aspects.Common.LoggerExtensions.Log(logger, global::Microsoft.Extensions.Logging.LogLevel.Error, $"An error has occurred in TimedNonVoidMethodTest.SumIteration. These are the details: {e}");
                     }
                 }
                 throw;
@@ -59,16 +59,16 @@ namespace VtlSoftware.Aspects.Logging.Tests.net6.TimedNonVoidMethod
             {
                 watch.Stop();
                 long millisecs = watch.ElapsedMilliseconds;
-                using (var guard_3 = global::VtlSoftware.Aspects.Common.Net6.LogRecursionGuard.Begin())
+                using (var guard_3 = global::VtlSoftware.Aspects.Common.LogRecursionGuard.Begin())
                 {
                     if (guard_3.CanLog)
                     {
-                        global::VtlSoftware.Aspects.Common.Net6.LoggerExtensions.Log(logger, global::Microsoft.Extensions.Logging.LogLevel.Information, $"TimedNonVoidMethodTest.SumIteration took {millisecs} ms to complete.");
+                        global::VtlSoftware.Aspects.Common.LoggerExtensions.Log(logger, global::Microsoft.Extensions.Logging.LogLevel.Information, $"TimedNonVoidMethodTest.SumIteration took {millisecs} ms to complete.");
                     }
                 }
             }
         }
         private global::Microsoft.Extensions.Logging.ILogger logger;
-        private global::VtlSoftware.Aspects.Logging.Net6.ILoggingApect loggingApect;
+        private global::VtlSoftware.Aspects.Logging.ILoggingApect loggingApect;
     }
 }

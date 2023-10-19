@@ -1,6 +1,6 @@
 ﻿using Metalama.Framework.Fabrics;
 using System;
-using VtlSoftware.Aspects.Logging.Net6;
+using VtlSoftware.Aspects.Logging;
 
 namespace VtlSoftware.Aspects.Logging.Tests.net6.LogAndTimeSomeMethodsRedactingSomeParamsAndResultsAndLogSomePropertiesIgnoringThoseWithNoLog
 {

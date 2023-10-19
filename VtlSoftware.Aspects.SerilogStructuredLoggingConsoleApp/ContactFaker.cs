@@ -1,5 +1,5 @@
 ﻿using Bogus;
-using VtlSoftware.Aspects.Logging.Net6;
+using VtlSoftware.Aspects.Logging;
 
 namespace VtlSoftware.Aspects.SerilogStructuredLoggingConsoleApp
 {
@@ -7,7 +7,6 @@ namespace VtlSoftware.Aspects.SerilogStructuredLoggingConsoleApp
     public class ContactFaker : Faker<Contact>
     {
         #region Constructors
-
         public ContactFaker()
         {
             var id = 1;

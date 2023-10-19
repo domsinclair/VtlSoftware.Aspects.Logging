@@ -23,10 +23,9 @@
     <PackageReference Include="Serilog.Sinks.File" Version="5.0.0" />
     <PackageReference Include="Serilog.Sinks.Seq" Version="5.2.3" />
   </ItemGroup>
-
+	
 	<ItemGroup>
-
-		<ProjectReference Include="..\VtlSoftware.Aspects.Logging.Net6\VtlSoftware.Aspects.Logging.Net6.csproj" />
+	  <ProjectReference Include="..\VtlSoftware.Aspects.Logging\VtlSoftware.Aspects.Logging.csproj" />
 	</ItemGroup>
 
   <ItemGroup>

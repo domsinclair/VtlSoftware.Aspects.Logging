@@ -1,11 +1,11 @@
 using Metalama.Framework.Fabrics;
 using System;
-using VtlSoftware.Aspects.Logging.Net6;
+using VtlSoftware.Aspects.Logging;
 namespace VtlSoftware.Aspects.Logging.Tests.net6.LogAndTimeMethodsAndLogProperties
 {
     public class LogAndTimeMethodsAndLogPropertiesTest
     {
-        public LogAndTimeMethodsAndLogPropertiesTest(global::Microsoft.Extensions.Logging.ILogger<global::VtlSoftware.Aspects.Logging.Tests.net6.LogAndTimeMethodsAndLogProperties.LogAndTimeMethodsAndLogPropertiesTest> logger = default(global::Microsoft.Extensions.Logging.ILogger<global::VtlSoftware.Aspects.Logging.Tests.net6.LogAndTimeMethodsAndLogProperties.LogAndTimeMethodsAndLogPropertiesTest>), global::VtlSoftware.Aspects.Logging.Net6.ILoggingApect? loggingApect = default(global::VtlSoftware.Aspects.Logging.Net6.ILoggingApect?))
+        public LogAndTimeMethodsAndLogPropertiesTest(global::Microsoft.Extensions.Logging.ILogger<global::VtlSoftware.Aspects.Logging.Tests.net6.LogAndTimeMethodsAndLogProperties.LogAndTimeMethodsAndLogPropertiesTest> logger = default(global::Microsoft.Extensions.Logging.ILogger<global::VtlSoftware.Aspects.Logging.Tests.net6.LogAndTimeMethodsAndLogProperties.LogAndTimeMethodsAndLogPropertiesTest>), global::VtlSoftware.Aspects.Logging.ILoggingApect? loggingApect = default(global::VtlSoftware.Aspects.Logging.ILoggingApect?))
         {
             this.logger = logger ?? throw new System.ArgumentNullException(nameof(logger));
             this.loggingApect = loggingApect ?? throw new System.ArgumentNullException(nameof(loggingApect));
@@ -15,11 +15,11 @@ namespace VtlSoftware.Aspects.Logging.Tests.net6.LogAndTimeMethodsAndLogProperti
             var isLoggingEnabled = this.loggingApect.LoggingEnabled;
             if (isLoggingEnabled)
             {
-                using (var guard = global::VtlSoftware.Aspects.Common.Net6.LogRecursionGuard.Begin())
+                using (var guard = global::VtlSoftware.Aspects.Common.LogRecursionGuard.Begin())
                 {
                     if (guard.CanLog)
                     {
-                        global::VtlSoftware.Aspects.Common.Net6.LoggerExtensions.LogString(logger, global::Microsoft.Extensions.Logging.LogLevel.Information, "Entering LogAndTimeMethodsAndLogPropertiesTest.DoSomething.");
+                        global::VtlSoftware.Aspects.Common.LoggerExtensions.LogString(logger, global::Microsoft.Extensions.Logging.LogLevel.Information, "Entering LogAndTimeMethodsAndLogPropertiesTest.DoSomething.");
                     }
                 }
             }
@@ -29,11 +29,11 @@ namespace VtlSoftware.Aspects.Logging.Tests.net6.LogAndTimeMethodsAndLogProperti
                 object result = null;
                 if (isLoggingEnabled)
                 {
-                    using (var guard_1 = global::VtlSoftware.Aspects.Common.Net6.LogRecursionGuard.Begin())
+                    using (var guard_1 = global::VtlSoftware.Aspects.Common.LogRecursionGuard.Begin())
                     {
                         if (guard_1.CanLog)
                         {
-                            global::VtlSoftware.Aspects.Common.Net6.LoggerExtensions.LogString(logger, global::Microsoft.Extensions.Logging.LogLevel.Information, "Leaving LogAndTimeMethodsAndLogPropertiesTest.DoSomething.");
+                            global::VtlSoftware.Aspects.Common.LoggerExtensions.LogString(logger, global::Microsoft.Extensions.Logging.LogLevel.Information, "Leaving LogAndTimeMethodsAndLogPropertiesTest.DoSomething.");
                         }
                     }
                 }
@@ -41,11 +41,11 @@ namespace VtlSoftware.Aspects.Logging.Tests.net6.LogAndTimeMethodsAndLogProperti
             }
             catch (global::System.Exception e) when (this.logger.IsEnabled(global::Microsoft.Extensions.Logging.LogLevel.Warning))
             {
-                using (var guard_2 = global::VtlSoftware.Aspects.Common.Net6.LogRecursionGuard.Begin())
+                using (var guard_2 = global::VtlSoftware.Aspects.Common.LogRecursionGuard.Begin())
                 {
                     if (guard_2.CanLog)
                     {
-                        global::VtlSoftware.Aspects.Common.Net6.LoggerExtensions.Log(logger, global::Microsoft.Extensions.Logging.LogLevel.Error, $"An error has occurred in LogAndTimeMethodsAndLogPropertiesTest.DoSomething. These are the details: {e}");
+                        global::VtlSoftware.Aspects.Common.LoggerExtensions.Log(logger, global::Microsoft.Extensions.Logging.LogLevel.Error, $"An error has occurred in LogAndTimeMethodsAndLogPropertiesTest.DoSomething. These are the details: {e}");
                     }
                 }
                 throw;
@@ -54,11 +54,11 @@ namespace VtlSoftware.Aspects.Logging.Tests.net6.LogAndTimeMethodsAndLogProperti
             {
                 watch.Stop();
                 long millisecs = watch.ElapsedMilliseconds;
-                using (var guard_3 = global::VtlSoftware.Aspects.Common.Net6.LogRecursionGuard.Begin())
+                using (var guard_3 = global::VtlSoftware.Aspects.Common.LogRecursionGuard.Begin())
                 {
                     if (guard_3.CanLog)
                     {
-                        global::VtlSoftware.Aspects.Common.Net6.LoggerExtensions.Log(logger, global::Microsoft.Extensions.Logging.LogLevel.Information, $"LogAndTimeMethodsAndLogPropertiesTest.DoSomething took {millisecs} ms to complete.");
+                        global::VtlSoftware.Aspects.Common.LoggerExtensions.Log(logger, global::Microsoft.Extensions.Logging.LogLevel.Information, $"LogAndTimeMethodsAndLogPropertiesTest.DoSomething took {millisecs} ms to complete.");
                     }
                 }
             }
@@ -68,11 +68,11 @@ namespace VtlSoftware.Aspects.Logging.Tests.net6.LogAndTimeMethodsAndLogProperti
             var isLoggingEnabled = this.loggingApect.LoggingEnabled;
             if (isLoggingEnabled)
             {
-                using (var guard = global::VtlSoftware.Aspects.Common.Net6.LogRecursionGuard.Begin())
+                using (var guard = global::VtlSoftware.Aspects.Common.LogRecursionGuard.Begin())
                 {
                     if (guard.CanLog)
                     {
-                        global::VtlSoftware.Aspects.Common.Net6.LoggerExtensions.LogString(logger, global::Microsoft.Extensions.Logging.LogLevel.Information, "Entering LogAndTimeMethodsAndLogPropertiesTest.DoSomethingElse.");
+                        global::VtlSoftware.Aspects.Common.LoggerExtensions.LogString(logger, global::Microsoft.Extensions.Logging.LogLevel.Information, "Entering LogAndTimeMethodsAndLogPropertiesTest.DoSomethingElse.");
                     }
                 }
             }
@@ -82,11 +82,11 @@ namespace VtlSoftware.Aspects.Logging.Tests.net6.LogAndTimeMethodsAndLogProperti
                 object result = null;
                 if (isLoggingEnabled)
                 {
-                    using (var guard_1 = global::VtlSoftware.Aspects.Common.Net6.LogRecursionGuard.Begin())
+                    using (var guard_1 = global::VtlSoftware.Aspects.Common.LogRecursionGuard.Begin())
                     {
                         if (guard_1.CanLog)
                         {
-                            global::VtlSoftware.Aspects.Common.Net6.LoggerExtensions.LogString(logger, global::Microsoft.Extensions.Logging.LogLevel.Information, "Leaving LogAndTimeMethodsAndLogPropertiesTest.DoSomethingElse.");
+                            global::VtlSoftware.Aspects.Common.LoggerExtensions.LogString(logger, global::Microsoft.Extensions.Logging.LogLevel.Information, "Leaving LogAndTimeMethodsAndLogPropertiesTest.DoSomethingElse.");
                         }
                     }
                 }
@@ -94,11 +94,11 @@ namespace VtlSoftware.Aspects.Logging.Tests.net6.LogAndTimeMethodsAndLogProperti
             }
             catch (global::System.Exception e) when (this.logger.IsEnabled(global::Microsoft.Extensions.Logging.LogLevel.Warning))
             {
-                using (var guard_2 = global::VtlSoftware.Aspects.Common.Net6.LogRecursionGuard.Begin())
+                using (var guard_2 = global::VtlSoftware.Aspects.Common.LogRecursionGuard.Begin())
                 {
                     if (guard_2.CanLog)
                     {
-                        global::VtlSoftware.Aspects.Common.Net6.LoggerExtensions.Log(logger, global::Microsoft.Extensions.Logging.LogLevel.Error, $"An error has occurred in LogAndTimeMethodsAndLogPropertiesTest.DoSomethingElse. These are the details: {e}");
+                        global::VtlSoftware.Aspects.Common.LoggerExtensions.Log(logger, global::Microsoft.Extensions.Logging.LogLevel.Error, $"An error has occurred in LogAndTimeMethodsAndLogPropertiesTest.DoSomethingElse. These are the details: {e}");
                     }
                 }
                 throw;
@@ -107,11 +107,11 @@ namespace VtlSoftware.Aspects.Logging.Tests.net6.LogAndTimeMethodsAndLogProperti
             {
                 watch.Stop();
                 long millisecs = watch.ElapsedMilliseconds;
-                using (var guard_3 = global::VtlSoftware.Aspects.Common.Net6.LogRecursionGuard.Begin())
+                using (var guard_3 = global::VtlSoftware.Aspects.Common.LogRecursionGuard.Begin())
                 {
                     if (guard_3.CanLog)
                     {
-                        global::VtlSoftware.Aspects.Common.Net6.LoggerExtensions.Log(logger, global::Microsoft.Extensions.Logging.LogLevel.Information, $"LogAndTimeMethodsAndLogPropertiesTest.DoSomethingElse took {millisecs} ms to complete.");
+                        global::VtlSoftware.Aspects.Common.LoggerExtensions.Log(logger, global::Microsoft.Extensions.Logging.LogLevel.Information, $"LogAndTimeMethodsAndLogPropertiesTest.DoSomethingElse took {millisecs} ms to complete.");
                     }
                 }
             }
@@ -121,11 +121,11 @@ namespace VtlSoftware.Aspects.Logging.Tests.net6.LogAndTimeMethodsAndLogProperti
             var isLoggingEnabled = this.loggingApect.LoggingEnabled;
             if (isLoggingEnabled)
             {
-                using (var guard = global::VtlSoftware.Aspects.Common.Net6.LogRecursionGuard.Begin())
+                using (var guard = global::VtlSoftware.Aspects.Common.LogRecursionGuard.Begin())
                 {
                     if (guard.CanLog)
                     {
-                        global::VtlSoftware.Aspects.Common.Net6.LoggerExtensions.LogString(logger, global::Microsoft.Extensions.Logging.LogLevel.Information, "Entering LogAndTimeMethodsAndLogPropertiesTest.GetTodaysDate.");
+                        global::VtlSoftware.Aspects.Common.LoggerExtensions.LogString(logger, global::Microsoft.Extensions.Logging.LogLevel.Information, "Entering LogAndTimeMethodsAndLogPropertiesTest.GetTodaysDate.");
                     }
                 }
             }
@@ -136,11 +136,11 @@ namespace VtlSoftware.Aspects.Logging.Tests.net6.LogAndTimeMethodsAndLogProperti
                 result = DateTime.Now;
                 if (isLoggingEnabled)
                 {
-                    using (var guard_1 = global::VtlSoftware.Aspects.Common.Net6.LogRecursionGuard.Begin())
+                    using (var guard_1 = global::VtlSoftware.Aspects.Common.LogRecursionGuard.Begin())
                     {
                         if (guard_1.CanLog)
                         {
-                            global::VtlSoftware.Aspects.Common.Net6.LoggerExtensions.Log(logger, global::Microsoft.Extensions.Logging.LogLevel.Information, $"Leaving LogAndTimeMethodsAndLogPropertiesTest.GetTodaysDate with the following result: {result}");
+                            global::VtlSoftware.Aspects.Common.LoggerExtensions.Log(logger, global::Microsoft.Extensions.Logging.LogLevel.Information, $"Leaving LogAndTimeMethodsAndLogPropertiesTest.GetTodaysDate with the following result: {result}");
                         }
                     }
                 }
@@ -148,11 +148,11 @@ namespace VtlSoftware.Aspects.Logging.Tests.net6.LogAndTimeMethodsAndLogProperti
             }
             catch (global::System.Exception e) when (this.logger.IsEnabled(global::Microsoft.Extensions.Logging.LogLevel.Warning))
             {
-                using (var guard_2 = global::VtlSoftware.Aspects.Common.Net6.LogRecursionGuard.Begin())
+                using (var guard_2 = global::VtlSoftware.Aspects.Common.LogRecursionGuard.Begin())
                 {
                     if (guard_2.CanLog)
                     {
-                        global::VtlSoftware.Aspects.Common.Net6.LoggerExtensions.Log(logger, global::Microsoft.Extensions.Logging.LogLevel.Error, $"An error has occurred in LogAndTimeMethodsAndLogPropertiesTest.GetTodaysDate. These are the details: {e}");
+                        global::VtlSoftware.Aspects.Common.LoggerExtensions.Log(logger, global::Microsoft.Extensions.Logging.LogLevel.Error, $"An error has occurred in LogAndTimeMethodsAndLogPropertiesTest.GetTodaysDate. These are the details: {e}");
                     }
                 }
                 throw;
@@ -161,11 +161,11 @@ namespace VtlSoftware.Aspects.Logging.Tests.net6.LogAndTimeMethodsAndLogProperti
             {
                 watch.Stop();
                 long millisecs = watch.ElapsedMilliseconds;
-                using (var guard_3 = global::VtlSoftware.Aspects.Common.Net6.LogRecursionGuard.Begin())
+                using (var guard_3 = global::VtlSoftware.Aspects.Common.LogRecursionGuard.Begin())
                 {
                     if (guard_3.CanLog)
                     {
-                        global::VtlSoftware.Aspects.Common.Net6.LoggerExtensions.Log(logger, global::Microsoft.Extensions.Logging.LogLevel.Information, $"LogAndTimeMethodsAndLogPropertiesTest.GetTodaysDate took {millisecs} ms to complete.");
+                        global::VtlSoftware.Aspects.Common.LoggerExtensions.Log(logger, global::Microsoft.Extensions.Logging.LogLevel.Information, $"LogAndTimeMethodsAndLogPropertiesTest.GetTodaysDate took {millisecs} ms to complete.");
                     }
                 }
             }
@@ -175,13 +175,13 @@ namespace VtlSoftware.Aspects.Logging.Tests.net6.LogAndTimeMethodsAndLogProperti
             var isLoggingEnabled = this.loggingApect.LoggingEnabled;
             if (isLoggingEnabled)
             {
-                using (var guard = global::VtlSoftware.Aspects.Common.Net6.LogRecursionGuard.Begin())
+                using (var guard = global::VtlSoftware.Aspects.Common.LogRecursionGuard.Begin())
                 {
                     if (guard.CanLog)
                     {
                         global::System.Collections.Generic.Dictionary<global::System.String, global::System.Object> parameters = new();
                         parameters.Add("Type = string: Parameter Name = myString", myString);
-                        global::VtlSoftware.Aspects.Common.Net6.LoggerExtensions.Log(logger, global::Microsoft.Extensions.Logging.LogLevel.Information, $"Entering LogAndTimeMethodsAndLogPropertiesTest.TrimString with these parameters: {parameters}");
+                        global::VtlSoftware.Aspects.Common.LoggerExtensions.Log(logger, global::Microsoft.Extensions.Logging.LogLevel.Information, $"Entering LogAndTimeMethodsAndLogPropertiesTest.TrimString with these parameters: {parameters}");
                     }
                 }
             }
@@ -192,11 +192,11 @@ namespace VtlSoftware.Aspects.Logging.Tests.net6.LogAndTimeMethodsAndLogProperti
                 result = myString.Trim();
                 if (isLoggingEnabled)
                 {
-                    using (var guard_1 = global::VtlSoftware.Aspects.Common.Net6.LogRecursionGuard.Begin())
+                    using (var guard_1 = global::VtlSoftware.Aspects.Common.LogRecursionGuard.Begin())
                     {
                         if (guard_1.CanLog)
                         {
-                            global::VtlSoftware.Aspects.Common.Net6.LoggerExtensions.Log(logger, global::Microsoft.Extensions.Logging.LogLevel.Information, $"Leaving LogAndTimeMethodsAndLogPropertiesTest.TrimString with the following result: {result}");
+                            global::VtlSoftware.Aspects.Common.LoggerExtensions.Log(logger, global::Microsoft.Extensions.Logging.LogLevel.Information, $"Leaving LogAndTimeMethodsAndLogPropertiesTest.TrimString with the following result: {result}");
                         }
                     }
                 }
@@ -204,11 +204,11 @@ namespace VtlSoftware.Aspects.Logging.Tests.net6.LogAndTimeMethodsAndLogProperti
             }
             catch (global::System.Exception e) when (this.logger.IsEnabled(global::Microsoft.Extensions.Logging.LogLevel.Warning))
             {
-                using (var guard_2 = global::VtlSoftware.Aspects.Common.Net6.LogRecursionGuard.Begin())
+                using (var guard_2 = global::VtlSoftware.Aspects.Common.LogRecursionGuard.Begin())
                 {
                     if (guard_2.CanLog)
                     {
-                        global::VtlSoftware.Aspects.Common.Net6.LoggerExtensions.Log(logger, global::Microsoft.Extensions.Logging.LogLevel.Error, $"An error has occurred in LogAndTimeMethodsAndLogPropertiesTest.TrimString. These are the details: {e}");
+                        global::VtlSoftware.Aspects.Common.LoggerExtensions.Log(logger, global::Microsoft.Extensions.Logging.LogLevel.Error, $"An error has occurred in LogAndTimeMethodsAndLogPropertiesTest.TrimString. These are the details: {e}");
                     }
                 }
                 throw;
@@ -217,11 +217,11 @@ namespace VtlSoftware.Aspects.Logging.Tests.net6.LogAndTimeMethodsAndLogProperti
             {
                 watch.Stop();
                 long millisecs = watch.ElapsedMilliseconds;
-                using (var guard_3 = global::VtlSoftware.Aspects.Common.Net6.LogRecursionGuard.Begin())
+                using (var guard_3 = global::VtlSoftware.Aspects.Common.LogRecursionGuard.Begin())
                 {
                     if (guard_3.CanLog)
                     {
-                        global::VtlSoftware.Aspects.Common.Net6.LoggerExtensions.Log(logger, global::Microsoft.Extensions.Logging.LogLevel.Information, $"LogAndTimeMethodsAndLogPropertiesTest.TrimString took {millisecs} ms to complete.");
+                        global::VtlSoftware.Aspects.Common.LoggerExtensions.Log(logger, global::Microsoft.Extensions.Logging.LogLevel.Information, $"LogAndTimeMethodsAndLogPropertiesTest.TrimString took {millisecs} ms to complete.");
                     }
                 }
             }
@@ -232,14 +232,14 @@ namespace VtlSoftware.Aspects.Logging.Tests.net6.LogAndTimeMethodsAndLogProperti
             get
             {
                 var result = this._myDate;
-                global::VtlSoftware.Aspects.Common.Net6.LoggerExtensions.Log(logger, global::Microsoft.Extensions.Logging.LogLevel.Debug, $"The value of LogAndTimeMethodsAndLogPropertiesTest.MyDate is: DateTime? = {this._myDate}");
+                global::VtlSoftware.Aspects.Common.LoggerExtensions.Log(logger, global::Microsoft.Extensions.Logging.LogLevel.Debug, $"The value of LogAndTimeMethodsAndLogPropertiesTest.MyDate is: DateTime? = {this._myDate}");
                 return (global::System.DateTime?)result;
             }
             set
             {
-                global::VtlSoftware.Aspects.Common.Net6.LoggerExtensions.Log(logger, global::Microsoft.Extensions.Logging.LogLevel.Debug, $"The old value of LogAndTimeMethodsAndLogPropertiesTest was: DateTime? = {this._myDate}");
+                global::VtlSoftware.Aspects.Common.LoggerExtensions.Log(logger, global::Microsoft.Extensions.Logging.LogLevel.Debug, $"The old value of LogAndTimeMethodsAndLogPropertiesTest was: DateTime? = {this._myDate}");
                 this._myDate = value;
-                global::VtlSoftware.Aspects.Common.Net6.LoggerExtensions.Log(logger, global::Microsoft.Extensions.Logging.LogLevel.Debug, $"The new value of LogAndTimeMethodsAndLogPropertiesTest is: DateTime? = {this._myDate}");
+                global::VtlSoftware.Aspects.Common.LoggerExtensions.Log(logger, global::Microsoft.Extensions.Logging.LogLevel.Debug, $"The new value of LogAndTimeMethodsAndLogPropertiesTest is: DateTime? = {this._myDate}");
             }
         }
         private double _myDouble1;
@@ -248,14 +248,14 @@ namespace VtlSoftware.Aspects.Logging.Tests.net6.LogAndTimeMethodsAndLogProperti
             get
             {
                 var result = this._myDouble1;
-                global::VtlSoftware.Aspects.Common.Net6.LoggerExtensions.Log(logger, global::Microsoft.Extensions.Logging.LogLevel.Debug, $"The value of LogAndTimeMethodsAndLogPropertiesTest.myDouble is: double = {this._myDouble1}");
+                global::VtlSoftware.Aspects.Common.LoggerExtensions.Log(logger, global::Microsoft.Extensions.Logging.LogLevel.Debug, $"The value of LogAndTimeMethodsAndLogPropertiesTest.myDouble is: double = {this._myDouble1}");
                 return (global::System.Double)result;
             }
             set
             {
-                global::VtlSoftware.Aspects.Common.Net6.LoggerExtensions.Log(logger, global::Microsoft.Extensions.Logging.LogLevel.Debug, $"The old value of LogAndTimeMethodsAndLogPropertiesTest was: double = {this._myDouble1}");
+                global::VtlSoftware.Aspects.Common.LoggerExtensions.Log(logger, global::Microsoft.Extensions.Logging.LogLevel.Debug, $"The old value of LogAndTimeMethodsAndLogPropertiesTest was: double = {this._myDouble1}");
                 this._myDouble1 = value;
-                global::VtlSoftware.Aspects.Common.Net6.LoggerExtensions.Log(logger, global::Microsoft.Extensions.Logging.LogLevel.Debug, $"The new value of LogAndTimeMethodsAndLogPropertiesTest is: double = {this._myDouble1}");
+                global::VtlSoftware.Aspects.Common.LoggerExtensions.Log(logger, global::Microsoft.Extensions.Logging.LogLevel.Debug, $"The new value of LogAndTimeMethodsAndLogPropertiesTest is: double = {this._myDouble1}");
             }
         }
         private string _mystring1 = default!;
@@ -264,18 +264,18 @@ namespace VtlSoftware.Aspects.Logging.Tests.net6.LogAndTimeMethodsAndLogProperti
             get
             {
                 var result = this._mystring1;
-                global::VtlSoftware.Aspects.Common.Net6.LoggerExtensions.Log(logger, global::Microsoft.Extensions.Logging.LogLevel.Debug, $"The value of LogAndTimeMethodsAndLogPropertiesTest.mystring is: string = {this._mystring1}");
+                global::VtlSoftware.Aspects.Common.LoggerExtensions.Log(logger, global::Microsoft.Extensions.Logging.LogLevel.Debug, $"The value of LogAndTimeMethodsAndLogPropertiesTest.mystring is: string = {this._mystring1}");
                 return (global::System.String)result;
             }
             set
             {
-                global::VtlSoftware.Aspects.Common.Net6.LoggerExtensions.Log(logger, global::Microsoft.Extensions.Logging.LogLevel.Debug, $"The old value of LogAndTimeMethodsAndLogPropertiesTest was: string = {this._mystring1}");
+                global::VtlSoftware.Aspects.Common.LoggerExtensions.Log(logger, global::Microsoft.Extensions.Logging.LogLevel.Debug, $"The old value of LogAndTimeMethodsAndLogPropertiesTest was: string = {this._mystring1}");
                 this._mystring1 = value;
-                global::VtlSoftware.Aspects.Common.Net6.LoggerExtensions.Log(logger, global::Microsoft.Extensions.Logging.LogLevel.Debug, $"The new value of LogAndTimeMethodsAndLogPropertiesTest is: string = {this._mystring1}");
+                global::VtlSoftware.Aspects.Common.LoggerExtensions.Log(logger, global::Microsoft.Extensions.Logging.LogLevel.Debug, $"The new value of LogAndTimeMethodsAndLogPropertiesTest is: string = {this._mystring1}");
             }
         }
         private global::Microsoft.Extensions.Logging.ILogger logger;
-        private global::VtlSoftware.Aspects.Logging.Net6.ILoggingApect loggingApect;
+        private global::VtlSoftware.Aspects.Logging.ILoggingApect loggingApect;
     }
 #pragma warning disable CS0067, CS8618, CS0162, CS0169, CS0414, CA1822, CA1823, IDE0051, IDE0052
     public class Configure : ProjectFabric

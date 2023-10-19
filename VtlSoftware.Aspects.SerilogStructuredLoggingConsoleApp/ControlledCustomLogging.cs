@@ -1,6 +1,6 @@
 ﻿using Microsoft.Extensions.Logging;
-using VtlSoftware.Aspects.Common.Net6;
-using VtlSoftware.Aspects.Logging.Net6;
+using VtlSoftware.Aspects.Common;
+using VtlSoftware.Aspects.Logging;
 
 namespace VtlSoftware.Aspects.SerilogStructuredLoggingConsoleApp
 {
@@ -21,6 +21,7 @@ namespace VtlSoftware.Aspects.SerilogStructuredLoggingConsoleApp
 
     {
         #region Private Methods
+
         private double GetCustomerRate() { return 17.5; }
 
         #endregion

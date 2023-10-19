@@ -1,12 +1,12 @@
 using Metalama.Framework.Fabrics;
-using VtlSoftware.Aspects.Logging.Net6;
+using VtlSoftware.Aspects.Logging;
 namespace VtlSoftware.Aspects.Logging.Tests.net6.AddControlledLoggingToAllClasses
 {
     public class AddControlledLoggingToAllClassesTest
     {
         private global::Microsoft.Extensions.Logging.ILogger logger;
-        private global::VtlSoftware.Aspects.Logging.Net6.ILoggingApect loggingApect;
-        public AddControlledLoggingToAllClassesTest(global::VtlSoftware.Aspects.Logging.Net6.ILoggingApect? loggingApect = default(global::VtlSoftware.Aspects.Logging.Net6.ILoggingApect?), global::Microsoft.Extensions.Logging.ILogger<global::VtlSoftware.Aspects.Logging.Tests.net6.AddControlledLoggingToAllClasses.AddControlledLoggingToAllClassesTest> logger = default(global::Microsoft.Extensions.Logging.ILogger<global::VtlSoftware.Aspects.Logging.Tests.net6.AddControlledLoggingToAllClasses.AddControlledLoggingToAllClassesTest>))
+        private global::VtlSoftware.Aspects.Logging.ILoggingApect loggingApect;
+        public AddControlledLoggingToAllClassesTest(global::VtlSoftware.Aspects.Logging.ILoggingApect? loggingApect = default(global::VtlSoftware.Aspects.Logging.ILoggingApect?), global::Microsoft.Extensions.Logging.ILogger<global::VtlSoftware.Aspects.Logging.Tests.net6.AddControlledLoggingToAllClasses.AddControlledLoggingToAllClassesTest> logger = default(global::Microsoft.Extensions.Logging.ILogger<global::VtlSoftware.Aspects.Logging.Tests.net6.AddControlledLoggingToAllClasses.AddControlledLoggingToAllClassesTest>))
         {
             this.logger = logger ?? throw new System.ArgumentNullException(nameof(logger));
             this.loggingApect = loggingApect ?? throw new System.ArgumentNullException(nameof(loggingApect));
@@ -15,8 +15,8 @@ namespace VtlSoftware.Aspects.Logging.Tests.net6.AddControlledLoggingToAllClasse
     public class Test1
     {
         private global::Microsoft.Extensions.Logging.ILogger logger;
-        private global::VtlSoftware.Aspects.Logging.Net6.ILoggingApect loggingApect;
-        public Test1(global::VtlSoftware.Aspects.Logging.Net6.ILoggingApect? loggingApect = default(global::VtlSoftware.Aspects.Logging.Net6.ILoggingApect?), global::Microsoft.Extensions.Logging.ILogger<global::VtlSoftware.Aspects.Logging.Tests.net6.AddControlledLoggingToAllClasses.Test1> logger = default(global::Microsoft.Extensions.Logging.ILogger<global::VtlSoftware.Aspects.Logging.Tests.net6.AddControlledLoggingToAllClasses.Test1>))
+        private global::VtlSoftware.Aspects.Logging.ILoggingApect loggingApect;
+        public Test1(global::VtlSoftware.Aspects.Logging.ILoggingApect? loggingApect = default(global::VtlSoftware.Aspects.Logging.ILoggingApect?), global::Microsoft.Extensions.Logging.ILogger<global::VtlSoftware.Aspects.Logging.Tests.net6.AddControlledLoggingToAllClasses.Test1> logger = default(global::Microsoft.Extensions.Logging.ILogger<global::VtlSoftware.Aspects.Logging.Tests.net6.AddControlledLoggingToAllClasses.Test1>))
         {
             this.logger = logger ?? throw new System.ArgumentNullException(nameof(logger));
             this.loggingApect = loggingApect ?? throw new System.ArgumentNullException(nameof(loggingApect));
@@ -25,8 +25,8 @@ namespace VtlSoftware.Aspects.Logging.Tests.net6.AddControlledLoggingToAllClasse
     internal class Test2
     {
         private global::Microsoft.Extensions.Logging.ILogger logger;
-        private global::VtlSoftware.Aspects.Logging.Net6.ILoggingApect loggingApect;
-        public Test2(global::VtlSoftware.Aspects.Logging.Net6.ILoggingApect? loggingApect = default(global::VtlSoftware.Aspects.Logging.Net6.ILoggingApect?), global::Microsoft.Extensions.Logging.ILogger<global::VtlSoftware.Aspects.Logging.Tests.net6.AddControlledLoggingToAllClasses.Test2> logger = default(global::Microsoft.Extensions.Logging.ILogger<global::VtlSoftware.Aspects.Logging.Tests.net6.AddControlledLoggingToAllClasses.Test2>))
+        private global::VtlSoftware.Aspects.Logging.ILoggingApect loggingApect;
+        public Test2(global::VtlSoftware.Aspects.Logging.ILoggingApect? loggingApect = default(global::VtlSoftware.Aspects.Logging.ILoggingApect?), global::Microsoft.Extensions.Logging.ILogger<global::VtlSoftware.Aspects.Logging.Tests.net6.AddControlledLoggingToAllClasses.Test2> logger = default(global::Microsoft.Extensions.Logging.ILogger<global::VtlSoftware.Aspects.Logging.Tests.net6.AddControlledLoggingToAllClasses.Test2>))
         {
             this.logger = logger ?? throw new System.ArgumentNullException(nameof(logger));
             this.loggingApect = loggingApect ?? throw new System.ArgumentNullException(nameof(loggingApect));

@@ -1,4 +1,4 @@
-﻿using VtlSoftware.Aspects.Logging.Net6;
+﻿using VtlSoftware.Aspects.Logging;
 
 namespace VtlSoftware.Aspects.SerilogStructuredLoggingConsoleApp
 {

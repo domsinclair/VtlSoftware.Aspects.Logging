@@ -24,7 +24,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\VtlSoftware.Aspects.Logging.Net6\VtlSoftware.Aspects.Logging.Net6.csproj" />
+    <ProjectReference Include="..\VtlSoftware.Aspects.Logging\VtlSoftware.Aspects.Logging.csproj" />
   </ItemGroup>
 
 </Project>

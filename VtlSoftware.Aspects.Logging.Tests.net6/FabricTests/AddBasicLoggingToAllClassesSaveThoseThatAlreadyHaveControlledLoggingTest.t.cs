@@ -1,5 +1,5 @@
 using Metalama.Framework.Fabrics;
-using VtlSoftware.Aspects.Logging.Net6;
+using VtlSoftware.Aspects.Logging;
 namespace VtlSoftware.Aspects.Logging.Tests.net6.AddBasicLoggingToAllClassesSaveThoseThatAlreadyHaveControlledLogging
 {
     public class AddBasicLoggingToAllClassesSaveThoseThatAlreadyHaveControlledLoggingTest
@@ -30,8 +30,8 @@ namespace VtlSoftware.Aspects.Logging.Tests.net6.AddBasicLoggingToAllClassesSave
     public class Test3
     {
         private global::Microsoft.Extensions.Logging.ILogger logger;
-        private global::VtlSoftware.Aspects.Logging.Net6.ILoggingApect loggingApect;
-        public Test3(global::VtlSoftware.Aspects.Logging.Net6.ILoggingApect? loggingApect = default(global::VtlSoftware.Aspects.Logging.Net6.ILoggingApect?), global::Microsoft.Extensions.Logging.ILogger<global::VtlSoftware.Aspects.Logging.Tests.net6.AddBasicLoggingToAllClassesSaveThoseThatAlreadyHaveControlledLogging.Test3> logger = default(global::Microsoft.Extensions.Logging.ILogger<global::VtlSoftware.Aspects.Logging.Tests.net6.AddBasicLoggingToAllClassesSaveThoseThatAlreadyHaveControlledLogging.Test3>))
+        private global::VtlSoftware.Aspects.Logging.ILoggingApect loggingApect;
+        public Test3(global::VtlSoftware.Aspects.Logging.ILoggingApect? loggingApect = default(global::VtlSoftware.Aspects.Logging.ILoggingApect?), global::Microsoft.Extensions.Logging.ILogger<global::VtlSoftware.Aspects.Logging.Tests.net6.AddBasicLoggingToAllClassesSaveThoseThatAlreadyHaveControlledLogging.Test3> logger = default(global::Microsoft.Extensions.Logging.ILogger<global::VtlSoftware.Aspects.Logging.Tests.net6.AddBasicLoggingToAllClassesSaveThoseThatAlreadyHaveControlledLogging.Test3>))
         {
             this.logger = logger ?? throw new System.ArgumentNullException(nameof(logger));
             this.loggingApect = loggingApect ?? throw new System.ArgumentNullException(nameof(loggingApect));

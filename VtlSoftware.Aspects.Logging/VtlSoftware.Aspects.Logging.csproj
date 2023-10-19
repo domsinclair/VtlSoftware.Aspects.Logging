@@ -1,0 +1,48 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+	  <TargetFramework>net6.0</TargetFramework>
+	  <ImplicitUsings>enable</ImplicitUsings>
+	  <Nullable>enable</Nullable>
+	  <LangVersion>10.0</LangVersion>
+	  <GenerateDocumentationFile>true</GenerateDocumentationFile>
+	  <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+	  <Title>Vtl Software Aspects Logging</Title>
+	  <Version>2023.3.8</Version>
+	  <Authors>Dom Sinclair</Authors>
+	  <Company>Vtl Software Ltd</Company>
+	  <Description>A collection of aspects (created with Metalama by Postsharp)  to provide logging for projects.</Description>
+	  <Copyright>© Vtl Software Ltd 2023</Copyright>
+	  <PackageIcon>logs@128px.png</PackageIcon>
+	  <PackageReadmeFile>ReadMe.md</PackageReadmeFile>
+	  <RepositoryUrl>https://github.com/domsinclair/VtlSoftware.Aspects.Logging</RepositoryUrl>
+	  <RepositoryType>git</RepositoryType>
+	  <PackageTags>VtlSoftware, Metalama, Logging, Logs</PackageTags>
+	  <PackageReleaseNotes>Release Matches Metalama 2023.3.8</PackageReleaseNotes>
+	  <PackageLicenseExpression>MIT</PackageLicenseExpression>
+	  <IncludeSymbols>True</IncludeSymbols>
+	  <SymbolPackageFormat>snupkg</SymbolPackageFormat>
+  </PropertyGroup>
+
+	<ItemGroup>
+		<None Include="..\logs@128px.png">
+		  <Pack>True</Pack>
+		  <PackagePath>\</PackagePath>
+		</None>
+		<None Include="..\ReadMe.md">
+		  <Pack>True</Pack>
+		  <PackagePath>\</PackagePath>
+		</None>
+		<None Include="VtlSoftware.Aspects.Logging.targets">
+			<Pack>True</Pack>
+			<PackagePath>build</PackagePath>
+		</None>
+	</ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Metalama.Extensions.DependencyInjection" Version="2023.3.8" />
+    <PackageReference Include="Metalama.Framework" Version="2023.3.8" />
+    <PackageReference Include="VtlSoftware.Aspects.Common" Version="1.0.0" />
+  </ItemGroup>
+
+</Project>

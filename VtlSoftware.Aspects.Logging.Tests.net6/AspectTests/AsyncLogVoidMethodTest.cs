@@ -1,10 +1,9 @@
-﻿using VtlSoftware.Aspects.Logging.Net6;
-
-namespace VtlSoftware.Aspects.Logging.Tests.net6.AsyncLogVoidMethod
+﻿namespace VtlSoftware.Aspects.Logging.Tests.net6.AsyncLogVoidMethod
 {
     public class AsyncLogVoidMethodTest
     {
         #region Constructors
+
         public AsyncLogVoidMethodTest()
         {
         }

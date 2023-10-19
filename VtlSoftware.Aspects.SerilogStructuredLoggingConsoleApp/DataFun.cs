@@ -1,10 +1,11 @@
-﻿using VtlSoftware.Aspects.Logging.Net6;
+﻿using VtlSoftware.Aspects.Logging;
 
 namespace VtlSoftware.Aspects.SerilogStructuredLoggingConsoleApp
 {
     internal partial class DataFun
     {
         #region Fields
+
         Dictionary<int, string> contactsDictionary = new();
 
         #endregion

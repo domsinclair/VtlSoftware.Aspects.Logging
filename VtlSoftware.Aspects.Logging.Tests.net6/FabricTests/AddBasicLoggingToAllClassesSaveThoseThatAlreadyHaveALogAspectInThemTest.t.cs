@@ -1,7 +1,7 @@
 // Warning VTL101 on `LogClass`: `This class has already had aspects applied to it (possibly via a fabric) that have introduced the ILogger interface via Dependency Ijection. You will be able to add your own custom log messages. Remove the [InjectBasicLogging] Aspect`
 // Warning VTL101 on `LogAnTimeClassClass`: `This class has already had aspects applied to it (possibly via a fabric) that have introduced the ILogger interface via Dependency Ijection. You will be able to add your own custom log messages. Remove the [InjectBasicLogging] Aspect`
 using Metalama.Framework.Fabrics;
-using VtlSoftware.Aspects.Logging.Net6;
+using VtlSoftware.Aspects.Logging;
 namespace VtlSoftware.Aspects.Logging.Tests.net6.AddBasicLoggingToAllClassesSaveThoseThatAlreadyHaveALogAspectInThem
 {
     public class AddBasicLoggingToAllClassesSaveThoseThatAlreadyHaveALogAspectInThemTest
@@ -36,11 +36,11 @@ namespace VtlSoftware.Aspects.Logging.Tests.net6.AddBasicLoggingToAllClassesSave
             var isLoggingEnabled = this.loggingApect.LoggingEnabled;
             if (isLoggingEnabled)
             {
-                using (var guard = global::VtlSoftware.Aspects.Common.Net6.LogRecursionGuard.Begin())
+                using (var guard = global::VtlSoftware.Aspects.Common.LogRecursionGuard.Begin())
                 {
                     if (guard.CanLog)
                     {
-                        global::VtlSoftware.Aspects.Common.Net6.LoggerExtensions.LogString(logger, global::Microsoft.Extensions.Logging.LogLevel.Information, "Entering LogClass.GetMyString.");
+                        global::VtlSoftware.Aspects.Common.LoggerExtensions.LogString(logger, global::Microsoft.Extensions.Logging.LogLevel.Information, "Entering LogClass.GetMyString.");
                     }
                 }
             }
@@ -50,11 +50,11 @@ namespace VtlSoftware.Aspects.Logging.Tests.net6.AddBasicLoggingToAllClassesSave
                 result = "Hi";
                 if (isLoggingEnabled)
                 {
-                    using (var guard_1 = global::VtlSoftware.Aspects.Common.Net6.LogRecursionGuard.Begin())
+                    using (var guard_1 = global::VtlSoftware.Aspects.Common.LogRecursionGuard.Begin())
                     {
                         if (guard_1.CanLog)
                         {
-                            global::VtlSoftware.Aspects.Common.Net6.LoggerExtensions.Log(logger, global::Microsoft.Extensions.Logging.LogLevel.Information, $"Leaving LogClass.GetMyString with the following result: {result}");
+                            global::VtlSoftware.Aspects.Common.LoggerExtensions.Log(logger, global::Microsoft.Extensions.Logging.LogLevel.Information, $"Leaving LogClass.GetMyString with the following result: {result}");
                         }
                     }
                 }
@@ -62,19 +62,19 @@ namespace VtlSoftware.Aspects.Logging.Tests.net6.AddBasicLoggingToAllClassesSave
             }
             catch (global::System.Exception e) when (this.logger.IsEnabled(global::Microsoft.Extensions.Logging.LogLevel.Warning))
             {
-                using (var guard_2 = global::VtlSoftware.Aspects.Common.Net6.LogRecursionGuard.Begin())
+                using (var guard_2 = global::VtlSoftware.Aspects.Common.LogRecursionGuard.Begin())
                 {
                     if (guard_2.CanLog)
                     {
-                        global::VtlSoftware.Aspects.Common.Net6.LoggerExtensions.Log(logger, global::Microsoft.Extensions.Logging.LogLevel.Error, $"An error has occurred in LogClass.GetMyString. These are the details: {e}");
+                        global::VtlSoftware.Aspects.Common.LoggerExtensions.Log(logger, global::Microsoft.Extensions.Logging.LogLevel.Error, $"An error has occurred in LogClass.GetMyString. These are the details: {e}");
                     }
                 }
                 throw;
             }
         }
         private global::Microsoft.Extensions.Logging.ILogger logger;
-        private global::VtlSoftware.Aspects.Logging.Net6.ILoggingApect loggingApect;
-        public LogClass(global::VtlSoftware.Aspects.Logging.Net6.ILoggingApect? loggingApect = default(global::VtlSoftware.Aspects.Logging.Net6.ILoggingApect?), global::Microsoft.Extensions.Logging.ILogger<global::VtlSoftware.Aspects.Logging.Tests.net6.AddBasicLoggingToAllClassesSaveThoseThatAlreadyHaveALogAspectInThem.LogClass> logger = default(global::Microsoft.Extensions.Logging.ILogger<global::VtlSoftware.Aspects.Logging.Tests.net6.AddBasicLoggingToAllClassesSaveThoseThatAlreadyHaveALogAspectInThem.LogClass>))
+        private global::VtlSoftware.Aspects.Logging.ILoggingApect loggingApect;
+        public LogClass(global::VtlSoftware.Aspects.Logging.ILoggingApect? loggingApect = default(global::VtlSoftware.Aspects.Logging.ILoggingApect?), global::Microsoft.Extensions.Logging.ILogger<global::VtlSoftware.Aspects.Logging.Tests.net6.AddBasicLoggingToAllClassesSaveThoseThatAlreadyHaveALogAspectInThem.LogClass> logger = default(global::Microsoft.Extensions.Logging.ILogger<global::VtlSoftware.Aspects.Logging.Tests.net6.AddBasicLoggingToAllClassesSaveThoseThatAlreadyHaveALogAspectInThem.LogClass>))
         {
             this.logger = logger ?? throw new System.ArgumentNullException(nameof(logger));
             this.loggingApect = loggingApect ?? throw new System.ArgumentNullException(nameof(loggingApect));
@@ -88,11 +88,11 @@ namespace VtlSoftware.Aspects.Logging.Tests.net6.AddBasicLoggingToAllClassesSave
             var isLoggingEnabled = this.loggingApect.LoggingEnabled;
             if (isLoggingEnabled)
             {
-                using (var guard = global::VtlSoftware.Aspects.Common.Net6.LogRecursionGuard.Begin())
+                using (var guard = global::VtlSoftware.Aspects.Common.LogRecursionGuard.Begin())
                 {
                     if (guard.CanLog)
                     {
-                        global::VtlSoftware.Aspects.Common.Net6.LoggerExtensions.LogString(logger, global::Microsoft.Extensions.Logging.LogLevel.Information, "Entering LogAnTimeClassClass.GetMyString.");
+                        global::VtlSoftware.Aspects.Common.LoggerExtensions.LogString(logger, global::Microsoft.Extensions.Logging.LogLevel.Information, "Entering LogAnTimeClassClass.GetMyString.");
                     }
                 }
             }
@@ -103,11 +103,11 @@ namespace VtlSoftware.Aspects.Logging.Tests.net6.AddBasicLoggingToAllClassesSave
                 result = "Hi";
                 if (isLoggingEnabled)
                 {
-                    using (var guard_1 = global::VtlSoftware.Aspects.Common.Net6.LogRecursionGuard.Begin())
+                    using (var guard_1 = global::VtlSoftware.Aspects.Common.LogRecursionGuard.Begin())
                     {
                         if (guard_1.CanLog)
                         {
-                            global::VtlSoftware.Aspects.Common.Net6.LoggerExtensions.Log(logger, global::Microsoft.Extensions.Logging.LogLevel.Information, $"Leaving LogAnTimeClassClass.GetMyString with the following result: {result}");
+                            global::VtlSoftware.Aspects.Common.LoggerExtensions.Log(logger, global::Microsoft.Extensions.Logging.LogLevel.Information, $"Leaving LogAnTimeClassClass.GetMyString with the following result: {result}");
                         }
                     }
                 }
@@ -115,11 +115,11 @@ namespace VtlSoftware.Aspects.Logging.Tests.net6.AddBasicLoggingToAllClassesSave
             }
             catch (global::System.Exception e) when (this.logger.IsEnabled(global::Microsoft.Extensions.Logging.LogLevel.Warning))
             {
-                using (var guard_2 = global::VtlSoftware.Aspects.Common.Net6.LogRecursionGuard.Begin())
+                using (var guard_2 = global::VtlSoftware.Aspects.Common.LogRecursionGuard.Begin())
                 {
                     if (guard_2.CanLog)
                     {
-                        global::VtlSoftware.Aspects.Common.Net6.LoggerExtensions.Log(logger, global::Microsoft.Extensions.Logging.LogLevel.Error, $"An error has occurred in LogAnTimeClassClass.GetMyString. These are the details: {e}");
+                        global::VtlSoftware.Aspects.Common.LoggerExtensions.Log(logger, global::Microsoft.Extensions.Logging.LogLevel.Error, $"An error has occurred in LogAnTimeClassClass.GetMyString. These are the details: {e}");
                     }
                 }
                 throw;
@@ -128,18 +128,18 @@ namespace VtlSoftware.Aspects.Logging.Tests.net6.AddBasicLoggingToAllClassesSave
             {
                 watch.Stop();
                 long millisecs = watch.ElapsedMilliseconds;
-                using (var guard_3 = global::VtlSoftware.Aspects.Common.Net6.LogRecursionGuard.Begin())
+                using (var guard_3 = global::VtlSoftware.Aspects.Common.LogRecursionGuard.Begin())
                 {
                     if (guard_3.CanLog)
                     {
-                        global::VtlSoftware.Aspects.Common.Net6.LoggerExtensions.Log(logger, global::Microsoft.Extensions.Logging.LogLevel.Information, $"LogAnTimeClassClass.GetMyString took {millisecs} ms to complete.");
+                        global::VtlSoftware.Aspects.Common.LoggerExtensions.Log(logger, global::Microsoft.Extensions.Logging.LogLevel.Information, $"LogAnTimeClassClass.GetMyString took {millisecs} ms to complete.");
                     }
                 }
             }
         }
         private global::Microsoft.Extensions.Logging.ILogger logger;
-        private global::VtlSoftware.Aspects.Logging.Net6.ILoggingApect loggingApect;
-        public LogAnTimeClassClass(global::VtlSoftware.Aspects.Logging.Net6.ILoggingApect? loggingApect = default(global::VtlSoftware.Aspects.Logging.Net6.ILoggingApect?), global::Microsoft.Extensions.Logging.ILogger<global::VtlSoftware.Aspects.Logging.Tests.net6.AddBasicLoggingToAllClassesSaveThoseThatAlreadyHaveALogAspectInThem.LogAnTimeClassClass> logger = default(global::Microsoft.Extensions.Logging.ILogger<global::VtlSoftware.Aspects.Logging.Tests.net6.AddBasicLoggingToAllClassesSaveThoseThatAlreadyHaveALogAspectInThem.LogAnTimeClassClass>))
+        private global::VtlSoftware.Aspects.Logging.ILoggingApect loggingApect;
+        public LogAnTimeClassClass(global::VtlSoftware.Aspects.Logging.ILoggingApect? loggingApect = default(global::VtlSoftware.Aspects.Logging.ILoggingApect?), global::Microsoft.Extensions.Logging.ILogger<global::VtlSoftware.Aspects.Logging.Tests.net6.AddBasicLoggingToAllClassesSaveThoseThatAlreadyHaveALogAspectInThem.LogAnTimeClassClass> logger = default(global::Microsoft.Extensions.Logging.ILogger<global::VtlSoftware.Aspects.Logging.Tests.net6.AddBasicLoggingToAllClassesSaveThoseThatAlreadyHaveALogAspectInThem.LogAnTimeClassClass>))
         {
             this.logger = logger ?? throw new System.ArgumentNullException(nameof(logger));
             this.loggingApect = loggingApect ?? throw new System.ArgumentNullException(nameof(loggingApect));

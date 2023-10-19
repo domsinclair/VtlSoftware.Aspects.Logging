@@ -1,11 +1,12 @@
 ﻿using Microsoft.Extensions.Configuration;
-using VtlSoftware.Aspects.Logging.Net6;
+using VtlSoftware.Aspects.Logging;
 
 namespace VtlSoftware.Aspects.SerilogStructuredLoggingConsoleApp
 {
     internal class LoggingAspect : ILoggingApect
     {
         #region Fields
+
         private readonly IConfiguration configuration;
 
         #endregion

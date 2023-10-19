@@ -1,9 +1,9 @@
-using VtlSoftware.Aspects.Logging.Net6;
+using VtlSoftware.Aspects.Logging;
 namespace VtlSoftware.Aspects.Logging.Tests.net6.TimedNonVoidMethodWithParams
 {
     public class TimedNonVoidMethodWithParamsTest
     {
-        public TimedNonVoidMethodWithParamsTest(global::Microsoft.Extensions.Logging.ILogger<global::VtlSoftware.Aspects.Logging.Tests.net6.TimedNonVoidMethodWithParams.TimedNonVoidMethodWithParamsTest> logger = default(global::Microsoft.Extensions.Logging.ILogger<global::VtlSoftware.Aspects.Logging.Tests.net6.TimedNonVoidMethodWithParams.TimedNonVoidMethodWithParamsTest>), global::VtlSoftware.Aspects.Logging.Net6.ILoggingApect? loggingApect = default(global::VtlSoftware.Aspects.Logging.Net6.ILoggingApect?))
+        public TimedNonVoidMethodWithParamsTest(global::Microsoft.Extensions.Logging.ILogger<global::VtlSoftware.Aspects.Logging.Tests.net6.TimedNonVoidMethodWithParams.TimedNonVoidMethodWithParamsTest> logger = default(global::Microsoft.Extensions.Logging.ILogger<global::VtlSoftware.Aspects.Logging.Tests.net6.TimedNonVoidMethodWithParams.TimedNonVoidMethodWithParamsTest>), global::VtlSoftware.Aspects.Logging.ILoggingApect? loggingApect = default(global::VtlSoftware.Aspects.Logging.ILoggingApect?))
         {
             this.logger = logger ?? throw new System.ArgumentNullException(nameof(logger));
             this.loggingApect = loggingApect ?? throw new System.ArgumentNullException(nameof(loggingApect));
@@ -14,13 +14,13 @@ namespace VtlSoftware.Aspects.Logging.Tests.net6.TimedNonVoidMethodWithParams
             var isLoggingEnabled = this.loggingApect.LoggingEnabled;
             if (isLoggingEnabled)
             {
-                using (var guard = global::VtlSoftware.Aspects.Common.Net6.LogRecursionGuard.Begin())
+                using (var guard = global::VtlSoftware.Aspects.Common.LogRecursionGuard.Begin())
                 {
                     if (guard.CanLog)
                     {
                         global::System.Collections.Generic.Dictionary<global::System.String, global::System.Object> parameters = new();
                         parameters.Add("Type = int: Parameter Name = range", range);
-                        global::VtlSoftware.Aspects.Common.Net6.LoggerExtensions.Log(logger, global::Microsoft.Extensions.Logging.LogLevel.Information, $"Entering TimedNonVoidMethodWithParamsTest.IterateOverRange with these parameters: {parameters}");
+                        global::VtlSoftware.Aspects.Common.LoggerExtensions.Log(logger, global::Microsoft.Extensions.Logging.LogLevel.Information, $"Entering TimedNonVoidMethodWithParamsTest.IterateOverRange with these parameters: {parameters}");
                     }
                 }
             }
@@ -36,11 +36,11 @@ namespace VtlSoftware.Aspects.Logging.Tests.net6.TimedNonVoidMethodWithParams
                 result = val;
                 if (isLoggingEnabled)
                 {
-                    using (var guard_1 = global::VtlSoftware.Aspects.Common.Net6.LogRecursionGuard.Begin())
+                    using (var guard_1 = global::VtlSoftware.Aspects.Common.LogRecursionGuard.Begin())
                     {
                         if (guard_1.CanLog)
                         {
-                            global::VtlSoftware.Aspects.Common.Net6.LoggerExtensions.Log(logger, global::Microsoft.Extensions.Logging.LogLevel.Information, $"Leaving TimedNonVoidMethodWithParamsTest.IterateOverRange with the following result: {result}");
+                            global::VtlSoftware.Aspects.Common.LoggerExtensions.Log(logger, global::Microsoft.Extensions.Logging.LogLevel.Information, $"Leaving TimedNonVoidMethodWithParamsTest.IterateOverRange with the following result: {result}");
                         }
                     }
                 }
@@ -48,11 +48,11 @@ namespace VtlSoftware.Aspects.Logging.Tests.net6.TimedNonVoidMethodWithParams
             }
             catch (global::System.Exception e) when (this.logger.IsEnabled(global::Microsoft.Extensions.Logging.LogLevel.Warning))
             {
-                using (var guard_2 = global::VtlSoftware.Aspects.Common.Net6.LogRecursionGuard.Begin())
+                using (var guard_2 = global::VtlSoftware.Aspects.Common.LogRecursionGuard.Begin())
                 {
                     if (guard_2.CanLog)
                     {
-                        global::VtlSoftware.Aspects.Common.Net6.LoggerExtensions.Log(logger, global::Microsoft.Extensions.Logging.LogLevel.Error, $"An error has occurred in TimedNonVoidMethodWithParamsTest.IterateOverRange. These are the details: {e}");
+                        global::VtlSoftware.Aspects.Common.LoggerExtensions.Log(logger, global::Microsoft.Extensions.Logging.LogLevel.Error, $"An error has occurred in TimedNonVoidMethodWithParamsTest.IterateOverRange. These are the details: {e}");
                     }
                 }
                 throw;
@@ -61,16 +61,16 @@ namespace VtlSoftware.Aspects.Logging.Tests.net6.TimedNonVoidMethodWithParams
             {
                 watch.Stop();
                 long millisecs = watch.ElapsedMilliseconds;
-                using (var guard_3 = global::VtlSoftware.Aspects.Common.Net6.LogRecursionGuard.Begin())
+                using (var guard_3 = global::VtlSoftware.Aspects.Common.LogRecursionGuard.Begin())
                 {
                     if (guard_3.CanLog)
                     {
-                        global::VtlSoftware.Aspects.Common.Net6.LoggerExtensions.Log(logger, global::Microsoft.Extensions.Logging.LogLevel.Information, $"TimedNonVoidMethodWithParamsTest.IterateOverRange took {millisecs} ms to complete.");
+                        global::VtlSoftware.Aspects.Common.LoggerExtensions.Log(logger, global::Microsoft.Extensions.Logging.LogLevel.Information, $"TimedNonVoidMethodWithParamsTest.IterateOverRange took {millisecs} ms to complete.");
                     }
                 }
             }
         }
         private global::Microsoft.Extensions.Logging.ILogger logger;
-        private global::VtlSoftware.Aspects.Logging.Net6.ILoggingApect loggingApect;
+        private global::VtlSoftware.Aspects.Logging.ILoggingApect loggingApect;
     }
 }

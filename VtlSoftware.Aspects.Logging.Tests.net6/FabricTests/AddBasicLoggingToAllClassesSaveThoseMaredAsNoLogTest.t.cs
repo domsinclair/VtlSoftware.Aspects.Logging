@@ -1,5 +1,5 @@
 using Metalama.Framework.Fabrics;
-using VtlSoftware.Aspects.Logging.Net6;
+using VtlSoftware.Aspects.Logging;
 namespace VtlSoftware.Aspects.Logging.Tests.net6.AddBasicLoggingToAllClassesSaveThoseMaredAsNoLog
 {
     public class AddBasicLoggingToAllClassesSaveThoseMaredAsNoLogTest

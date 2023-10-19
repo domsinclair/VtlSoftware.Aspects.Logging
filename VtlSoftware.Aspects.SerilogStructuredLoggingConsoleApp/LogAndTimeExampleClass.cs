@@ -1,5 +1,5 @@
 ﻿
-using VtlSoftware.Aspects.Logging.Net6;
+using VtlSoftware.Aspects.Logging;
 
 namespace VtlSoftware.Aspects.SerilogStructuredLoggingConsoleApp
 {
@@ -12,6 +12,7 @@ namespace VtlSoftware.Aspects.SerilogStructuredLoggingConsoleApp
     public partial class LogAndTimeExampleClass
     {
         #region Public Methods
+
         [LogAndTime]
         [return: Redact]
         public double CalculateWeeklyWage([Redact] string employee, double hourlyRate, double hoursWorked)
@@ -56,7 +57,7 @@ namespace VtlSoftware.Aspects.SerilogStructuredLoggingConsoleApp
         // and setter (old and new values) logged.
         // It WILL NOT record the time taken.
         [LogAndTime]
-        public string AStringProperty { get; set; }
+        public string? AStringProperty { get; set; }
 
         #endregion
     }

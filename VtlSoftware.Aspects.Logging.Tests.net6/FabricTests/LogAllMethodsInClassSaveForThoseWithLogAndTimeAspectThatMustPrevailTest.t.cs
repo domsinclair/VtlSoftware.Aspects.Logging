@@ -1,5 +1,5 @@
 using Metalama.Framework.Fabrics;
-using VtlSoftware.Aspects.Logging.Net6;
+using VtlSoftware.Aspects.Logging;
 namespace VtlSoftware.Aspects.Logging.Tests.net6.LogAllMethodsInClassSaveForThoseWithLogAndTimeAspectThatMustPrevail
 {
     public class LogAllMethodsInClassSaveForThoseWithLogAndTimeAspectThatMustPrevailTest
@@ -9,14 +9,14 @@ namespace VtlSoftware.Aspects.Logging.Tests.net6.LogAllMethodsInClassSaveForThos
             var isLoggingEnabled = this.loggingApect.LoggingEnabled;
             if (isLoggingEnabled)
             {
-                using (var guard = global::VtlSoftware.Aspects.Common.Net6.LogRecursionGuard.Begin())
+                using (var guard = global::VtlSoftware.Aspects.Common.LogRecursionGuard.Begin())
                 {
                     if (guard.CanLog)
                     {
                         global::System.Collections.Generic.Dictionary<global::System.String, global::System.Object> parameters = new();
                         parameters.Add("Type = int: Parameter Name = a", a);
                         parameters.Add("Type = int: Parameter Name = b", b);
-                        global::VtlSoftware.Aspects.Common.Net6.LoggerExtensions.Log(logger, global::Microsoft.Extensions.Logging.LogLevel.Information, $"Entering LogAllMethodsInClassSaveForThoseWithLogAndTimeAspectThatMustPrevailTest.Add with these parameters: {parameters}");
+                        global::VtlSoftware.Aspects.Common.LoggerExtensions.Log(logger, global::Microsoft.Extensions.Logging.LogLevel.Information, $"Entering LogAllMethodsInClassSaveForThoseWithLogAndTimeAspectThatMustPrevailTest.Add with these parameters: {parameters}");
                     }
                 }
             }
@@ -26,11 +26,11 @@ namespace VtlSoftware.Aspects.Logging.Tests.net6.LogAllMethodsInClassSaveForThos
                 result = a + b;
                 if (isLoggingEnabled)
                 {
-                    using (var guard_1 = global::VtlSoftware.Aspects.Common.Net6.LogRecursionGuard.Begin())
+                    using (var guard_1 = global::VtlSoftware.Aspects.Common.LogRecursionGuard.Begin())
                     {
                         if (guard_1.CanLog)
                         {
-                            global::VtlSoftware.Aspects.Common.Net6.LoggerExtensions.Log(logger, global::Microsoft.Extensions.Logging.LogLevel.Information, $"Leaving LogAllMethodsInClassSaveForThoseWithLogAndTimeAspectThatMustPrevailTest.Add with the following result: {result}");
+                            global::VtlSoftware.Aspects.Common.LoggerExtensions.Log(logger, global::Microsoft.Extensions.Logging.LogLevel.Information, $"Leaving LogAllMethodsInClassSaveForThoseWithLogAndTimeAspectThatMustPrevailTest.Add with the following result: {result}");
                         }
                     }
                 }
@@ -38,11 +38,11 @@ namespace VtlSoftware.Aspects.Logging.Tests.net6.LogAllMethodsInClassSaveForThos
             }
             catch (global::System.Exception e) when (this.logger.IsEnabled(global::Microsoft.Extensions.Logging.LogLevel.Warning))
             {
-                using (var guard_2 = global::VtlSoftware.Aspects.Common.Net6.LogRecursionGuard.Begin())
+                using (var guard_2 = global::VtlSoftware.Aspects.Common.LogRecursionGuard.Begin())
                 {
                     if (guard_2.CanLog)
                     {
-                        global::VtlSoftware.Aspects.Common.Net6.LoggerExtensions.Log(logger, global::Microsoft.Extensions.Logging.LogLevel.Error, $"An error has occurred in LogAllMethodsInClassSaveForThoseWithLogAndTimeAspectThatMustPrevailTest.Add. These are the details: {e}");
+                        global::VtlSoftware.Aspects.Common.LoggerExtensions.Log(logger, global::Microsoft.Extensions.Logging.LogLevel.Error, $"An error has occurred in LogAllMethodsInClassSaveForThoseWithLogAndTimeAspectThatMustPrevailTest.Add. These are the details: {e}");
                     }
                 }
                 throw;
@@ -53,11 +53,11 @@ namespace VtlSoftware.Aspects.Logging.Tests.net6.LogAllMethodsInClassSaveForThos
             var isLoggingEnabled = this.loggingApect.LoggingEnabled;
             if (isLoggingEnabled)
             {
-                using (var guard = global::VtlSoftware.Aspects.Common.Net6.LogRecursionGuard.Begin())
+                using (var guard = global::VtlSoftware.Aspects.Common.LogRecursionGuard.Begin())
                 {
                     if (guard.CanLog)
                     {
-                        global::VtlSoftware.Aspects.Common.Net6.LoggerExtensions.LogString(logger, global::Microsoft.Extensions.Logging.LogLevel.Information, "Entering LogAllMethodsInClassSaveForThoseWithLogAndTimeAspectThatMustPrevailTest.DoSomething.");
+                        global::VtlSoftware.Aspects.Common.LoggerExtensions.LogString(logger, global::Microsoft.Extensions.Logging.LogLevel.Information, "Entering LogAllMethodsInClassSaveForThoseWithLogAndTimeAspectThatMustPrevailTest.DoSomething.");
                     }
                 }
             }
@@ -66,11 +66,11 @@ namespace VtlSoftware.Aspects.Logging.Tests.net6.LogAllMethodsInClassSaveForThos
                 object result = null;
                 if (isLoggingEnabled)
                 {
-                    using (var guard_1 = global::VtlSoftware.Aspects.Common.Net6.LogRecursionGuard.Begin())
+                    using (var guard_1 = global::VtlSoftware.Aspects.Common.LogRecursionGuard.Begin())
                     {
                         if (guard_1.CanLog)
                         {
-                            global::VtlSoftware.Aspects.Common.Net6.LoggerExtensions.LogString(logger, global::Microsoft.Extensions.Logging.LogLevel.Information, "Leaving LogAllMethodsInClassSaveForThoseWithLogAndTimeAspectThatMustPrevailTest.DoSomething.");
+                            global::VtlSoftware.Aspects.Common.LoggerExtensions.LogString(logger, global::Microsoft.Extensions.Logging.LogLevel.Information, "Leaving LogAllMethodsInClassSaveForThoseWithLogAndTimeAspectThatMustPrevailTest.DoSomething.");
                         }
                     }
                 }
@@ -78,11 +78,11 @@ namespace VtlSoftware.Aspects.Logging.Tests.net6.LogAllMethodsInClassSaveForThos
             }
             catch (global::System.Exception e) when (this.logger.IsEnabled(global::Microsoft.Extensions.Logging.LogLevel.Warning))
             {
-                using (var guard_2 = global::VtlSoftware.Aspects.Common.Net6.LogRecursionGuard.Begin())
+                using (var guard_2 = global::VtlSoftware.Aspects.Common.LogRecursionGuard.Begin())
                 {
                     if (guard_2.CanLog)
                     {
-                        global::VtlSoftware.Aspects.Common.Net6.LoggerExtensions.Log(logger, global::Microsoft.Extensions.Logging.LogLevel.Error, $"An error has occurred in LogAllMethodsInClassSaveForThoseWithLogAndTimeAspectThatMustPrevailTest.DoSomething. These are the details: {e}");
+                        global::VtlSoftware.Aspects.Common.LoggerExtensions.Log(logger, global::Microsoft.Extensions.Logging.LogLevel.Error, $"An error has occurred in LogAllMethodsInClassSaveForThoseWithLogAndTimeAspectThatMustPrevailTest.DoSomething. These are the details: {e}");
                     }
                 }
                 throw;
@@ -94,11 +94,11 @@ namespace VtlSoftware.Aspects.Logging.Tests.net6.LogAllMethodsInClassSaveForThos
             var isLoggingEnabled = this.loggingApect.LoggingEnabled;
             if (isLoggingEnabled)
             {
-                using (var guard = global::VtlSoftware.Aspects.Common.Net6.LogRecursionGuard.Begin())
+                using (var guard = global::VtlSoftware.Aspects.Common.LogRecursionGuard.Begin())
                 {
                     if (guard.CanLog)
                     {
-                        global::VtlSoftware.Aspects.Common.Net6.LoggerExtensions.LogString(logger, global::Microsoft.Extensions.Logging.LogLevel.Information, "Entering LogAllMethodsInClassSaveForThoseWithLogAndTimeAspectThatMustPrevailTest.LoopThrough1000Items.");
+                        global::VtlSoftware.Aspects.Common.LoggerExtensions.LogString(logger, global::Microsoft.Extensions.Logging.LogLevel.Information, "Entering LogAllMethodsInClassSaveForThoseWithLogAndTimeAspectThatMustPrevailTest.LoopThrough1000Items.");
                     }
                 }
             }
@@ -112,11 +112,11 @@ namespace VtlSoftware.Aspects.Logging.Tests.net6.LogAllMethodsInClassSaveForThos
                 object result = null;
                 if (isLoggingEnabled)
                 {
-                    using (var guard_1 = global::VtlSoftware.Aspects.Common.Net6.LogRecursionGuard.Begin())
+                    using (var guard_1 = global::VtlSoftware.Aspects.Common.LogRecursionGuard.Begin())
                     {
                         if (guard_1.CanLog)
                         {
-                            global::VtlSoftware.Aspects.Common.Net6.LoggerExtensions.LogString(logger, global::Microsoft.Extensions.Logging.LogLevel.Information, "Leaving LogAllMethodsInClassSaveForThoseWithLogAndTimeAspectThatMustPrevailTest.LoopThrough1000Items.");
+                            global::VtlSoftware.Aspects.Common.LoggerExtensions.LogString(logger, global::Microsoft.Extensions.Logging.LogLevel.Information, "Leaving LogAllMethodsInClassSaveForThoseWithLogAndTimeAspectThatMustPrevailTest.LoopThrough1000Items.");
                         }
                     }
                 }
@@ -124,11 +124,11 @@ namespace VtlSoftware.Aspects.Logging.Tests.net6.LogAllMethodsInClassSaveForThos
             }
             catch (global::System.Exception e) when (this.logger.IsEnabled(global::Microsoft.Extensions.Logging.LogLevel.Warning))
             {
-                using (var guard_2 = global::VtlSoftware.Aspects.Common.Net6.LogRecursionGuard.Begin())
+                using (var guard_2 = global::VtlSoftware.Aspects.Common.LogRecursionGuard.Begin())
                 {
                     if (guard_2.CanLog)
                     {
-                        global::VtlSoftware.Aspects.Common.Net6.LoggerExtensions.Log(logger, global::Microsoft.Extensions.Logging.LogLevel.Error, $"An error has occurred in LogAllMethodsInClassSaveForThoseWithLogAndTimeAspectThatMustPrevailTest.LoopThrough1000Items. These are the details: {e}");
+                        global::VtlSoftware.Aspects.Common.LoggerExtensions.Log(logger, global::Microsoft.Extensions.Logging.LogLevel.Error, $"An error has occurred in LogAllMethodsInClassSaveForThoseWithLogAndTimeAspectThatMustPrevailTest.LoopThrough1000Items. These are the details: {e}");
                     }
                 }
                 throw;
@@ -137,18 +137,18 @@ namespace VtlSoftware.Aspects.Logging.Tests.net6.LogAllMethodsInClassSaveForThos
             {
                 watch.Stop();
                 long millisecs = watch.ElapsedMilliseconds;
-                using (var guard_3 = global::VtlSoftware.Aspects.Common.Net6.LogRecursionGuard.Begin())
+                using (var guard_3 = global::VtlSoftware.Aspects.Common.LogRecursionGuard.Begin())
                 {
                     if (guard_3.CanLog)
                     {
-                        global::VtlSoftware.Aspects.Common.Net6.LoggerExtensions.Log(logger, global::Microsoft.Extensions.Logging.LogLevel.Information, $"LogAllMethodsInClassSaveForThoseWithLogAndTimeAspectThatMustPrevailTest.LoopThrough1000Items took {millisecs} ms to complete.");
+                        global::VtlSoftware.Aspects.Common.LoggerExtensions.Log(logger, global::Microsoft.Extensions.Logging.LogLevel.Information, $"LogAllMethodsInClassSaveForThoseWithLogAndTimeAspectThatMustPrevailTest.LoopThrough1000Items took {millisecs} ms to complete.");
                     }
                 }
             }
         }
         private global::Microsoft.Extensions.Logging.ILogger logger;
-        private global::VtlSoftware.Aspects.Logging.Net6.ILoggingApect loggingApect;
-        public LogAllMethodsInClassSaveForThoseWithLogAndTimeAspectThatMustPrevailTest(global::VtlSoftware.Aspects.Logging.Net6.ILoggingApect? loggingApect = default(global::VtlSoftware.Aspects.Logging.Net6.ILoggingApect?), global::Microsoft.Extensions.Logging.ILogger<global::VtlSoftware.Aspects.Logging.Tests.net6.LogAllMethodsInClassSaveForThoseWithLogAndTimeAspectThatMustPrevail.LogAllMethodsInClassSaveForThoseWithLogAndTimeAspectThatMustPrevailTest> logger = default(global::Microsoft.Extensions.Logging.ILogger<global::VtlSoftware.Aspects.Logging.Tests.net6.LogAllMethodsInClassSaveForThoseWithLogAndTimeAspectThatMustPrevail.LogAllMethodsInClassSaveForThoseWithLogAndTimeAspectThatMustPrevailTest>))
+        private global::VtlSoftware.Aspects.Logging.ILoggingApect loggingApect;
+        public LogAllMethodsInClassSaveForThoseWithLogAndTimeAspectThatMustPrevailTest(global::VtlSoftware.Aspects.Logging.ILoggingApect? loggingApect = default(global::VtlSoftware.Aspects.Logging.ILoggingApect?), global::Microsoft.Extensions.Logging.ILogger<global::VtlSoftware.Aspects.Logging.Tests.net6.LogAllMethodsInClassSaveForThoseWithLogAndTimeAspectThatMustPrevail.LogAllMethodsInClassSaveForThoseWithLogAndTimeAspectThatMustPrevailTest> logger = default(global::Microsoft.Extensions.Logging.ILogger<global::VtlSoftware.Aspects.Logging.Tests.net6.LogAllMethodsInClassSaveForThoseWithLogAndTimeAspectThatMustPrevail.LogAllMethodsInClassSaveForThoseWithLogAndTimeAspectThatMustPrevailTest>))
         {
             this.logger = logger ?? throw new System.ArgumentNullException(nameof(logger));
             this.loggingApect = loggingApect ?? throw new System.ArgumentNullException(nameof(loggingApect));
