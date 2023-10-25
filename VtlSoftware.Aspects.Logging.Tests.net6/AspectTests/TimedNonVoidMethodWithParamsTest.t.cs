@@ -3,15 +3,15 @@ namespace VtlSoftware.Aspects.Logging.Tests.net6.TimedNonVoidMethodWithParams
 {
     public class TimedNonVoidMethodWithParamsTest
     {
-        public TimedNonVoidMethodWithParamsTest(global::Microsoft.Extensions.Logging.ILogger<global::VtlSoftware.Aspects.Logging.Tests.net6.TimedNonVoidMethodWithParams.TimedNonVoidMethodWithParamsTest> logger = default(global::Microsoft.Extensions.Logging.ILogger<global::VtlSoftware.Aspects.Logging.Tests.net6.TimedNonVoidMethodWithParams.TimedNonVoidMethodWithParamsTest>), global::VtlSoftware.Aspects.Logging.ILoggingApect? loggingApect = default(global::VtlSoftware.Aspects.Logging.ILoggingApect?))
+        public TimedNonVoidMethodWithParamsTest(global::Microsoft.Extensions.Logging.ILogger<global::VtlSoftware.Aspects.Logging.Tests.net6.TimedNonVoidMethodWithParams.TimedNonVoidMethodWithParamsTest> logger = default(global::Microsoft.Extensions.Logging.ILogger<global::VtlSoftware.Aspects.Logging.Tests.net6.TimedNonVoidMethodWithParams.TimedNonVoidMethodWithParamsTest>), global::VtlSoftware.Aspects.Logging.ILoggingAspect? loggingAspect = default(global::VtlSoftware.Aspects.Logging.ILoggingAspect?))
         {
             this.logger = logger ?? throw new System.ArgumentNullException(nameof(logger));
-            this.loggingApect = loggingApect ?? throw new System.ArgumentNullException(nameof(loggingApect));
+            this.loggingAspect = loggingAspect ?? throw new System.ArgumentNullException(nameof(loggingAspect));
         }
         [LogAndTime]
         public int IterateOverRange(int range)
         {
-            var isLoggingEnabled = this.loggingApect.LoggingEnabled;
+            var isLoggingEnabled = this.loggingAspect.LoggingEnabled;
             if (isLoggingEnabled)
             {
                 using (var guard = global::VtlSoftware.Aspects.Common.LogRecursionGuard.Begin())
@@ -71,6 +71,6 @@ namespace VtlSoftware.Aspects.Logging.Tests.net6.TimedNonVoidMethodWithParams
             }
         }
         private global::Microsoft.Extensions.Logging.ILogger logger;
-        private global::VtlSoftware.Aspects.Logging.ILoggingApect loggingApect;
+        private global::VtlSoftware.Aspects.Logging.ILoggingAspect loggingAspect;
     }
 }

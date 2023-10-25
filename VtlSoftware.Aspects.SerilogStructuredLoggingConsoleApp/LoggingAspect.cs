@@ -3,10 +3,9 @@ using VtlSoftware.Aspects.Logging;
 
 namespace VtlSoftware.Aspects.SerilogStructuredLoggingConsoleApp
 {
-    internal class LoggingAspect : ILoggingApect
+    internal class LoggingAspect : ILoggingAspect
     {
         #region Fields
-
         private readonly IConfiguration configuration;
 
         #endregion

@@ -33,7 +33,6 @@ namespace VtlSoftware.Aspects.Logging
     public class LogAndTimeAttribute : Attribute, IAspect<IMethod>, IAspect<IFieldOrProperty>
     {
         #region Fields
-
         /// <summary>
         /// The vtl 107 error.
         /// </summary>
@@ -60,7 +59,7 @@ namespace VtlSoftware.Aspects.Logging
         /// (Immutable) The logging apect.
         /// </summary>
         [IntroduceDependency]
-        private readonly ILoggingApect loggingApect;
+        private readonly ILoggingAspect loggingAspect;
 
         #endregion
 
@@ -202,7 +201,7 @@ namespace VtlSoftware.Aspects.Logging
             // Add a check to see if we want to do any logging at all.
             // This value is obtained from an external configuration file (ie appsettings.json)
 
-            var isLoggingEnabled = this.loggingApect.LoggingEnabled;
+            var isLoggingEnabled = this.loggingAspect.LoggingEnabled;
 
             if(isLoggingEnabled)
             {

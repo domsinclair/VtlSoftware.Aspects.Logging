@@ -10,6 +10,7 @@ namespace VtlSoftware.Aspects.SerilogStructuredLoggingConsoleApp
     internal class Program
     {
         #region Private Methods
+
         static void BuildConfig(IConfigurationBuilder builder)
         {
             builder.SetBasePath(Directory.GetCurrentDirectory())
@@ -44,11 +45,12 @@ namespace VtlSoftware.Aspects.SerilogStructuredLoggingConsoleApp
                     (context, services) =>
                     {
                         services.AddSingleton<IConfiguration>(configuration);
-                        services.AddScoped<ILoggingApect, LoggingAspect>();
+                        services.AddScoped<ILoggingAspect, LoggingAspect>();
                         services.AddTransient<DataFun>();
                         services.AddTransient<BasicCustomLogging>();
                         services.AddTransient<ControlledCustomLogging>();
                         services.AddTransient<SensitivedataLogging>();
+                        services.AddTransient<NullResults>();
                     })
                 .UseSerilog()
                 .Build();
@@ -72,6 +74,12 @@ namespace VtlSoftware.Aspects.SerilogStructuredLoggingConsoleApp
             var sdl = ActivatorUtilities.CreateInstance<SensitivedataLogging>(host.Services);
             sdl.DoSometingWithPassword("frank", "dertws12");
 
+            var nr = ActivatorUtilities.CreateInstance<NullResults>(host.Services);
+            DateTime? date = nr.Nulldays("Mon");
+            DateTime? date1 = nr.Nulldays("Thu");
+            DateTime? date2 = nr.Nulldays(null);
+            string? fail = nr.Failure("fail");
+            string? fail1 = nr.Failure(null);
             // Finally at the point that the application is about to exit we add an appropriate log message
             // and then shutdown the logger.
 

@@ -8,7 +8,7 @@
 	  <GenerateDocumentationFile>true</GenerateDocumentationFile>
 	  <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
 	  <Title>Vtl Software Aspects Logging</Title>
-	  <Version>2023.3.8</Version>
+	  <Version>2023.3.8.1</Version>
 	  <Authors>Dom Sinclair</Authors>
 	  <Company>Vtl Software Ltd</Company>
 	  <Description>A collection of aspects (created with Metalama by Postsharp)  to provide logging for projects.</Description>
@@ -18,7 +18,11 @@
 	  <RepositoryUrl>https://github.com/domsinclair/VtlSoftware.Aspects.Logging</RepositoryUrl>
 	  <RepositoryType>git</RepositoryType>
 	  <PackageTags>VtlSoftware, Metalama, Logging, Logs</PackageTags>
-	  <PackageReleaseNotes>Release Matches Metalama 2023.3.8</PackageReleaseNotes>
+	  <PackageReleaseNotes>Corrected  small typo. In the ILoggingAspect Interface.
+This may cause an error in any LogginfAspect class you create as per the help file.
+
+
+Release Matches Metalama 2023.3.8</PackageReleaseNotes>
 	  <PackageLicenseExpression>MIT</PackageLicenseExpression>
 	  <IncludeSymbols>True</IncludeSymbols>
 	  <SymbolPackageFormat>snupkg</SymbolPackageFormat>

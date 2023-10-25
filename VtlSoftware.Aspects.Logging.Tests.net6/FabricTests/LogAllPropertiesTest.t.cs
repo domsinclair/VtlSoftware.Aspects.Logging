@@ -5,10 +5,10 @@ namespace VtlSoftware.Aspects.Logging.Tests.net6.LogAllProperties
 {
     public class LogAllPropertiesTest
     {
-        public LogAllPropertiesTest(global::Microsoft.Extensions.Logging.ILogger<global::VtlSoftware.Aspects.Logging.Tests.net6.LogAllProperties.LogAllPropertiesTest> logger = default(global::Microsoft.Extensions.Logging.ILogger<global::VtlSoftware.Aspects.Logging.Tests.net6.LogAllProperties.LogAllPropertiesTest>), global::VtlSoftware.Aspects.Logging.ILoggingApect? loggingApect = default(global::VtlSoftware.Aspects.Logging.ILoggingApect?))
+        public LogAllPropertiesTest(global::Microsoft.Extensions.Logging.ILogger<global::VtlSoftware.Aspects.Logging.Tests.net6.LogAllProperties.LogAllPropertiesTest> logger = default(global::Microsoft.Extensions.Logging.ILogger<global::VtlSoftware.Aspects.Logging.Tests.net6.LogAllProperties.LogAllPropertiesTest>), global::VtlSoftware.Aspects.Logging.ILoggingAspect? loggingAspect = default(global::VtlSoftware.Aspects.Logging.ILoggingAspect?))
         {
             this.logger = logger ?? throw new System.ArgumentNullException(nameof(logger));
-            this.loggingApect = loggingApect ?? throw new System.ArgumentNullException(nameof(loggingApect));
+            this.loggingAspect = loggingAspect ?? throw new System.ArgumentNullException(nameof(loggingAspect));
         }
         private DateTime _myDateTime;
         public DateTime MyDateTime
@@ -91,7 +91,7 @@ namespace VtlSoftware.Aspects.Logging.Tests.net6.LogAllProperties
             }
         }
         private global::Microsoft.Extensions.Logging.ILogger logger;
-        private global::VtlSoftware.Aspects.Logging.ILoggingApect loggingApect;
+        private global::VtlSoftware.Aspects.Logging.ILoggingAspect loggingAspect;
     }
 #pragma warning disable CS0067, CS8618, CS0162, CS0169, CS0414, CA1822, CA1823, IDE0051, IDE0052
     public class Configure : ProjectFabric

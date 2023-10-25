@@ -56,7 +56,7 @@ namespace VtlSoftware.Aspects.Logging
         /// (Immutable) The logging apect.
         /// </summary>
         [IntroduceDependency]
-        private readonly ILoggingApect loggingApect;
+        private readonly ILoggingAspect loggingAspect;
 
         #endregion
 

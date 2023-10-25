@@ -1,14 +1,14 @@
 ﻿namespace VtlSoftware.Aspects.Logging
 {
     /// <summary>
-    /// Interface for logging apect.
+    /// Interface for logging aspect.
     /// </summary>
     ///
     /// <remarks>
     /// An interface to provide a simple means to control logging.
     /// </remarks>
 
-    public interface ILoggingApect
+    public interface ILoggingAspect
     {
         #region Public Properties
         /// <summary>

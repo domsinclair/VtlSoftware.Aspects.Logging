@@ -38,11 +38,11 @@ namespace VtlSoftware.Aspects.Logging.Tests.net6.LogPropertyWithLogAndTimeAttrib
             }
         }
         private global::Microsoft.Extensions.Logging.ILogger logger;
-        private global::VtlSoftware.Aspects.Logging.ILoggingApect loggingApect;
-        public LogPropertyWithLogAndTimeAttributeTest(global::VtlSoftware.Aspects.Logging.ILoggingApect? loggingApect = default(global::VtlSoftware.Aspects.Logging.ILoggingApect?), global::Microsoft.Extensions.Logging.ILogger<global::VtlSoftware.Aspects.Logging.Tests.net6.LogPropertyWithLogAndTimeAttribute.LogPropertyWithLogAndTimeAttributeTest> logger = default(global::Microsoft.Extensions.Logging.ILogger<global::VtlSoftware.Aspects.Logging.Tests.net6.LogPropertyWithLogAndTimeAttribute.LogPropertyWithLogAndTimeAttributeTest>))
+        private global::VtlSoftware.Aspects.Logging.ILoggingAspect loggingAspect;
+        public LogPropertyWithLogAndTimeAttributeTest(global::VtlSoftware.Aspects.Logging.ILoggingAspect? loggingAspect = default(global::VtlSoftware.Aspects.Logging.ILoggingAspect?), global::Microsoft.Extensions.Logging.ILogger<global::VtlSoftware.Aspects.Logging.Tests.net6.LogPropertyWithLogAndTimeAttribute.LogPropertyWithLogAndTimeAttributeTest> logger = default(global::Microsoft.Extensions.Logging.ILogger<global::VtlSoftware.Aspects.Logging.Tests.net6.LogPropertyWithLogAndTimeAttribute.LogPropertyWithLogAndTimeAttributeTest>))
         {
             this.logger = logger ?? throw new System.ArgumentNullException(nameof(logger));
-            this.loggingApect = loggingApect ?? throw new System.ArgumentNullException(nameof(loggingApect));
+            this.loggingAspect = loggingAspect ?? throw new System.ArgumentNullException(nameof(loggingAspect));
         }
     }
 }

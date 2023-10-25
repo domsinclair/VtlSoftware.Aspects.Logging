@@ -7,31 +7,31 @@ namespace VtlSoftware.Aspects.Logging.Tests.net6.AddControlledLoggingToAllClasse
     public class AddControlledLoggingToAllClassesSaveThoseThatAlreadyHaveALogAspectInThemTest
     {
         private global::Microsoft.Extensions.Logging.ILogger logger;
-        private global::VtlSoftware.Aspects.Logging.ILoggingApect loggingApect;
-        public AddControlledLoggingToAllClassesSaveThoseThatAlreadyHaveALogAspectInThemTest(global::VtlSoftware.Aspects.Logging.ILoggingApect? loggingApect = default(global::VtlSoftware.Aspects.Logging.ILoggingApect?), global::Microsoft.Extensions.Logging.ILogger<global::VtlSoftware.Aspects.Logging.Tests.net6.AddControlledLoggingToAllClassesSaveThoseThatAlreadyHaveALogAspectInThem.AddControlledLoggingToAllClassesSaveThoseThatAlreadyHaveALogAspectInThemTest> logger = default(global::Microsoft.Extensions.Logging.ILogger<global::VtlSoftware.Aspects.Logging.Tests.net6.AddControlledLoggingToAllClassesSaveThoseThatAlreadyHaveALogAspectInThem.AddControlledLoggingToAllClassesSaveThoseThatAlreadyHaveALogAspectInThemTest>))
+        private global::VtlSoftware.Aspects.Logging.ILoggingAspect loggingAspect;
+        public AddControlledLoggingToAllClassesSaveThoseThatAlreadyHaveALogAspectInThemTest(global::VtlSoftware.Aspects.Logging.ILoggingAspect? loggingAspect = default(global::VtlSoftware.Aspects.Logging.ILoggingAspect?), global::Microsoft.Extensions.Logging.ILogger<global::VtlSoftware.Aspects.Logging.Tests.net6.AddControlledLoggingToAllClassesSaveThoseThatAlreadyHaveALogAspectInThem.AddControlledLoggingToAllClassesSaveThoseThatAlreadyHaveALogAspectInThemTest> logger = default(global::Microsoft.Extensions.Logging.ILogger<global::VtlSoftware.Aspects.Logging.Tests.net6.AddControlledLoggingToAllClassesSaveThoseThatAlreadyHaveALogAspectInThem.AddControlledLoggingToAllClassesSaveThoseThatAlreadyHaveALogAspectInThemTest>))
         {
             this.logger = logger ?? throw new System.ArgumentNullException(nameof(logger));
-            this.loggingApect = loggingApect ?? throw new System.ArgumentNullException(nameof(loggingApect));
+            this.loggingAspect = loggingAspect ?? throw new System.ArgumentNullException(nameof(loggingAspect));
         }
     }
     public class Test1
     {
         private global::Microsoft.Extensions.Logging.ILogger logger;
-        private global::VtlSoftware.Aspects.Logging.ILoggingApect loggingApect;
-        public Test1(global::VtlSoftware.Aspects.Logging.ILoggingApect? loggingApect = default(global::VtlSoftware.Aspects.Logging.ILoggingApect?), global::Microsoft.Extensions.Logging.ILogger<global::VtlSoftware.Aspects.Logging.Tests.net6.AddControlledLoggingToAllClassesSaveThoseThatAlreadyHaveALogAspectInThem.Test1> logger = default(global::Microsoft.Extensions.Logging.ILogger<global::VtlSoftware.Aspects.Logging.Tests.net6.AddControlledLoggingToAllClassesSaveThoseThatAlreadyHaveALogAspectInThem.Test1>))
+        private global::VtlSoftware.Aspects.Logging.ILoggingAspect loggingAspect;
+        public Test1(global::VtlSoftware.Aspects.Logging.ILoggingAspect? loggingAspect = default(global::VtlSoftware.Aspects.Logging.ILoggingAspect?), global::Microsoft.Extensions.Logging.ILogger<global::VtlSoftware.Aspects.Logging.Tests.net6.AddControlledLoggingToAllClassesSaveThoseThatAlreadyHaveALogAspectInThem.Test1> logger = default(global::Microsoft.Extensions.Logging.ILogger<global::VtlSoftware.Aspects.Logging.Tests.net6.AddControlledLoggingToAllClassesSaveThoseThatAlreadyHaveALogAspectInThem.Test1>))
         {
             this.logger = logger ?? throw new System.ArgumentNullException(nameof(logger));
-            this.loggingApect = loggingApect ?? throw new System.ArgumentNullException(nameof(loggingApect));
+            this.loggingAspect = loggingAspect ?? throw new System.ArgumentNullException(nameof(loggingAspect));
         }
     }
     internal class Test2
     {
         private global::Microsoft.Extensions.Logging.ILogger logger;
-        private global::VtlSoftware.Aspects.Logging.ILoggingApect loggingApect;
-        public Test2(global::VtlSoftware.Aspects.Logging.ILoggingApect? loggingApect = default(global::VtlSoftware.Aspects.Logging.ILoggingApect?), global::Microsoft.Extensions.Logging.ILogger<global::VtlSoftware.Aspects.Logging.Tests.net6.AddControlledLoggingToAllClassesSaveThoseThatAlreadyHaveALogAspectInThem.Test2> logger = default(global::Microsoft.Extensions.Logging.ILogger<global::VtlSoftware.Aspects.Logging.Tests.net6.AddControlledLoggingToAllClassesSaveThoseThatAlreadyHaveALogAspectInThem.Test2>))
+        private global::VtlSoftware.Aspects.Logging.ILoggingAspect loggingAspect;
+        public Test2(global::VtlSoftware.Aspects.Logging.ILoggingAspect? loggingAspect = default(global::VtlSoftware.Aspects.Logging.ILoggingAspect?), global::Microsoft.Extensions.Logging.ILogger<global::VtlSoftware.Aspects.Logging.Tests.net6.AddControlledLoggingToAllClassesSaveThoseThatAlreadyHaveALogAspectInThem.Test2> logger = default(global::Microsoft.Extensions.Logging.ILogger<global::VtlSoftware.Aspects.Logging.Tests.net6.AddControlledLoggingToAllClassesSaveThoseThatAlreadyHaveALogAspectInThem.Test2>))
         {
             this.logger = logger ?? throw new System.ArgumentNullException(nameof(logger));
-            this.loggingApect = loggingApect ?? throw new System.ArgumentNullException(nameof(loggingApect));
+            this.loggingAspect = loggingAspect ?? throw new System.ArgumentNullException(nameof(loggingAspect));
         }
     }
     public class LogClass
@@ -39,7 +39,7 @@ namespace VtlSoftware.Aspects.Logging.Tests.net6.AddControlledLoggingToAllClasse
         [Log]
         private string GetMyString()
         {
-            var isLoggingEnabled = this.loggingApect.LoggingEnabled;
+            var isLoggingEnabled = this.loggingAspect.LoggingEnabled;
             if (isLoggingEnabled)
             {
                 using (var guard = global::VtlSoftware.Aspects.Common.LogRecursionGuard.Begin())
@@ -79,11 +79,11 @@ namespace VtlSoftware.Aspects.Logging.Tests.net6.AddControlledLoggingToAllClasse
             }
         }
         private global::Microsoft.Extensions.Logging.ILogger logger;
-        private global::VtlSoftware.Aspects.Logging.ILoggingApect loggingApect;
-        public LogClass(global::VtlSoftware.Aspects.Logging.ILoggingApect? loggingApect = default(global::VtlSoftware.Aspects.Logging.ILoggingApect?), global::Microsoft.Extensions.Logging.ILogger<global::VtlSoftware.Aspects.Logging.Tests.net6.AddControlledLoggingToAllClassesSaveThoseThatAlreadyHaveALogAspectInThem.LogClass> logger = default(global::Microsoft.Extensions.Logging.ILogger<global::VtlSoftware.Aspects.Logging.Tests.net6.AddControlledLoggingToAllClassesSaveThoseThatAlreadyHaveALogAspectInThem.LogClass>))
+        private global::VtlSoftware.Aspects.Logging.ILoggingAspect loggingAspect;
+        public LogClass(global::VtlSoftware.Aspects.Logging.ILoggingAspect? loggingAspect = default(global::VtlSoftware.Aspects.Logging.ILoggingAspect?), global::Microsoft.Extensions.Logging.ILogger<global::VtlSoftware.Aspects.Logging.Tests.net6.AddControlledLoggingToAllClassesSaveThoseThatAlreadyHaveALogAspectInThem.LogClass> logger = default(global::Microsoft.Extensions.Logging.ILogger<global::VtlSoftware.Aspects.Logging.Tests.net6.AddControlledLoggingToAllClassesSaveThoseThatAlreadyHaveALogAspectInThem.LogClass>))
         {
             this.logger = logger ?? throw new System.ArgumentNullException(nameof(logger));
-            this.loggingApect = loggingApect ?? throw new System.ArgumentNullException(nameof(loggingApect));
+            this.loggingAspect = loggingAspect ?? throw new System.ArgumentNullException(nameof(loggingAspect));
         }
     }
     public class LogAnTimeClassClass
@@ -91,7 +91,7 @@ namespace VtlSoftware.Aspects.Logging.Tests.net6.AddControlledLoggingToAllClasse
         [LogAndTime]
         private string GetMyString()
         {
-            var isLoggingEnabled = this.loggingApect.LoggingEnabled;
+            var isLoggingEnabled = this.loggingAspect.LoggingEnabled;
             if (isLoggingEnabled)
             {
                 using (var guard = global::VtlSoftware.Aspects.Common.LogRecursionGuard.Begin())
@@ -144,11 +144,11 @@ namespace VtlSoftware.Aspects.Logging.Tests.net6.AddControlledLoggingToAllClasse
             }
         }
         private global::Microsoft.Extensions.Logging.ILogger logger;
-        private global::VtlSoftware.Aspects.Logging.ILoggingApect loggingApect;
-        public LogAnTimeClassClass(global::VtlSoftware.Aspects.Logging.ILoggingApect? loggingApect = default(global::VtlSoftware.Aspects.Logging.ILoggingApect?), global::Microsoft.Extensions.Logging.ILogger<global::VtlSoftware.Aspects.Logging.Tests.net6.AddControlledLoggingToAllClassesSaveThoseThatAlreadyHaveALogAspectInThem.LogAnTimeClassClass> logger = default(global::Microsoft.Extensions.Logging.ILogger<global::VtlSoftware.Aspects.Logging.Tests.net6.AddControlledLoggingToAllClassesSaveThoseThatAlreadyHaveALogAspectInThem.LogAnTimeClassClass>))
+        private global::VtlSoftware.Aspects.Logging.ILoggingAspect loggingAspect;
+        public LogAnTimeClassClass(global::VtlSoftware.Aspects.Logging.ILoggingAspect? loggingAspect = default(global::VtlSoftware.Aspects.Logging.ILoggingAspect?), global::Microsoft.Extensions.Logging.ILogger<global::VtlSoftware.Aspects.Logging.Tests.net6.AddControlledLoggingToAllClassesSaveThoseThatAlreadyHaveALogAspectInThem.LogAnTimeClassClass> logger = default(global::Microsoft.Extensions.Logging.ILogger<global::VtlSoftware.Aspects.Logging.Tests.net6.AddControlledLoggingToAllClassesSaveThoseThatAlreadyHaveALogAspectInThem.LogAnTimeClassClass>))
         {
             this.logger = logger ?? throw new System.ArgumentNullException(nameof(logger));
-            this.loggingApect = loggingApect ?? throw new System.ArgumentNullException(nameof(loggingApect));
+            this.loggingAspect = loggingAspect ?? throw new System.ArgumentNullException(nameof(loggingAspect));
         }
     }
 #pragma warning disable CS0067, CS8618, CS0162, CS0169, CS0414, CA1822, CA1823, IDE0051, IDE0052

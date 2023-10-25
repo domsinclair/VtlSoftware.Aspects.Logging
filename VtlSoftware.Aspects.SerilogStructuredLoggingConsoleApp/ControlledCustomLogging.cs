@@ -21,7 +21,6 @@ namespace VtlSoftware.Aspects.SerilogStructuredLoggingConsoleApp
 
     {
         #region Private Methods
-
         private double GetCustomerRate() { return 17.5; }
 
         #endregion
@@ -30,7 +29,7 @@ namespace VtlSoftware.Aspects.SerilogStructuredLoggingConsoleApp
         public double CalculateVat()
         {
             var rate = GetCustomerRate();
-            var isLoggingEnabled = this.loggingApect.LoggingEnabled;
+            var isLoggingEnabled = this.loggingAspect.LoggingEnabled;
             if(isLoggingEnabled)
             {
                 using(var guard = LogRecursionGuard.Begin())
