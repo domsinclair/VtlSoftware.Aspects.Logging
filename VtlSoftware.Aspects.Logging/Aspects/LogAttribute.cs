@@ -32,7 +32,6 @@ namespace VtlSoftware.Aspects.Logging
     public class LogAttribute : Attribute, IAspect<IMethod>, IAspect<IFieldOrProperty>
     {
         #region Fields
-
         /// <summary>
         /// The vtl 105 error.
         /// </summary>
