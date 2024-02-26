@@ -7,6 +7,7 @@
 		<Nullable>enable</Nullable>
 		<LangVersion>10.0</LangVersion>
 		<SensitiveParameterNames>"userName,Password"</SensitiveParameterNames>
+		<UserSecretsId>ec4b253e-961f-4c37-b42b-9626cb82516a</UserSecretsId>
 	</PropertyGroup>
 	
 	<ItemGroup>
