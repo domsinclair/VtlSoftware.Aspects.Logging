@@ -82,19 +82,23 @@ namespace VtlSoftware.Aspects.Logging
         {
             if(builder.Target.DeclaringType.Attributes.OfAttributeType(typeof(NoLogAttribute)).Any())
             {
-                builder.Diagnostics.Report(vtl105Error.WithArguments(builder.Target));
-                builder.Diagnostics.Suggest(
-                    CodeFixFactory.RemoveAttributes(builder.Target, typeof(LogAttribute), "Remove Aspect | Log"));
-                builder.SkipAspect();
-            }
+                if(builder.Target.Attributes.OfAttributeType(typeof(LogAttribute)).Any())
+                {
+                    builder.Diagnostics.Report(vtl105Error.WithArguments(builder.Target));
 
-            if(!(builder.Target.Attributes.OfAttributeType(typeof(NoLogAttribute)).Any() ||
-                builder.Target.Attributes.OfAttributeType(typeof(LogAndTimeAttribute)).Any()))
-            {
-                builder.Advice.Override(builder.Target, nameof(this.OverrideMethod));
+                    builder.Diagnostics.Suggest(
+                        CodeFixFactory.RemoveAttributes(builder.Target, typeof(LogAttribute), "Remove Aspect | Log"));
+                }
+                builder.SkipAspect();
             } else
             {
-                builder.SkipAspect();
+                if(!(builder.Target.Attributes.OfAttributeType(typeof(NoLogAttribute)).Any()))
+                {
+                    builder.Advice.Override(builder.Target, nameof(this.OverrideMethod));
+                } else
+                {
+                    builder.SkipAspect();
+                }
             }
         }
 
@@ -117,18 +121,23 @@ namespace VtlSoftware.Aspects.Logging
         {
             if(builder.Target.DeclaringType.Attributes.OfAttributeType(typeof(NoLogAttribute)).Any())
             {
-                builder.Diagnostics.Report(vtl106Error.WithArguments(builder.Target));
-                builder.Diagnostics.Suggest(
-                    CodeFixFactory.RemoveAttributes(builder.Target, typeof(LogAttribute), "Remove Aspect | Log"));
-                builder.SkipAspect();
-            }
+                if(builder.Target.Attributes.OfAttributeType(typeof(LogAttribute)).Any())
+                {
+                    builder.Diagnostics.Report(vtl106Error.WithArguments(builder.Target));
 
-            if(!(builder.Target.Attributes.OfAttributeType(typeof(NoLogAttribute)).Any()))
-            {
-                builder.Advice.Override(builder.Target, nameof(this.OverrideProperty));
+                    builder.Diagnostics.Suggest(
+                        CodeFixFactory.RemoveAttributes(builder.Target, typeof(LogAttribute), "Remove Aspect | Log"));
+                }
+                builder.SkipAspect();
             } else
             {
-                builder.SkipAspect();
+                if(!(builder.Target.Attributes.OfAttributeType(typeof(NoLogAttribute)).Any()))
+                {
+                    builder.Advice.Override(builder.Target, nameof(this.OverrideProperty));
+                } else
+                {
+                    builder.SkipAspect();
+                }
             }
         }
 
@@ -150,7 +159,8 @@ namespace VtlSoftware.Aspects.Logging
 
         public void BuildEligibility(IEligibilityBuilder<IMethod> builder)
         {
-            EligibilityRuleFactory.GetAdviceEligibilityRule(AdviceKind.OverrideMethod);
+            builder.AddRule(EligibilityRuleFactory.GetAdviceEligibilityRule(AdviceKind.OverrideMethod));
+            builder.DeclaringType().MustNotHaveAspectOfType(typeof(NoLogAttribute));
             builder.MustNotBeStatic();
             builder.MustNotHaveAspectOfType(typeof(NoLogAttribute));
         }
@@ -173,7 +183,9 @@ namespace VtlSoftware.Aspects.Logging
 
         public void BuildEligibility(IEligibilityBuilder<IFieldOrProperty> builder)
         {
-            EligibilityRuleFactory.GetAdviceEligibilityRule(AdviceKind.OverrideFieldOrPropertyOrIndexer);
+            builder.AddRule(
+                EligibilityRuleFactory.GetAdviceEligibilityRule(AdviceKind.OverrideFieldOrPropertyOrIndexer));
+            builder.DeclaringType().MustNotHaveAspectOfType(typeof(NoLogAttribute));
             builder.MustNotBeStatic();
             builder.MustNotHaveAspectOfType(typeof(NoLogAttribute));
         }

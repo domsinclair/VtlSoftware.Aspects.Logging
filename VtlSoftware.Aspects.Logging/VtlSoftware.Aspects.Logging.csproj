@@ -8,7 +8,7 @@
 	  <GenerateDocumentationFile>true</GenerateDocumentationFile>
 	  <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
 	  <Title>Vtl Software Aspects Logging</Title>
-	  <Version>2024.0.8</Version>
+	  <Version>2024.0.9.1</Version>
 	  <Authors>Dom Sinclair</Authors>
 	  <Company>Vtl Software Ltd</Company>
 	  <Description>A collection of aspects (created with Metalama by Postsharp)  to provide logging for projects.</Description>
@@ -18,8 +18,9 @@
 	  <RepositoryUrl>https://github.com/domsinclair/VtlSoftware.Aspects.Logging</RepositoryUrl>
 	  <RepositoryType>git</RepositoryType>
 	  <PackageTags>VtlSoftware, Metalama, Logging, Logs</PackageTags>
-	  <PackageReleaseNotes>Release Matches Metalama 2024.0.8
-	  It also updates other packaage dependencies to provide support for .Net 8.0</PackageReleaseNotes>
+	  <PackageReleaseNotes>Release Matches Metalama 2024.0.9
+	  It also updates other packaage dependencies to provide support for .Net 8.0
+      Improved the build eligibility logic and diagnostics</PackageReleaseNotes>
 	  <PackageLicenseExpression>MIT</PackageLicenseExpression>
 	  <IncludeSymbols>True</IncludeSymbols>
 	  <SymbolPackageFormat>snupkg</SymbolPackageFormat>
@@ -41,8 +42,8 @@
 	</ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Metalama.Extensions.DependencyInjection" Version="2024.0.8" />
-    <PackageReference Include="Metalama.Framework" Version="2024.0.8" />
+    <PackageReference Include="Metalama.Extensions.DependencyInjection" Version="2024.0.9" />
+    <PackageReference Include="Metalama.Framework" Version="2024.0.9" />
     <PackageReference Include="VtlSoftware.Aspects.Common" Version="1.1.0" />
   </ItemGroup>
 
